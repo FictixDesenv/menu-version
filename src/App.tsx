@@ -18,7 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="max-w-md mx-auto min-h-screen bg-primary-foreground">
+        <div className="max-w-md mx-auto min-h-screen">
           <Routes>
             <Route path="/" element={<SplashPage />} />
             <Route path="/landing" element={<LandingPage />} />
