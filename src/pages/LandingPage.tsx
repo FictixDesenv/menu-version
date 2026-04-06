@@ -12,7 +12,7 @@ const LandingPage = () => {
         <h1 className="text-5xl leading-tight font-normal text-foreground -mb-1">
           Checkout de
         </h1>
-        <h1 className="text-[2.5rem] leading-tight font-extrabold text-foreground mb-6">
+        <h1 className="text-5xl leading-tight font-extrabold text-foreground mb-6">
           alta conversão
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed mb-10">
