@@ -8,7 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useEffect } from "react";
 
 const slides = [
-  { id: 1, title: "Overview geral", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
+  { id: 1, title: "Funcionalidade 1", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
   { id: 2, title: "Checkout otimizado", desc: "Processo de compra simplificado com conversão até 3x maior que checkouts tradicionais." },
   { id: 3, title: "Dashboard analítico", desc: "Acompanhe métricas em tempo real e tome decisões baseadas em dados." },
   { id: 4, title: "Integrações", desc: "Conecte com as principais plataformas de e-commerce e meios de pagamento." },
