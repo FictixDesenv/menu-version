@@ -57,6 +57,7 @@ const SplashPage = () => {
         viewBox="0 0 430 932"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
+        style={{ transform: "rotate(45deg)", transformOrigin: "center center" }}
       >
         {wavePaths.map((wave, i) => (
           <motion.path
