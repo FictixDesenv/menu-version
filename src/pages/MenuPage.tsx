@@ -19,7 +19,7 @@ const MenuPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
-      <div className="flex justify-center pt-[86px] pb-[40px]">
+      <div className="flex justify-center pt-[60px] pb-[40px]">
         <TrinioLogo size="sm" />
       </div>
 
