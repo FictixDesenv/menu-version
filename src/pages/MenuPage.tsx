@@ -7,7 +7,22 @@ import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
   { id: 1, title: "O que é o Trinio OS?", desc: "Experiência de compra otimizada", icon: ShoppingCart, color: "bg-primary/10 text-primary" },
-...
+  { id: 2, title: "Pagamentos", desc: "Múltiplos métodos", icon: CreditCard, color: "bg-secondary/10 text-secondary" },
+  { id: 3, title: "Analytics", desc: "Dados em tempo real", icon: BarChart3, color: "bg-primary/10 text-primary" },
+  { id: 4, title: "Segurança", desc: "Proteção avançada", icon: Shield, color: "bg-secondary/10 text-secondary" },
+  { id: 5, title: "Performance", desc: "Velocidade máxima", icon: Zap, color: "bg-primary/10 text-primary" },
+];
+
+const MenuPage = () => {
+  const navigate = useNavigate();
+  const [demoOpen, setDemoOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
+      <div className="pt-8 pb-6 flex justify-center">
+        <TrinioLogo size="sm" />
+      </div>
+
       <h2 className="font-bold text-foreground mb-1 text-center text-lg">
         Conheça a Trinio OS
       </h2>
