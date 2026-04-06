@@ -23,9 +23,12 @@ const MenuPage = () => {
         <TrinioLogo size="sm" />
       </div>
 
-      <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
+      <h2 className="text-2xl font-bold text-foreground mb-1 text-center">
         Conheça a Trinio OS
       </h2>
+      <p className="text-muted-foreground text-base mb-6 text-center">
+        Descubra como podemos transformar seus resultado
+      </p>
 
       {/* Feature card - full width */}
       <button
