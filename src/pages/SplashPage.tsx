@@ -126,12 +126,17 @@ const SplashPage = () => {
       {/* Logo with delayed fade-in */}
       <motion.div
         className="relative z-10"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{
+          opacity: [0, 1, 1, 1, 0, 0],
+          scale: [0.92, 1, 1.02, 1, 0.96, 0.92],
+        }}
         transition={{
           delay: 3,
-          duration: 1.2,
-          ease: "easeOut",
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          times: [0, 0.2, 0.5, 0.75, 0.95, 1],
         }}
         onAnimationComplete={() => setLogoVisible(true)}
       >
