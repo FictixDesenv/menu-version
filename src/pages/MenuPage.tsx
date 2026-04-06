@@ -40,8 +40,8 @@ const MenuPage = () => {
           <Icon className="w-5 h-5" />
         </div>
         ); })()}
-        <h3 className="font-semibold text-foreground text-base">{features[0].title}</h3>
-        <p className="text-muted-foreground text-sm mt-1">{features[0].desc}</p>
+        <h3 className="font-semibold text-foreground" style={{ fontSize: '46px' }}>{features[0].title}</h3>
+        <p className="text-muted-foreground mt-1" style={{ fontSize: '26px' }}>{features[0].desc}</p>
       </button>
 
       {/* 2x2 grid */}
@@ -57,8 +57,8 @@ const MenuPage = () => {
               <Icon className="w-4 h-4" />
             </div>
             ); })()}
-            <h3 className="font-semibold text-foreground text-sm">{f.title}</h3>
-            <p className="text-muted-foreground text-xs mt-0.5">{f.desc}</p>
+            <h3 className="font-semibold text-foreground" style={{ fontSize: '46px' }}>{f.title}</h3>
+            <p className="text-muted-foreground mt-0.5" style={{ fontSize: '26px' }}>{f.desc}</p>
           </button>
         ))}
       </div>
