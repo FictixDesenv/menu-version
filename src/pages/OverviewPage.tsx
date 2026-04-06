@@ -46,7 +46,7 @@ const OverviewPage = () => {
               <div className="rounded-2xl aspect-video w-full overflow-hidden mb-4">
                 <iframe
                   className="w-full h-full"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&rel=0"
+                  src="https://www.youtube.com/embed/9Hf4Mld2AUk?autoplay=1&mute=1&controls=1&rel=0"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                   title="Demo video"
