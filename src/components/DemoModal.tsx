@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { QRCodeSVG } from "qrcode.react";
+import qrCodeImage from "@/assets/frame.svg";
 
 interface DemoModalProps {
   open: boolean;
