@@ -57,8 +57,8 @@ const MenuPage = () => {
               <Icon className="w-4 h-4" />
             </div>
             ); })()}
-            <h3 className="font-semibold text-foreground text-sm">{f.title}</h3>
-            <p className="text-muted-foreground text-xs mt-0.5">{f.desc}</p>
+            <h3 className="font-semibold text-foreground text-sm leading-tight">{f.title}</h3>
+            <p className="text-muted-foreground text-xs mt-0 leading-tight">{f.desc}</p>
           </button>
         ))}
       </div>
