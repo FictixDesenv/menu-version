@@ -42,18 +42,22 @@ const OverviewPage = () => {
                     <h3 className="font-bold text-lg text-foreground mb-2">{slide.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{slide.desc}</p>
                   </div>
-                  <div className="flex items-center gap-2 mt-4">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <span className="text-primary font-bold text-xs">{slide.id}</span>
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <span className="text-primary font-bold text-xs">{slide.id}</span>
+                      </div>
+                      <span className="text-xs text-muted-foreground">Slide {slide.id} de {slides.length}</span>
                     </div>
-                    <span className="text-xs text-muted-foreground">Slide {slide.id} de {slides.length}</span>
+                    <div className="flex items-center gap-2">
+                      <CarouselPrevious className="static translate-y-0 w-8 h-8 bg-card border-border shadow" />
+                      <CarouselNext className="static translate-y-0 w-8 h-8 bg-card border-border shadow" />
+                    </div>
                   </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="-left-3 w-8 h-8 bg-card border-border shadow" />
-          <CarouselNext className="-right-3 w-8 h-8 bg-card border-border shadow" />
         </Carousel>
 
         {/* Dot indicators */}
