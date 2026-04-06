@@ -33,7 +33,7 @@ const MenuPage = () => {
       {/* Feature card - full width */}
       <button
         onClick={() => navigate("/overview")}
-        className="w-full bg-card rounded-2xl p-5 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+        className="w-full bg-card rounded-2xl px-5 py-3 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
       >
         {(() => { const Icon = features[0].icon; return (
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
