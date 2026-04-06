@@ -50,10 +50,10 @@ const MenuPage = () => {
           <button
             key={f.id}
             onClick={() => navigate("/overview")}
-            className="bg-card rounded-2xl px-4 py-2.5 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+            className="bg-card rounded-2xl px-4 py-2.5 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
           >
             {(() => { const Icon = f.icon; return (
-            <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${f.color}`}>
+            <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 mx-auto ${f.color}`}>
               <Icon className="w-4 h-4" />
             </div>
             ); })()}
