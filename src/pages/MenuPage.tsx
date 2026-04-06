@@ -33,15 +33,15 @@ const MenuPage = () => {
       {/* Feature card - full width */}
       <button
         onClick={() => navigate("/overview")}
-        className="w-full bg-card rounded-2xl px-5 py-3 mb-4 border border-border shadow-sm hover:shadow-md transition-shadow text-center"
+        className="w-full bg-card rounded-2xl px-4 py-2.5 mb-4 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
       >
         {(() => { const Icon = features[0].icon; return (
-        <div className={`w-10 h-10 rounded-xl mb-3 ${features[0].color} flex items-center justify-center mx-auto`}>
-          <Icon className="w-5 h-5" />
+        <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 mx-auto ${features[0].color}`}>
+          <Icon className="w-4 h-4" />
         </div>
         ); })()}
-        <h3 className="font-semibold text-foreground text-base">{features[0].title}</h3>
-        <p className="text-muted-foreground text-sm mt-1">{features[0].desc}</p>
+        <h3 className="font-semibold text-foreground text-sm leading-tight">{features[0].title}</h3>
+        <p className="text-muted-foreground text-xs mt-0 leading-tight">{features[0].desc}</p>
       </button>
 
       {/* 2x2 grid */}
