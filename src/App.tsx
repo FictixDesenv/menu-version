@@ -23,7 +23,7 @@ const App = () => (
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/overview" element={<OverviewPage />} />
-            <Route path="/detail/:id" element={<DetailPage />} />
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
