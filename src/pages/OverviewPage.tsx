@@ -5,7 +5,8 @@ import DemoButton from "@/components/DemoButton";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { useEffect } from "react";
-import { Video, X } from "lucide-react";
+import { X } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 
 const slides = [
   { id: 1, title: "Funcionalidade 1", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
@@ -14,9 +15,11 @@ const slides = [
   { id: 4, title: "Integrações", desc: "Conecte com as principais plataformas de e-commerce e meios de pagamento." },
 ];
 
+type CardView = "carousel" | "video" | "qrcode";
+
 const OverviewPage = () => {
   const navigate = useNavigate();
-  const [demoOpen, setDemoOpen] = useState(false);
+  const [cardView, setCardView] = useState<CardView>("carousel");
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -33,11 +36,11 @@ const OverviewPage = () => {
       <div className="px-5 flex-1 flex flex-col">
         <h2 className="text-2xl font-bold text-foreground mb-5 mt-10 text-center">Funcionalidade 1</h2>
 
-        {demoOpen ? (
+        {cardView === "video" ? (
           <>
             <div className="bg-black rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
               <button
-                onClick={() => setDemoOpen(false)}
+                onClick={() => setCardView("carousel")}
                 className="absolute right-4 top-4 text-white/70 hover:text-white z-10"
               >
                 <X className="w-5 h-5" />
@@ -58,13 +61,42 @@ const OverviewPage = () => {
               </p>
             </div>
 
-            {/* Keep dot indicators for visual consistency */}
             <div className="flex justify-center gap-2 mb-6">
               {slides.map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-2 h-2 rounded-full bg-border`}
+                <div key={i} className="w-2 h-2 rounded-full bg-border" />
+              ))}
+            </div>
+          </>
+        ) : cardView === "qrcode" ? (
+          <>
+            <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
+              <button
+                onClick={() => setCardView("carousel")}
+                className="absolute right-4 top-4 text-muted-foreground hover:text-foreground z-10"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <h3 className="font-bold text-xl text-foreground mb-1">Agendar uma Demo</h3>
+              <p className="text-muted-foreground text-sm mb-6">Escanei o QR Code</p>
+
+              <div className="p-4 bg-card rounded-2xl border border-border mb-4">
+                <QRCodeSVG
+                  value="https://trinio.com.br/demo"
+                  size={180}
+                  bgColor="transparent"
+                  fgColor="hsl(0, 0%, 10%)"
                 />
+              </div>
+
+              <p className="text-xs text-muted-foreground">
+                Aponte a câmera do seu celular para o código
+              </p>
+            </div>
+
+            <div className="flex justify-center gap-2 mb-6">
+              {slides.map((_, i) => (
+                <div key={i} className="w-2 h-2 rounded-full bg-border" />
               ))}
             </div>
           </>
@@ -84,7 +116,7 @@ const OverviewPage = () => {
                       </div>
                       
                       <Button
-                        onClick={() => setDemoOpen(true)}
+                        onClick={() => setCardView("video")}
                         className="rounded-full px-8 py-6 text-base font-semibold bg-foreground text-background hover:bg-foreground/90"
                       >
                         <span className="mr-2">▷</span> Assistir Demo
@@ -108,7 +140,7 @@ const OverviewPage = () => {
           </>
         )}
 
-        <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
+        <DemoButton onClick={() => setCardView("qrcode")} variant="outline" />
       </div>
     </div>
   );
