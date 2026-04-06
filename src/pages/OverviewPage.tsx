@@ -43,7 +43,7 @@ const OverviewPage = () => {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="rounded-2xl aspect-video w-full overflow-hidden mb-4">
+              <div className="rounded-2xl aspect-video w-4/5 overflow-hidden mb-4">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/9Hf4Mld2AUk?autoplay=1&mute=1&controls=1&rel=0"
