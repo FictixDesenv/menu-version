@@ -53,8 +53,8 @@ const OverviewPage = () => {
                 />
               </div>
 
-              <p className="text-base text-white font-medium">
-                Descubra como podemos
+              <p className="text-xs text-white/80">
+                Veja o Trinio OS em ação
               </p>
             </div>
 
