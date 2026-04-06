@@ -7,6 +7,10 @@ import SplashPage from "./pages/SplashPage";
 import LandingPage from "./pages/LandingPage";
 import MenuPage from "./pages/MenuPage";
 import OverviewPage from "./pages/OverviewPage";
+import PaymentsPage from "./pages/PaymentsPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import CasesPage from "./pages/CasesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +27,10 @@ const App = () => (
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/overview" element={<OverviewPage />} />
+            <Route path="/payments" element={<PaymentsPage />} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/cases" element={<CasesPage />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>

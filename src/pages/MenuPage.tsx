@@ -7,11 +7,11 @@ import IdleOverlay from "@/components/IdleOverlay";
 import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
-  { id: 1, title: "O que é o Trinio OS?", desc: "Conheça nossa plataforma", icon: ShoppingCart, color: "bg-orange-500/10 text-orange-500" },
-  { id: 2, title: "Pagamentos", desc: "Múltiplos métodos aceitos", icon: CreditCard, color: "bg-orange-500/10 text-orange-500" },
-  { id: 3, title: "Analytics", desc: "Dados e métricas em tempo real", icon: BarChart3, color: "bg-orange-500/10 text-orange-500" },
-  { id: 4, title: "Mais experiência", desc: "Inovação para seu cliente", icon: Shield, color: "bg-orange-500/10 text-orange-500" },
-  { id: 5, title: "Cases", desc: "Histórias de sucesso", icon: Zap, color: "bg-orange-500/10 text-orange-500" },
+  { id: 1, title: "O que é o Trinio OS?", desc: "Conheça nossa plataforma", icon: ShoppingCart, color: "bg-primary/10 text-primary", route: "/overview" },
+  { id: 2, title: "Pagamentos", desc: "Múltiplos métodos aceitos", icon: CreditCard, color: "bg-primary/10 text-primary", route: "/payments" },
+  { id: 3, title: "Analytics", desc: "Dados e métricas em tempo real", icon: BarChart3, color: "bg-primary/10 text-primary", route: "/analytics" },
+  { id: 4, title: "Mais experiência", desc: "Inovação para seu cliente", icon: Shield, color: "bg-primary/10 text-primary", route: "/experience" },
+  { id: 5, title: "Cases", desc: "Histórias de sucesso", icon: Zap, color: "bg-primary/10 text-primary", route: "/cases" },
 ];
 
 const MenuPage = () => {
@@ -30,7 +30,7 @@ const MenuPage = () => {
 
       {/* Feature card - full width */}
       <button
-        onClick={() => navigate("/overview")}
+        onClick={() => navigate(features[0].route)}
         className="w-full bg-card rounded-2xl px-4 py-2.5 mb-4 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
       >
         {(() => { const Icon = features[0].icon; return (
@@ -47,7 +47,7 @@ const MenuPage = () => {
         {features.slice(1).map((f) => (
           <button
             key={f.id}
-            onClick={() => navigate("/overview")}
+            onClick={() => navigate(f.route)}
             className="bg-card rounded-2xl px-4 py-2.5 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
           >
             {(() => { const Icon = f.icon; return (
