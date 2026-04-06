@@ -107,44 +107,10 @@ const OverviewPage = () => {
           </>
         )}
 
-        <DemoButton onClick={() => setCardView("qrcode")} variant="outline" />
+        <DemoButton onClick={() => setQrOpen(true)} variant="outline" />
       </div>
 
-      {/* QR Code overlay */}
-      {cardView === "qrcode" && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={() => setCardView("carousel")}
-        >
-          <div
-            className="bg-card rounded-3xl p-8 mx-5 max-w-sm w-full flex flex-col items-center text-center relative shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setCardView("carousel")}
-              className="absolute right-4 top-4 text-muted-foreground hover:text-foreground"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <h3 className="font-bold text-xl text-foreground mb-1 mt-2">Agendar uma Demo</h3>
-            <p className="text-muted-foreground text-sm mb-6">Escanei o QR Code</p>
-
-            <div className="p-4 bg-card rounded-2xl border border-border mb-4">
-              <QRCodeSVG
-                value="https://trinio.com.br/demo"
-                size={180}
-                bgColor="transparent"
-                fgColor="hsl(0, 0%, 10%)"
-              />
-            </div>
-
-            <p className="text-xs text-muted-foreground">
-              Aponte a câmera do seu celular para o código
-            </p>
-          </div>
-        </div>
-      )}
+      <DemoModal open={qrOpen} onOpenChange={setQrOpen} />
     </div>
   );
 };
