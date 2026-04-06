@@ -1,36 +1,33 @@
 
 
-## Contexto
+## Animação Shimmer no botão CTA
 
-Esta tela será exibida em um **totem touch de 55 polegadas** para autoatendimento. O conteúdo precisa ficar centralizado no meio da tela, evitando as áreas superior e inferior.
+Substituir a animação de glow-pulse por um efeito shimmer — um brilho suave que desliza horizontalmente pelo botão, simulando um reflexo de luz.
 
-## Plano
+### Abordagem técnica
 
-### Arquivo: `src/pages/MenuPage.tsx`
+**1. tailwind.config.ts** — Substituir o keyframe `glow-pulse` por `shimmer`:
+- Keyframe que move um gradiente linear (transparente → branco semi-transparente → transparente) da esquerda para a direita usando `background-position`
 
-1. **Container raiz**: usar `h-screen` com `flex flex-col items-center justify-center` para centralizar tudo vertical e horizontalmente na tela.
+**2. src/pages/LandingPage.tsx** — Atualizar o botão:
+- Remover `animate-[glow-pulse_...]`
+- Adicionar classes para o efeito shimmer via `overflow-hidden` e um pseudo-elemento `::after` com o gradiente animado, ou usar `background-size` + `background-position` diretamente no botão
+- Implementação via classe CSS customizada no `index.css` para o pseudo-elemento `::after` que cria a faixa de brilho deslizante
 
-2. **Limitar largura do conteúdo**: envolver todo o conteúdo em um wrapper com `max-w-lg w-full` para que os cards não fiquem esticados na tela de 55".
-
-3. **Remover paddings de topo/bottom** (`pt-8`, `pb-8`) que empurram o conteúdo para as bordas.
-
-4. **Estrutura resultante**:
-
-```text
-┌──────────────────────────────────┐
-│          (espaço vazio)          │
-│                                  │
-│         ┌──────────────┐         │
-│         │    Logo      │         │
-│         │   Título     │         │
-│         │  Subtítulo   │         │
-│         │   Cards      │         │
-│         │  Botão CTA   │         │
-│         └──────────────┘         │
-│                                  │
-│          (espaço vazio)          │
-└──────────────────────────────────┘
+**3. src/index.css** — Adicionar classe `.shimmer-btn`:
+```css
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
 ```
 
-5. **Aumentar tamanhos de fonte e ícones** para legibilidade em tela grande (título para `text-4xl`, subtítulo para `text-xl`, cards com textos maiores, ícones maiores).
+Resultado: um reflexo de luz suave e contínuo percorrendo o botão horizontalmente.
 
