@@ -6,7 +6,7 @@ import DemoModal from "@/components/DemoModal";
 import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
-  { id: 1, title: "Checkout Inteligente", desc: "Experiência de compra otimizada", icon: ShoppingCart, color: "bg-primary/10 text-primary" },
+  { id: 1, title: "O que é o Trinio OS?", desc: "Experiência de compra otimizada", icon: ShoppingCart, color: "bg-primary/10 text-primary" },
   { id: 2, title: "Pagamentos", desc: "Múltiplos métodos", icon: CreditCard, color: "bg-secondary/10 text-secondary" },
   { id: 3, title: "Analytics", desc: "Dados em tempo real", icon: BarChart3, color: "bg-primary/10 text-primary" },
   { id: 4, title: "Segurança", desc: "Proteção avançada", icon: Shield, color: "bg-secondary/10 text-secondary" },
@@ -23,20 +23,20 @@ const MenuPage = () => {
         <TrinioLogo size="sm" />
       </div>
 
-      <h2 className="text-2xl font-bold text-foreground mb-1 text-center">
+      <h2 className="font-bold text-foreground mb-1 text-center text-lg">
         Conheça a Trinio OS
       </h2>
-      <p className="text-muted-foreground text-base mb-6 text-center">
+      <p className="text-muted-foreground mb-6 text-center text-sm">
         Descubra como podemos transformar seus resultado
       </p>
 
       {/* Feature card - full width */}
       <button
         onClick={() => navigate("/overview")}
-        className="w-full bg-card rounded-2xl px-5 py-3 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+        className="w-full bg-card rounded-2xl px-5 py-3 mb-4 border border-border shadow-sm hover:shadow-md transition-shadow text-left"
       >
         {(() => { const Icon = features[0].icon; return (
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
+        <div className={`w-10 h-10 rounded-xl mb-3 ${features[0].color} flex items-center justify-center text-center`}>
           <Icon className="w-5 h-5" />
         </div>
         ); })()}
