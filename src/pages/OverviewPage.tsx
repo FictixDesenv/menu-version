@@ -31,7 +31,7 @@ const OverviewPage = () => {
       <TrinioHeader />
 
       <div className="px-5 flex-1 flex flex-col">
-        <h2 className="text-2xl font-bold text-foreground mb-5">Overview geral</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-5 mt-10">Overview geral</h2>
 
         <Carousel setApi={setApi} className="w-full mb-4">
           <CarouselContent>
