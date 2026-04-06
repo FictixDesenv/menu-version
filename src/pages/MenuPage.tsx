@@ -32,9 +32,11 @@ const MenuPage = () => {
         onClick={() => navigate("/overview")}
         className="w-full bg-card rounded-2xl p-5 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
       >
+        {(() => { const Icon = features[0].icon; return (
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
-          <features[0].icon className="w-5 h-5" />
+          <Icon className="w-5 h-5" />
         </div>
+        ); })()}
         <h3 className="font-semibold text-foreground text-base">{features[0].title}</h3>
         <p className="text-muted-foreground text-sm mt-1">{features[0].desc}</p>
       </button>
