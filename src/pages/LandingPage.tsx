@@ -1,37 +1,30 @@
 import { useNavigate } from "react-router-dom";
-import TrinioLogo from "@/components/TrinioLogo";
-import { Button } from "@/components/ui/button";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col min-h-screen bg-background px-6">
-      <div className="pt-12 pb-8">
-        <TrinioLogo size="sm" />
-      </div>
-
-      <div className="flex-1 flex flex-col justify-center -mt-20">
-        <h1 className="text-4xl font-extrabold leading-tight text-foreground mb-4">
-          Checkout de<br />alta conversão
+    <div
+      className="flex flex-col items-center justify-center min-h-screen px-6 text-center"
+      style={{ backgroundColor: "hsl(270, 40%, 92%)" }}
+    >
+      <div className="flex flex-col items-center">
+        <h1 className="text-[2.5rem] leading-tight font-light text-foreground mb-1">
+          Checkout de
         </h1>
-        <p className="text-muted-foreground text-base leading-relaxed mb-10 max-w-xs">
-          Conheça a solução completa que vai transformar suas vendas online com tecnologia de ponta.
+        <h1 className="text-[2.5rem] leading-tight font-extrabold text-foreground mb-6">
+          alta conversão
+        </h1>
+        <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+          Descubra como o Trinio OS pode<br />transformar seus resultado
         </p>
 
-        <Button
+        <button
           onClick={() => navigate("/menu")}
-          className="w-full rounded-full py-6 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+          className="w-full max-w-xs rounded-full py-5 text-lg font-semibold text-primary-foreground shadow-lg bg-primary hover:bg-primary/90 transition-colors"
         >
-          Conhecer a Trinio OS
-        </Button>
-      </div>
-
-      {/* Decorative dots */}
-      <div className="flex justify-center gap-2 pb-8">
-        <div className="w-2 h-2 rounded-full bg-primary" />
-        <div className="w-2 h-2 rounded-full bg-border" />
-        <div className="w-2 h-2 rounded-full bg-border" />
+          Toque para começar
+        </button>
       </div>
     </div>
   );
