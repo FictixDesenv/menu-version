@@ -20,7 +20,7 @@ const MenuPage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
       <div className="flex justify-center pt-[60px] pb-[40px]">
-        <img src={logoTrino} alt="Trinio" style={{ height: 30 }} className="object-contain" />
+        <img src={logoTrino} alt="Trinio" style={{ height: 39 }} className="object-contain" />
       </div>
 
       <h2 className="font-bold text-foreground mb-1 text-center text-xl">
