@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TrinioHeader from "@/components/TrinioHeader";
 import DemoButton from "@/components/DemoButton";
+import DemoModal from "@/components/DemoModal";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { useEffect } from "react";
 import { X } from "lucide-react";
-import { QRCodeSVG } from "qrcode.react";
 
 const slides = [
   { id: 1, title: "Funcionalidade 1", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
@@ -15,7 +15,7 @@ const slides = [
   { id: 4, title: "Integrações", desc: "Conecte com as principais plataformas de e-commerce e meios de pagamento." },
 ];
 
-type CardView = "carousel" | "video" | "qrcode";
+type CardView = "carousel" | "video";
 
 const OverviewPage = () => {
   const navigate = useNavigate();
