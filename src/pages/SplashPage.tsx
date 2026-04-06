@@ -1,121 +1,133 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { personas, Persona } from "@/data/personas";
+import { Monitor, ShoppingCart, DollarSign, Rocket } from "lucide-react";
 import logoTrino from "@/assets/logo_trinio.png";
 
-const wavePaths = [
-  {
-    d: "M-100,200 C50,100 150,350 300,250 S500,100 650,200 S850,350 1000,250",
-    color: "hsl(270, 60%, 85%)",
-    duration: 12,
-    strokeWidth: 28,
-    offset: 0,
-  },
-  {
-    d: "M-80,280 C80,180 200,400 350,300 S520,150 680,280 S880,420 1050,300",
-    color: "hsl(340, 60%, 85%)",
-    strokeWidth: 22,
-    duration: 15,
-    offset: 1,
-  },
-  {
-    d: "M-120,400 C60,300 180,500 330,380 S500,250 670,400 S870,530 1050,400",
-    color: "hsl(270, 50%, 88%)",
-    strokeWidth: 32,
-    duration: 18,
-    offset: 2,
-  },
-  {
-    d: "M-60,550 C100,450 220,620 370,520 S540,380 700,550 S900,680 1080,520",
-    color: "hsl(270, 55%, 82%)",
-    strokeWidth: 20,
-    duration: 14,
-    offset: 0.5,
-  },
-  {
-    d: "M-90,680 C70,580 190,750 340,650 S510,500 680,680 S880,800 1060,650",
-    color: "hsl(340, 50%, 88%)",
-    strokeWidth: 26,
-    duration: 16,
-    offset: 1.5,
-  },
-];
+const personaIcons: Record<string, React.ReactNode> = {
+  cto: <Monitor className="w-6 h-6" />,
+  ecommerce: <ShoppingCart className="w-6 h-6" />,
+  cfo: <DollarSign className="w-6 h-6" />,
+  produto: <Rocket className="w-6 h-6" />,
+};
 
 const SplashPage = () => {
   const navigate = useNavigate();
-  const [logoVisible, setLogoVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const handleClick = (persona: Persona) => {
+    setSelectedId(persona.id);
+    setTimeout(() => {
+      navigate("/landing", { state: { persona } });
+    }, 600);
+  };
 
   return (
-    <div
-      className="relative flex items-center justify-center min-h-screen overflow-hidden cursor-pointer select-none"
-      style={{ backgroundColor: "hsl(270, 40%, 96%)" }}
-      onClick={() => navigate("/landing")}
-    >
-      {/* Animated wave lines */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 430 932"
-        fill="none"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        {wavePaths.map((wave, i) => (
-          <motion.path
-            key={i}
-            d={wave.d}
-            stroke={wave.color}
-            strokeWidth={wave.strokeWidth}
-            strokeLinecap="round"
-            fill="none"
-            opacity={0.7}
-            initial={{ pathOffset: 0, translateY: 0, translateX: 0 }}
-            animate={{
-              translateY: [0, -30, 20, -10, 0],
-              translateX: [0, 15, -10, 5, 0],
-              rotate: [0, 0.5, -0.3, 0.2, 0],
-            }}
-            transition={{
-              duration: wave.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: wave.offset,
-            }}
-          />
-        ))}
-      </svg>
+    <div className="flex flex-col min-h-screen bg-background">
+      {/* Top Zone (~20%) — logo */}
+      <div className="flex items-center justify-center pt-12 pb-6">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <img src={logoTrino} alt="Trinio" className="h-10 object-contain" />
+        </motion.div>
+      </div>
 
-      {/* Logo with delayed fade-in */}
-      <motion.div
-        className="relative z-10"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          delay: 3,
-          duration: 1.2,
-          ease: "easeOut",
-        }}
-        onAnimationComplete={() => setLogoVisible(true)}
-      >
-        <img
-          src={logoTrino}
-          alt="Trinio"
-          className="h-12 object-contain"
-        />
-      </motion.div>
+      {/* Middle Zone (~60%) — ALL interactive content */}
+      <div className="flex-1 flex flex-col px-6">
+        {/* Header */}
+        <div className="mb-6">
+          <motion.h1
+            className="text-3xl font-extrabold text-foreground mb-2"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Quem você é?
+          </motion.h1>
+          <motion.p
+            className="text-muted-foreground text-base"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            Descubra como o Trinio OS pode transformar seus resultados
+          </motion.p>
+        </div>
 
-      {/* Tap hint - appears after logo */}
-      <motion.p
-        className="absolute bottom-12 text-sm font-medium"
-        style={{ color: "hsl(270, 20%, 60%)" }}
-        initial={{ opacity: 0 }}
-        animate={logoVisible ? { opacity: [0, 0.6, 0.3, 0.6] } : { opacity: 0 }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        Toque para continuar
-      </motion.p>
+        {/* Persona Cards */}
+        <div className="flex flex-col gap-3 mb-8">
+          {personas.map((persona, index) => {
+            const isSelected = selectedId === persona.id;
+            return (
+              <motion.button
+                key={persona.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: isSelected ? 0.97 : 1,
+                }}
+                transition={{
+                  delay: 0.4 + index * 0.1,
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+                onClick={() => handleClick(persona)}
+                className={`flex items-center gap-4 p-4 rounded-2xl border text-left transition-colors ${
+                  isSelected
+                    ? "bg-primary/10 border-primary shadow-md"
+                    : "bg-card border-border hover:border-primary/40 hover:shadow-sm"
+                }`}
+              >
+                <div
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${
+                    isSelected
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {personaIcons[persona.id]}
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">
+                    {persona.name}
+                  </p>
+                  <p className="text-muted-foreground text-xs mt-0.5">
+                    {persona.subtitle}
+                  </p>
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* CTA Button */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          onClick={() => navigate("/landing")}
+          className="w-full rounded-full py-4 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors"
+        >
+          Agendar uma Demo
+        </motion.button>
+      </div>
+
+      {/* Bottom Zone (~20%) — non-interactive */}
+      <div className="flex items-center justify-center py-8">
+        <motion.p
+          className="text-sm text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.5, 0.3, 0.5] }}
+          transition={{ delay: 1.5, duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          Toque para começar
+        </motion.p>
+      </div>
     </div>
   );
 };
