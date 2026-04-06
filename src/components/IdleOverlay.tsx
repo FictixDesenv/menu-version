@@ -58,10 +58,10 @@ const IdleOverlay = ({ timeoutMs = 60000, onContinue }: IdleOverlayProps) => {
             Parece que você ficou um tempo sem interagir. Deseja continuar navegando?
           </DialogDescription>
         </DialogHeader>
-        <Button onClick={handleContinue} className="w-full mt-2">
+        <Button onClick={handleContinue} className="w-full mt-2 rounded-full bg-primary hover:bg-primary/90">
           Sim, continuar navegando
         </Button>
-        <Button variant="outline" onClick={handleExit} className="w-full">
+        <Button variant="outline" onClick={handleExit} className="w-full rounded-full">
           Sair
         </Button>
       </DialogContent>
