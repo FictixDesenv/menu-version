@@ -128,15 +128,15 @@ const SplashPage = () => {
         className="relative z-10"
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{
-          opacity: [0, 1, 1, 1, 0, 0],
-          scale: [0.92, 1, 1.02, 1, 0.96, 0.92],
+          opacity: [0, 1, 1, 1, 1, 0, 0],
+          scale: [0.92, 1, 1.01, 1.02, 1, 0.96, 0.92],
         }}
         transition={{
           delay: 3,
-          duration: 5,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
-          times: [0, 0.2, 0.5, 0.75, 0.95, 1],
+          times: [0, 0.1, 0.3, 0.5, 0.8, 0.95, 1],
         }}
         onAnimationComplete={() => setLogoVisible(true)}
       >
