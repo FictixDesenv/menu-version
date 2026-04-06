@@ -76,8 +76,8 @@ export default {
           to: { height: "0" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 8px 2px hsl(var(--primary) / 0.25)" },
-          "50%": { boxShadow: "0 0 20px 8px hsl(var(--primary) / 0.45)" },
+          "0%, 100%": { boxShadow: "0 0 6px 1px hsl(var(--primary) / 0.15)" },
+          "50%": { boxShadow: "0 0 14px 4px hsl(var(--primary) / 0.3)" },
         },
       },
       animation: {
