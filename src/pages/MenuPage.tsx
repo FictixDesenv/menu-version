@@ -26,7 +26,7 @@ const MenuPage = () => {
       <h2 className="font-bold text-foreground mb-1 text-center text-xl">
         Conheça a Trinio OS
       </h2>
-      <p className="text-muted-foreground mb-6 text-center text-sm">
+      <p className="text-muted-foreground mb-3 text-center text-sm">
         Descubra como podemos transformar seus resultado
       </p>
 
