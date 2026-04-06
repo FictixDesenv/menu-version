@@ -67,39 +67,6 @@ const OverviewPage = () => {
               ))}
             </div>
           </>
-        ) : cardView === "qrcode" ? (
-          <>
-            <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
-              <button
-                onClick={() => setCardView("carousel")}
-                className="absolute right-4 top-4 text-muted-foreground hover:text-foreground z-10"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <h3 className="font-bold text-xl text-foreground mb-1">Agendar uma Demo</h3>
-              <p className="text-muted-foreground text-sm mb-6">Escanei o QR Code</p>
-
-              <div className="p-4 bg-card rounded-2xl border border-border mb-4">
-                <QRCodeSVG
-                  value="https://trinio.com.br/demo"
-                  size={180}
-                  bgColor="transparent"
-                  fgColor="hsl(0, 0%, 10%)"
-                />
-              </div>
-
-              <p className="text-xs text-muted-foreground">
-                Aponte a câmera do seu celular para o código
-              </p>
-            </div>
-
-            <div className="flex justify-center gap-2 mb-6">
-              {slides.map((_, i) => (
-                <div key={i} className="w-2 h-2 rounded-full bg-border" />
-              ))}
-            </div>
-          </>
         ) : (
           <>
             <Carousel setApi={setApi} className="w-full mb-4">
