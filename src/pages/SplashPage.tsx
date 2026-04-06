@@ -109,9 +109,9 @@ const SplashPage = () => {
             opacity={0.7}
             initial={{ pathOffset: 0, translateY: 0, translateX: 0 }}
             animate={{
-              translateY: [0, -30, 20, -10, 0],
-              translateX: [0, 15, -10, 5, 0],
-              rotate: [0, 0.5, -0.3, 0.2, 0],
+              translateY: [0, -15, 10, -5, 0],
+              translateX: [0, 7.5, -5, 2.5, 0],
+              rotate: [0, 0.25, -0.15, 0.1, 0],
             }}
             transition={{
               duration: wave.duration,
