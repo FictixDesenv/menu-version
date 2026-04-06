@@ -6,7 +6,7 @@ const TrinioHeader = ({ showBack = true }: { showBack?: boolean }) => {
   const navigate = useNavigate();
 
   return (
-    <header className="flex items-center justify-between px-8 pt-8 pb-4">
+    <header className="flex items-center justify-between px-12 pt-12 pb-4">
       {showBack ? (
         <button onClick={() => navigate(-1)} className="p-2 rounded-full hover:bg-muted transition">
           <ArrowLeft className="w-6 h-6 text-foreground" />
