@@ -1,36 +1,58 @@
 
 
-## Diagnóstico
+## Plano Atualizado — 7 Mudanças
 
-O problema tem duas partes:
+### 1. Margens laterais maiores no MenuPage
+**Arquivo:** `src/pages/MenuPage.tsx`
+- `px-5` → `px-8` no container principal
 
-1. **`transform: scale()` não funciona bem para isso** — ele amplia visualmente mas não recalcula o layout, causando scroll estranho e conteúdo "espichado"
-2. **O fator de escala calculado (~1.2x) é muito baixo** — o usuário precisou de 250% (2.5x) no browser zoom para ficar bom
+### 2. Margens laterais maiores no FeaturePage (overview, payments, analytics, experience, cases)
+**Arquivo:** `src/pages/FeaturePage.tsx`
+- `px-5` → `px-8` no container de conteúdo (linha 39)
 
-Quando você usou zoom 250% no navegador, a viewport efetiva do totem (1920x1080) virou ~768x432 CSS pixels. Isso fez o `max-w-md` (448px) ocupar a maior parte da largura, e todos os elementos ficaram no tamanho certo para toque.
+### 3. Header com mais espaçamento e logo clicável
+**Arquivo:** `src/components/TrinioHeader.tsx`
+- Aumentar margin-top: `py-4` → `pt-8 pb-4`
+- Aumentar padding lateral: `px-5` → `px-8`
+- Aumentar padding da seta de voltar: `p-1` → `p-2`
+- Tornar a logo clicável — ao clicar, navegar para `/menu`
+- Alinhar tamanho da logo com o MenuPage (usar `height: 39px` igual ao MenuPage em vez do `size="sm"` atual que é 37px)
 
-## Solução
+### 4. Idle → reset automático (sem dialog)
+**Arquivo:** `src/components/IdleOverlay.tsx`
+- Remover Dialog completamente
+- Navegar direto para `/` quando o timer expirar
+- Componente não renderiza nada, apenas useEffect com timer + navigate
 
-Trocar `transform: scale()` por **CSS `zoom`**. Diferente do transform, o `zoom` recalcula o layout real — o scroll funciona normalmente e os elementos ocupam o espaço correto.
+### 5. Modal do QR Code menor
+**Arquivo:** `src/components/DemoModal.tsx`
+- Container: `max-w-sm` → `max-w-xs`, padding `p-8` → `p-5`
+- QR Code: `w-[180px] h-[180px]` → `w-[140px] h-[140px]`
+- Título: `text-xl` → `text-lg`
 
-### Cálculo do zoom
+### 6. Transição suave SplashPage → LandingPage
+**Arquivo:** `src/pages/SplashPage.tsx`
+- Ao clicar, ativar estado `exiting` com fade-out (opacity 1→0, ~400ms) via framer-motion
+- Após animação, chamar `navigate("/landing")`
 
-```text
-Tela totem: 1920px de largura
-Viewport ideal: ~768px (onde o layout mobile fica confortável)
-Zoom = 1920 / 768 = 2.5x ← exatamente o que você usou manualmente
-```
+**Arquivo:** `src/pages/LandingPage.tsx`
+- Envolver conteúdo em `motion.div` com fade-in (opacity 0→1, ~400ms) no mount
 
-### Arquivos a editar
+### 7. Logo clicável no TrinioLogo
+**Arquivo:** `src/components/TrinioLogo.tsx`
+- Aceitar prop opcional `onClick` ou `linkTo`
+- Usado pelo TrinioHeader para navegar para `/menu`
+
+### Resumo de arquivos
 
 | Arquivo | Mudança |
 |---------|---------|
-| `src/hooks/use-mobile.tsx` | Alterar `useTotemScale` para calcular zoom como `window.innerWidth / 768`, resultando em ~2.5x no totem |
-| `src/App.tsx` | Trocar `transform: scale()` por `zoom` no style do container. Remover o hack de `minHeight` |
-
-### Resultado esperado
-
-- No totem (1920px+): zoom automático ~2.5x, layout mobile grande e legível, scroll normal
-- No desktop (1024-1919px): zoom moderado proporcional
-- No mobile/tablet (<1024px): sem zoom, layout normal
+| `src/pages/MenuPage.tsx` | `px-5` → `px-8` |
+| `src/pages/FeaturePage.tsx` | `px-5` → `px-8` |
+| `src/components/TrinioHeader.tsx` | Mais margin-top, padding lateral, seta maior, logo clicável para `/menu` |
+| `src/components/TrinioLogo.tsx` | Ajustar altura para 39px (sm) e aceitar click handler |
+| `src/components/IdleOverlay.tsx` | Remover dialog, navegar direto para `/` |
+| `src/components/DemoModal.tsx` | Reduzir tamanhos do modal e QR code |
+| `src/pages/SplashPage.tsx` | Fade-out ao clicar |
+| `src/pages/LandingPage.tsx` | Fade-in ao montar |
 
