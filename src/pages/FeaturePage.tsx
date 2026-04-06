@@ -36,7 +36,7 @@ const FeaturePage = ({ pageTitle, slides }: FeaturePageProps) => {
     <div className="flex flex-col min-h-screen bg-background">
       <TrinioHeader />
 
-      <div className="px-8 flex-1 flex flex-col">
+      <div className="px-12 flex-1 flex flex-col">
         <h2 className="text-2xl font-bold text-foreground mb-5 mt-10 text-center">{pageTitle}</h2>
 
         {cardView === "video" ? (

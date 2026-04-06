@@ -19,7 +19,7 @@ const MenuPage = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background px-8 pb-8">
+    <div className="flex flex-col min-h-screen bg-background px-12 pb-8">
       <div className="flex justify-center pt-[60px] pb-[16px]">
         <img src={logoTrino} alt="Trinio" style={{ height: 39 }} className="object-contain" />
       </div>
