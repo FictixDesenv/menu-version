@@ -18,53 +18,55 @@ const MenuPage = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
-      <div className="pt-8 pb-6 flex justify-center">
-        <TrinioLogo size="sm" />
-      </div>
-
-      <h2 className="text-2xl font-bold text-foreground mb-1 text-center">
-        Conheça a Trinio OS
-      </h2>
-      <p className="text-muted-foreground text-base mb-6 text-center">
-        Descubra como podemos transformar seus resultado
-      </p>
-
-      {/* Feature card - full width */}
-      <button
-        onClick={() => navigate("/overview")}
-        className="w-full bg-card rounded-2xl p-5 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
-      >
-        {(() => { const Icon = features[0].icon; return (
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
-          <Icon className="w-5 h-5" />
+    <div className="h-screen flex flex-col items-center justify-center bg-background">
+      <div className="max-w-lg w-full flex flex-col items-center px-5">
+        <div className="pb-6 flex justify-center">
+          <TrinioLogo size="sm" />
         </div>
-        ); })()}
-        <h3 className="font-semibold text-foreground text-base">{features[0].title}</h3>
-        <p className="text-muted-foreground text-sm mt-1">{features[0].desc}</p>
-      </button>
 
-      {/* 2x2 grid */}
-      <div className="grid grid-cols-2 gap-3 mb-8">
-        {features.slice(1).map((f) => (
-          <button
-            key={f.id}
-            onClick={() => navigate("/overview")}
-            className="bg-card rounded-2xl p-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
-          >
-            {(() => { const Icon = f.icon; return (
-            <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${f.color}`}>
-              <Icon className="w-4 h-4" />
-            </div>
-            ); })()}
-            <h3 className="font-semibold text-foreground text-sm">{f.title}</h3>
-            <p className="text-muted-foreground text-xs mt-0.5">{f.desc}</p>
-          </button>
-        ))}
+        <h2 className="text-4xl font-bold text-foreground mb-2 text-center">
+          Conheça a Trinio OS
+        </h2>
+        <p className="text-muted-foreground text-xl mb-8 text-center">
+          Descubra como podemos transformar seus resultado
+        </p>
+
+        {/* Feature card - full width */}
+        <button
+          onClick={() => navigate("/overview")}
+          className="w-full bg-card rounded-2xl p-6 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+        >
+          {(() => { const Icon = features[0].icon; return (
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
+            <Icon className="w-6 h-6" />
+          </div>
+          ); })()}
+          <h3 className="font-semibold text-foreground text-lg">{features[0].title}</h3>
+          <p className="text-muted-foreground text-base mt-1">{features[0].desc}</p>
+        </button>
+
+        {/* 2x2 grid */}
+        <div className="grid grid-cols-2 gap-4 mb-6 w-full">
+          {features.slice(1).map((f) => (
+            <button
+              key={f.id}
+              onClick={() => navigate("/overview")}
+              className="bg-card rounded-2xl p-5 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+            >
+              {(() => { const Icon = f.icon; return (
+              <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-2 ${f.color}`}>
+                <Icon className="w-5 h-5" />
+              </div>
+              ); })()}
+              <h3 className="font-semibold text-foreground text-base">{f.title}</h3>
+              <p className="text-muted-foreground text-sm mt-0.5">{f.desc}</p>
+            </button>
+          ))}
+        </div>
+
+        <DemoButton onClick={() => setDemoOpen(true)} />
+        <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
       </div>
-
-      <DemoButton onClick={() => setDemoOpen(true)} />
-      <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
     </div>
   );
 };
