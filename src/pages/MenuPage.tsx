@@ -6,11 +6,11 @@ import DemoModal from "@/components/DemoModal";
 import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
-  { id: 1, title: "O que é o Trinio OS?", desc: "Experiência de compra otimizada", icon: ShoppingCart, color: "bg-orange-500/10 text-orange-500" },
-  { id: 2, title: "Pagamentos", desc: "Vendas & Conversão", icon: CreditCard, color: "bg-orange-500/10 text-orange-500" },
-  { id: 3, title: "Analytics", desc: "Finanças & Resultado", icon: BarChart3, color: "bg-orange-500/10 text-orange-500" },
-  { id: 4, title: "Mais experiência", desc: "Experiência & Inovação", icon: Shield, color: "bg-orange-500/10 text-orange-500" },
-  { id: 5, title: "Cases", desc: "Cases de sucesso", icon: Zap, color: "bg-orange-500/10 text-orange-500" },
+  { id: 1, title: "O que é o Trinio OS?", desc: "Conheça nossa plataforma", icon: ShoppingCart, color: "bg-orange-500/10 text-orange-500" },
+  { id: 2, title: "Pagamentos", desc: "Múltiplos métodos aceitos", icon: CreditCard, color: "bg-orange-500/10 text-orange-500" },
+  { id: 3, title: "Analytics", desc: "Dados e métricas em tempo real", icon: BarChart3, color: "bg-orange-500/10 text-orange-500" },
+  { id: 4, title: "Mais experiência", desc: "Inovação para seu cliente", icon: Shield, color: "bg-orange-500/10 text-orange-500" },
+  { id: 5, title: "Cases", desc: "Histórias de sucesso", icon: Zap, color: "bg-orange-500/10 text-orange-500" },
 ];
 
 const MenuPage = () => {
