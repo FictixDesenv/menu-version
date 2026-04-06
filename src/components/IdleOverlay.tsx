@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -9,6 +10,7 @@ interface IdleOverlayProps {
 
 const IdleOverlay = ({ timeoutMs = 60000, onContinue }: IdleOverlayProps) => {
   const [idle, setIdle] = useState(false);
+  const navigate = useNavigate();
 
   const resetTimer = useCallback(() => {
     setIdle(false);
@@ -41,9 +43,14 @@ const IdleOverlay = ({ timeoutMs = 60000, onContinue }: IdleOverlayProps) => {
     onContinue?.();
   };
 
+  const handleExit = () => {
+    setIdle(false);
+    navigate("/");
+  };
+
   return (
     <Dialog open={idle} onOpenChange={(open) => { if (!open) handleContinue(); }}>
-      <DialogContent className="sm:max-w-sm rounded-2xl">
+      <DialogContent className="max-w-[calc(100%-2.5rem)] sm:max-w-sm rounded-2xl mx-auto">
         <DialogHeader className="items-center text-center">
           <div className="text-4xl mb-2">👋</div>
           <DialogTitle className="text-foreground">Você ainda está aí?</DialogTitle>
@@ -53,6 +60,9 @@ const IdleOverlay = ({ timeoutMs = 60000, onContinue }: IdleOverlayProps) => {
         </DialogHeader>
         <Button onClick={handleContinue} className="w-full mt-2">
           Sim, continuar navegando
+        </Button>
+        <Button variant="outline" onClick={handleExit} className="w-full">
+          Sair
         </Button>
       </DialogContent>
     </Dialog>
