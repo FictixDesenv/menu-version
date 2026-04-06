@@ -35,19 +35,25 @@ const OverviewPage = () => {
 
         {demoOpen ? (
           <>
-            <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
+            <div className="bg-black rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
               <button
                 onClick={() => setDemoOpen(false)}
-                className="absolute right-4 top-4 text-muted-foreground hover:text-foreground"
+                className="absolute right-4 top-4 text-white/70 hover:text-white z-10"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="bg-muted rounded-2xl aspect-video w-full flex items-center justify-center mb-4">
-                <Video className="w-12 h-12 text-muted-foreground" />
+              <div className="rounded-2xl aspect-video w-full overflow-hidden mb-4">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&rel=0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title="Demo video"
+                />
               </div>
 
-              <p className="text-base text-foreground font-medium">
+              <p className="text-base text-white font-medium">
                 Descubra como podemos
               </p>
             </div>
