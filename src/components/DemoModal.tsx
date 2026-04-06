@@ -29,12 +29,7 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
         <p className="text-muted-foreground text-sm mb-6">Escanei o QR Code</p>
 
         <div className="p-4 bg-card rounded-2xl border border-border mb-4">
-          <QRCodeSVG
-            value="https://trinio.com.br/demo"
-            size={180}
-            bgColor="transparent"
-            fgColor="hsl(0, 0%, 10%)"
-          />
+          <img src={qrCodeImage} alt="QR Code para agendar demo" className="w-[180px] h-[180px]" />
         </div>
 
         <p className="text-xs text-muted-foreground">
