@@ -19,7 +19,7 @@ const MenuPage = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
+    <div className="flex flex-col min-h-screen bg-background px-8 pb-8">
       <div className="flex justify-center pt-[60px] pb-[16px]">
         <img src={logoTrino} alt="Trinio" style={{ height: 39 }} className="object-contain" />
       </div>
@@ -28,7 +28,6 @@ const MenuPage = () => {
         Descubra como podemos<br />transformar seus resultado
       </p>
 
-      {/* Feature card - full width */}
       <button
         onClick={() => navigate(features[0].route)}
         className="w-full bg-card rounded-2xl px-4 py-2.5 mb-4 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
@@ -42,7 +41,6 @@ const MenuPage = () => {
         <p className="text-muted-foreground text-xs mt-0 leading-tight text-center">{features[0].desc}</p>
       </button>
 
-      {/* 2x2 grid */}
       <div className="grid grid-cols-2 gap-3 mb-8">
         {features.slice(1).map((f) => (
           <button

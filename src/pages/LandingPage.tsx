@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div
+    <motion.div
       className="flex flex-col items-center justify-center min-h-screen px-[1.2rem] text-center"
       style={{ backgroundColor: "hsl(270, 40%, 92%)" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
     >
       <div className="flex flex-col items-center">
         <h1 className="text-[2.4rem] leading-[1.05] font-normal text-foreground -mb-[0.8px]">
@@ -26,7 +30,7 @@ const LandingPage = () => {
           Toque para começar
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

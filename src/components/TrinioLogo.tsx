@@ -1,14 +1,15 @@
 import logoTrino from "@/assets/logo_trinio.png";
 
-const TrinioLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-  const heights = { sm: 37, md: 58, lg: 77 };
+const TrinioLogo = ({ size = "md", onClick }: { size?: "sm" | "md" | "lg"; onClick?: () => void }) => {
+  const heights = { sm: 39, md: 58, lg: 77 };
 
   return (
     <img
       src={logoTrino}
       alt="Trinio"
       style={{ height: heights[size] }}
-      className="object-contain"
+      className={`object-contain ${onClick ? "cursor-pointer" : ""}`}
+      onClick={onClick}
     />
   );
 };
