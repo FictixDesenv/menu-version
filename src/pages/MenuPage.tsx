@@ -47,7 +47,7 @@ const MenuPage = () => {
         {features.slice(1).map((f) => (
           <button
             key={f.id}
-            onClick={() => navigate("/overview")}
+            onClick={() => navigate(f.route)}
             className="bg-card rounded-2xl px-4 py-2.5 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
           >
             {(() => { const Icon = f.icon; return (
