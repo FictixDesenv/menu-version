@@ -63,6 +63,7 @@ const MenuPage = () => {
 
       <DemoButton onClick={() => setDemoOpen(true)} />
       <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
+      <IdleOverlay />
     </div>
   );
 };
