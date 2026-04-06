@@ -30,7 +30,7 @@ const MenuPage = () => {
 
       {/* Feature card - full width */}
       <button
-        onClick={() => navigate("/overview")}
+        onClick={() => navigate(features[0].route)}
         className="w-full bg-card rounded-2xl px-4 py-2.5 mb-4 border border-border text-center shadow-sm hover:shadow-md transition-shadow"
       >
         {(() => { const Icon = features[0].icon; return (
