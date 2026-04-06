@@ -99,7 +99,7 @@ const SplashPage = () => {
         <img
           src={logoTrino}
           alt="Trinio"
-          className="h-12 object-contain"
+          className="h-16 object-contain"
         />
       </motion.div>
 
