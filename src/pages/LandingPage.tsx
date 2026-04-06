@@ -21,7 +21,7 @@ const LandingPage = () => {
 
         <button
           onClick={() => navigate("/menu")}
-          className="shimmer-btn w-full max-w-xs rounded-full py-4 text-lg font-semibold text-primary-foreground shadow-lg bg-primary hover:bg-primary/90 active:scale-[0.97] transition-all duration-300 ease-in-out animate-breathe"
+          className="shimmer-btn w-full max-w-xs rounded-full py-4 text-lg font-semibold text-primary-foreground shadow-lg bg-primary hover:bg-primary/90 active:scale-[0.97] transition-all duration-300 ease-in-out"
         >
           Toque para começar
         </button>
