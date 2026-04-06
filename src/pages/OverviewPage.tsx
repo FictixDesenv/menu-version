@@ -37,23 +37,21 @@ const OverviewPage = () => {
           <CarouselContent>
             {slides.map((slide) => (
               <CarouselItem key={slide.id}>
-                <div className="bg-card rounded-2xl border border-border p-6 min-h-[220px] flex flex-col justify-between shadow-sm">
-                  <div>
-                    <h3 className="font-bold text-lg text-foreground mb-2">{slide.title}</h3>
+                <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative">
+                  <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
+                  <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
+                  
+                  <div className="flex flex-col items-center gap-2 mb-8 px-8">
+                    <h3 className="font-bold text-xl text-foreground">{slide.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{slide.desc}</p>
                   </div>
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <span className="text-primary font-bold text-xs">{slide.id}</span>
-                      </div>
-                      <span className="text-xs text-muted-foreground">Slide {slide.id} de {slides.length}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CarouselPrevious className="static translate-y-0 w-8 h-8 bg-card border-border shadow" />
-                      <CarouselNext className="static translate-y-0 w-8 h-8 bg-card border-border shadow" />
-                    </div>
-                  </div>
+                  
+                  <Button
+                    onClick={() => setDemoOpen(true)}
+                    className="rounded-full px-8 py-6 text-base font-semibold bg-foreground text-background hover:bg-foreground/90"
+                  >
+                    <span className="mr-2">▷</span> Assistir Demo
+                  </Button>
                 </div>
               </CarouselItem>
             ))}
