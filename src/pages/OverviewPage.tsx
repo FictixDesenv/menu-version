@@ -20,6 +20,7 @@ type CardView = "carousel" | "video";
 const OverviewPage = () => {
   const navigate = useNavigate();
   const [cardView, setCardView] = useState<CardView>("carousel");
+  const [qrOpen, setQrOpen] = useState(false);
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
