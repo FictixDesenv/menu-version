@@ -2,53 +2,35 @@
 
 ## Diagnóstico
 
-O problema é a classe `max-w-md` no `App.tsx` (linha 24), que limita o app a **448px de largura**. Numa tela de 55" (geralmente 1920x1080 ou 3840x2160), isso cria uma faixa estreita no centro com branco ao redor.
+O problema tem duas partes:
 
-**Nenhum dos modos de preview (mobile/tablet/desktop) do Lovable simula um totem de 55".** O mais próximo seria o desktop, mas o `max-w-md` impede que o conteúdo ocupe a tela.
+1. **`transform: scale()` não funciona bem para isso** — ele amplia visualmente mas não recalcula o layout, causando scroll estranho e conteúdo "espichado"
+2. **O fator de escala calculado (~1.2x) é muito baixo** — o usuário precisou de 250% (2.5x) no browser zoom para ficar bom
 
-## Solução: Layout responsivo para totem
+Quando você usou zoom 250% no navegador, a viewport efetiva do totem (1920x1080) virou ~768x432 CSS pixels. Isso fez o `max-w-md` (448px) ocupar a maior parte da largura, e todos os elementos ficaram no tamanho certo para toque.
 
-Em vez de um tamanho fixo mobile, o app precisa **escalar para ocupar a tela inteira do totem**, mantendo o layout centralizado e proporcional.
+## Solução
 
-### Alterações
+Trocar `transform: scale()` por **CSS `zoom`**. Diferente do transform, o `zoom` recalcula o layout real — o scroll funciona normalmente e os elementos ocupam o espaço correto.
 
-1. **`src/App.tsx`** — Substituir `max-w-md` por uma abordagem responsiva:
-   - Manter `max-w-md` para mobile/tablet real
-   - Em telas grandes (≥1024px), usar `max-w-2xl` ou `max-w-3xl` para ocupar mais espaço
-   - Alternativa mais simples: usar `max-w-screen-sm` (~640px) que funciona melhor no totem sem precisar de zoom
-
-2. **`src/index.css`** — Adicionar media query para telas grandes (≥1080px de altura) que aumente o `font-size` base do `html`, fazendo todo o layout escalar proporcionalmente via `rem`
-
-3. **Fontes e botões** — Em telas ≥1024px, escalar automaticamente:
-   - Texto base: 20-24px (em vez de 16px)
-   - Botões: padding maior
-   - Cards: mais espaçamento
-
-### Abordagem recomendada
-
-A solução mais limpa: usar **CSS `scale` transform** no container do app quando detectar tela grande. Isso mantém todo o design mobile intacto mas "amplia" proporcionalmente para o totem:
+### Cálculo do zoom
 
 ```text
-Tela do totem (1920x1080)
-┌─────────────────────────────────┐
-│                                 │
-│     ┌───────────────────┐       │
-│     │   App escalado    │       │
-│     │   (~2x zoom)      │       │
-│     │   mantendo layout │       │
-│     │   mobile           │       │
-│     └───────────────────┘       │
-│                                 │
-└─────────────────────────────────┘
+Tela totem: 1920px de largura
+Viewport ideal: ~768px (onde o layout mobile fica confortável)
+Zoom = 1920 / 768 = 2.5x ← exatamente o que você usou manualmente
 ```
-
-Isso é basicamente o que você fez manualmente com o zoom do navegador, mas automático.
 
 ### Arquivos a editar
 
 | Arquivo | Mudança |
 |---------|---------|
-| `src/App.tsx` | Adicionar hook de detecção de tela grande + CSS transform scale no container |
-| `src/hooks/use-mobile.tsx` | Adicionar hook `useIsTotem()` para telas ≥1920px |
-| `src/index.css` | Background escuro para área ao redor (em vez de branco) |
+| `src/hooks/use-mobile.tsx` | Alterar `useTotemScale` para calcular zoom como `window.innerWidth / 768`, resultando em ~2.5x no totem |
+| `src/App.tsx` | Trocar `transform: scale()` por `zoom` no style do container. Remover o hack de `minHeight` |
+
+### Resultado esperado
+
+- No totem (1920px+): zoom automático ~2.5x, layout mobile grande e legível, scroll normal
+- No desktop (1024-1919px): zoom moderado proporcional
+- No mobile/tablet (<1024px): sem zoom, layout normal
 
