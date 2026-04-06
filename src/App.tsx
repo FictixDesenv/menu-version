@@ -7,7 +7,6 @@ import SplashPage from "./pages/SplashPage";
 import LandingPage from "./pages/LandingPage";
 import MenuPage from "./pages/MenuPage";
 import OverviewPage from "./pages/OverviewPage";
-import DetailPage from "./pages/DetailPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
