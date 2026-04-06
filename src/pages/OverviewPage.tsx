@@ -70,13 +70,6 @@ const OverviewPage = () => {
           ))}
         </div>
 
-        <Button
-          onClick={() => navigate("/detail/1")}
-          className="w-full rounded-full py-6 text-base font-semibold bg-foreground text-background hover:bg-foreground/90 mb-3"
-        >
-          Assistir Demo
-        </Button>
-
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
