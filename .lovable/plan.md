@@ -1,33 +1,54 @@
 
 
-## Animação Shimmer no botão CTA
+## Diagnóstico
 
-Substituir a animação de glow-pulse por um efeito shimmer — um brilho suave que desliza horizontalmente pelo botão, simulando um reflexo de luz.
+O problema é a classe `max-w-md` no `App.tsx` (linha 24), que limita o app a **448px de largura**. Numa tela de 55" (geralmente 1920x1080 ou 3840x2160), isso cria uma faixa estreita no centro com branco ao redor.
 
-### Abordagem técnica
+**Nenhum dos modos de preview (mobile/tablet/desktop) do Lovable simula um totem de 55".** O mais próximo seria o desktop, mas o `max-w-md` impede que o conteúdo ocupe a tela.
 
-**1. tailwind.config.ts** — Substituir o keyframe `glow-pulse` por `shimmer`:
-- Keyframe que move um gradiente linear (transparente → branco semi-transparente → transparente) da esquerda para a direita usando `background-position`
+## Solução: Layout responsivo para totem
 
-**2. src/pages/LandingPage.tsx** — Atualizar o botão:
-- Remover `animate-[glow-pulse_...]`
-- Adicionar classes para o efeito shimmer via `overflow-hidden` e um pseudo-elemento `::after` com o gradiente animado, ou usar `background-size` + `background-position` diretamente no botão
-- Implementação via classe CSS customizada no `index.css` para o pseudo-elemento `::after` que cria a faixa de brilho deslizante
+Em vez de um tamanho fixo mobile, o app precisa **escalar para ocupar a tela inteira do totem**, mantendo o layout centralizado e proporcional.
 
-**3. src/index.css** — Adicionar classe `.shimmer-btn`:
-```css
-.shimmer-btn {
-  position: relative;
-  overflow: hidden;
-}
-.shimmer-btn::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  animation: shimmer 3s ease-in-out infinite;
-}
+### Alterações
+
+1. **`src/App.tsx`** — Substituir `max-w-md` por uma abordagem responsiva:
+   - Manter `max-w-md` para mobile/tablet real
+   - Em telas grandes (≥1024px), usar `max-w-2xl` ou `max-w-3xl` para ocupar mais espaço
+   - Alternativa mais simples: usar `max-w-screen-sm` (~640px) que funciona melhor no totem sem precisar de zoom
+
+2. **`src/index.css`** — Adicionar media query para telas grandes (≥1080px de altura) que aumente o `font-size` base do `html`, fazendo todo o layout escalar proporcionalmente via `rem`
+
+3. **Fontes e botões** — Em telas ≥1024px, escalar automaticamente:
+   - Texto base: 20-24px (em vez de 16px)
+   - Botões: padding maior
+   - Cards: mais espaçamento
+
+### Abordagem recomendada
+
+A solução mais limpa: usar **CSS `scale` transform** no container do app quando detectar tela grande. Isso mantém todo o design mobile intacto mas "amplia" proporcionalmente para o totem:
+
+```text
+Tela do totem (1920x1080)
+┌─────────────────────────────────┐
+│                                 │
+│     ┌───────────────────┐       │
+│     │   App escalado    │       │
+│     │   (~2x zoom)      │       │
+│     │   mantendo layout │       │
+│     │   mobile           │       │
+│     └───────────────────┘       │
+│                                 │
+└─────────────────────────────────┘
 ```
 
-Resultado: um reflexo de luz suave e contínuo percorrendo o botão horizontalmente.
+Isso é basicamente o que você fez manualmente com o zoom do navegador, mas automático.
+
+### Arquivos a editar
+
+| Arquivo | Mudança |
+|---------|---------|
+| `src/App.tsx` | Adicionar hook de detecção de tela grande + CSS transform scale no container |
+| `src/hooks/use-mobile.tsx` | Adicionar hook `useIsTotem()` para telas ≥1920px |
+| `src/index.css` | Background escuro para área ao redor (em vez de branco) |
 
