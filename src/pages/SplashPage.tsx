@@ -54,7 +54,7 @@ const SplashPage = () => {
       {/* Animated wave lines */}
       <svg
         className="absolute w-[200%] h-[200%]"
-        style={{ top: "-50%", left: "-50%", transform: "rotate(-90deg)", transformOrigin: "center center" }}
+        style={{ top: "-50%", left: "-50%", transform: "rotate(-60deg)", transformOrigin: "center center" }}
         viewBox="0 0 430 932"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
