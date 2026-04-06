@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TrinioHeader from "@/components/TrinioHeader";
 import DemoButton from "@/components/DemoButton";
-import DemoModal from "@/components/DemoModal";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { useEffect } from "react";
+import { Video, X } from "lucide-react";
 
 const slides = [
   { id: 1, title: "Funcionalidade 1", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
@@ -33,47 +33,77 @@ const OverviewPage = () => {
       <div className="px-5 flex-1 flex flex-col">
         <h2 className="text-2xl font-bold text-foreground mb-5 mt-10 text-center">Funcionalidade 1</h2>
 
-        <Carousel setApi={setApi} className="w-full mb-4">
-          <CarouselContent>
-            {slides.map((slide) => (
-              <CarouselItem key={slide.id}>
-                <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative">
-                  <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
-                  <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
-                  
-                  <div className="flex flex-col items-center gap-2 mb-8 px-8">
-                    <h3 className="font-bold text-xl text-foreground">{slide.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{slide.desc}</p>
-                  </div>
-                  
-                  <Button
-                    onClick={() => setDemoOpen(true)}
-                    className="rounded-full px-8 py-6 text-base font-semibold bg-foreground text-background hover:bg-foreground/90"
-                  >
-                    <span className="mr-2">▷</span> Assistir Demo
-                  </Button>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+        {demoOpen ? (
+          <>
+            <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative mb-4">
+              <button
+                onClick={() => setDemoOpen(false)}
+                className="absolute right-4 top-4 text-muted-foreground hover:text-foreground"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mb-6">
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                i === current ? "bg-foreground" : "bg-border"
-              }`}
-            />
-          ))}
-        </div>
+              <div className="bg-muted rounded-2xl aspect-video w-full flex items-center justify-center mb-4">
+                <Video className="w-12 h-12 text-muted-foreground" />
+              </div>
+
+              <p className="text-base text-foreground font-medium">
+                Descubra como podemos
+              </p>
+            </div>
+
+            {/* Keep dot indicators for visual consistency */}
+            <div className="flex justify-center gap-2 mb-6">
+              {slides.map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full bg-border`}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <Carousel setApi={setApi} className="w-full mb-4">
+              <CarouselContent>
+                {slides.map((slide) => (
+                  <CarouselItem key={slide.id}>
+                    <div className="bg-card rounded-2xl border border-border p-6 min-h-[320px] flex flex-col items-center justify-center text-center shadow-sm relative">
+                      <CarouselPrevious className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
+                      <CarouselNext className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-transparent border-none shadow-none text-muted-foreground hover:text-foreground" />
+                      
+                      <div className="flex flex-col items-center gap-2 mb-8 px-8">
+                        <h3 className="font-bold text-xl text-foreground">{slide.title}</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">{slide.desc}</p>
+                      </div>
+                      
+                      <Button
+                        onClick={() => setDemoOpen(true)}
+                        className="rounded-full px-8 py-6 text-base font-semibold bg-foreground text-background hover:bg-foreground/90"
+                      >
+                        <span className="mr-2">▷</span> Assistir Demo
+                      </Button>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+
+            <div className="flex justify-center gap-2 mb-6">
+              {slides.map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    i === current ? "bg-foreground" : "bg-border"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
-
-      <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
     </div>
   );
 };
