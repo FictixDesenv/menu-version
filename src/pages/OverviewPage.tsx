@@ -8,7 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { useEffect } from "react";
 
 const slides = [
-  { id: 1, title: "Overview geral", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
+  { id: 1, title: "Funcionalidade 1", desc: "Visão completa da plataforma Trinio OS e todas as suas funcionalidades integradas." },
   { id: 2, title: "Checkout otimizado", desc: "Processo de compra simplificado com conversão até 3x maior que checkouts tradicionais." },
   { id: 3, title: "Dashboard analítico", desc: "Acompanhe métricas em tempo real e tome decisões baseadas em dados." },
   { id: 4, title: "Integrações", desc: "Conecte com as principais plataformas de e-commerce e meios de pagamento." },
@@ -31,7 +31,7 @@ const OverviewPage = () => {
       <TrinioHeader />
 
       <div className="px-5 flex-1 flex flex-col">
-        <h2 className="text-2xl font-bold text-foreground mb-5 mt-10 text-center">Overview geral</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-5 mt-10 text-center">Funcionalidade 1</h2>
 
         <Carousel setApi={setApi} className="w-full mb-4">
           <CarouselContent>
