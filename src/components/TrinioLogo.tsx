@@ -1,7 +1,7 @@
 import logoTrino from "@/assets/logo_trinio.png";
 
 const TrinioLogo = ({ size = "md" }: { size?: "sm" | "md" | "lg" }) => {
-  const heights = { sm: 31, md: 48, lg: 64 };
+  const heights = { sm: 37, md: 58, lg: 77 };
 
   return (
     <img
