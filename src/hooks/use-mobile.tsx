@@ -18,7 +18,7 @@ export function useIsMobile() {
   return !!isMobile;
 }
 
-const TOTEM_MIN_WIDTH = 1920;
+const ZOOM_TARGET_WIDTH = 768;
 
 export function useTotemScale() {
   const [scale, setScale] = React.useState(1);
@@ -26,17 +26,10 @@ export function useTotemScale() {
   React.useEffect(() => {
     const calculate = () => {
       const w = window.innerWidth;
-      const h = window.innerHeight;
-      if (w >= TOTEM_MIN_WIDTH) {
-        // Scale the 448px mobile layout to fill the screen height
-        const targetHeight = h;
-        const targetWidth = targetHeight * (9 / 16); // maintain ~9:16 aspect
-        const s = Math.min(targetHeight / 896, targetWidth / 448); // 896 = ~mobile viewport height
-        setScale(Math.max(s, 1));
+      if (w >= 1920) {
+        setScale(w / ZOOM_TARGET_WIDTH); // ~2.5x on 1920px
       } else if (w >= 1024) {
-        // Desktop but not totem — moderate scale
-        const s = Math.min(h / 896, 1.5);
-        setScale(Math.max(s, 1));
+        setScale(w / ZOOM_TARGET_WIDTH); // proportional on desktop
       } else {
         setScale(1);
       }

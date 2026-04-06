@@ -20,15 +20,11 @@ const AppLayout = () => {
   const scale = useTotemScale();
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-muted">
-      <div
-        className="max-w-md w-full min-h-screen bg-background"
-        style={scale > 1 ? {
-          transform: `scale(${scale})`,
-          transformOrigin: 'center top',
-          minHeight: `${100 / scale}vh`,
-        } : undefined}
-      >
+    <div
+      className="w-full min-h-screen flex items-center justify-center bg-muted"
+      style={scale > 1 ? { zoom: scale } : undefined}
+    >
+      <div className="max-w-md w-full min-h-screen bg-background">
         <Routes>
           <Route path="/" element={<SplashPage />} />
           <Route path="/landing" element={<LandingPage />} />
