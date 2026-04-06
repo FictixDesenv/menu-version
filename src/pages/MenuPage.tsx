@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import TrinioLogo from "@/components/TrinioLogo";
+import logoTrino from "@/assets/logo_trinio.png";
 import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
