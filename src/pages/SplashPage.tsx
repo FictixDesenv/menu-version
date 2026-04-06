@@ -53,11 +53,11 @@ const SplashPage = () => {
     >
       {/* Animated wave lines */}
       <svg
-        className="absolute inset-0 w-full h-full"
+        className="absolute w-[200%] h-[200%]"
+        style={{ top: "-50%", left: "-50%", transform: "rotate(-90deg)", transformOrigin: "center center" }}
         viewBox="0 0 430 932"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
-        style={{ transform: "rotate(45deg)", transformOrigin: "center center" }}
       >
         {wavePaths.map((wave, i) => (
           <motion.path
