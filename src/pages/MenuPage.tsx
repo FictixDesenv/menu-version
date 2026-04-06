@@ -3,6 +3,7 @@ import { useState } from "react";
 import logoTrino from "@/assets/logo_trinio.png";
 import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
+import IdleOverlay from "@/components/IdleOverlay";
 import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
 
 const features = [
