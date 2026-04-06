@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import SplashPage from "./pages/SplashPage";
+import LandingPage from "./pages/LandingPage";
+import MenuPage from "./pages/MenuPage";
+import OverviewPage from "./pages/OverviewPage";
+import DetailPage from "./pages/DetailPage";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -14,11 +18,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="max-w-md mx-auto min-h-screen">
+          <Routes>
+            <Route path="/" element={<SplashPage />} />
+            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/overview" element={<OverviewPage />} />
+            <Route path="/detail/:id" element={<DetailPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -1,0 +1,69 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import TrinioLogo from "@/components/TrinioLogo";
+import DemoButton from "@/components/DemoButton";
+import DemoModal from "@/components/DemoModal";
+import { ShoppingCart, CreditCard, BarChart3, Shield, Zap } from "lucide-react";
+
+const features = [
+  { id: 1, title: "Checkout Inteligente", desc: "Experiência de compra otimizada", icon: ShoppingCart, color: "bg-primary/10 text-primary" },
+  { id: 2, title: "Pagamentos", desc: "Múltiplos métodos", icon: CreditCard, color: "bg-secondary/10 text-secondary" },
+  { id: 3, title: "Analytics", desc: "Dados em tempo real", icon: BarChart3, color: "bg-primary/10 text-primary" },
+  { id: 4, title: "Segurança", desc: "Proteção avançada", icon: Shield, color: "bg-secondary/10 text-secondary" },
+  { id: 5, title: "Performance", desc: "Velocidade máxima", icon: Zap, color: "bg-primary/10 text-primary" },
+];
+
+const MenuPage = () => {
+  const navigate = useNavigate();
+  const [demoOpen, setDemoOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background px-5 pb-8">
+      <div className="pt-8 pb-6 flex justify-center">
+        <TrinioLogo size="sm" />
+      </div>
+
+      <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
+        Conheça a Trinio OS
+      </h2>
+
+      {/* Feature card - full width */}
+      <button
+        onClick={() => navigate("/overview")}
+        className="w-full bg-card rounded-2xl p-5 mb-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+      >
+        {(() => { const Icon = features[0].icon; return (
+        <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${features[0].color}`}>
+          <Icon className="w-5 h-5" />
+        </div>
+        ); })()}
+        <h3 className="font-semibold text-foreground text-base">{features[0].title}</h3>
+        <p className="text-muted-foreground text-sm mt-1">{features[0].desc}</p>
+      </button>
+
+      {/* 2x2 grid */}
+      <div className="grid grid-cols-2 gap-3 mb-8">
+        {features.slice(1).map((f) => (
+          <button
+            key={f.id}
+            onClick={() => navigate("/overview")}
+            className="bg-card rounded-2xl p-4 border border-border text-left shadow-sm hover:shadow-md transition-shadow"
+          >
+            {(() => { const Icon = f.icon; return (
+            <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-2 ${f.color}`}>
+              <Icon className="w-4 h-4" />
+            </div>
+            ); })()}
+            <h3 className="font-semibold text-foreground text-sm">{f.title}</h3>
+            <p className="text-muted-foreground text-xs mt-0.5">{f.desc}</p>
+          </button>
+        ))}
+      </div>
+
+      <DemoButton onClick={() => setDemoOpen(true)} />
+      <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
+    </div>
+  );
+};
+
+export default MenuPage;
