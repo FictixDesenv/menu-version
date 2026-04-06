@@ -23,8 +23,8 @@ const MenuPage = () => {
         <img src={logoTrino} alt="Trinio" style={{ height: 39 }} className="object-contain" />
       </div>
 
-      <p className="text-muted-foreground mb-[23px] text-center text-sm">
-        Descubra como podemos transformar seus resultado
+      <p className="text-muted-foreground mb-[23px] text-center text-base">
+        Descubra como podemos<br />transformar seus resultado
       </p>
 
       {/* Feature card - full width */}
