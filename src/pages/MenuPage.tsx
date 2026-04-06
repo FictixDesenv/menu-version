@@ -23,7 +23,7 @@ const MenuPage = () => {
         <img src={logoTrino} alt="Trinio" style={{ height: 39 }} className="object-contain" />
       </div>
 
-      <p className="text-muted-foreground mb-3 text-center text-sm">
+      <p className="text-muted-foreground mb-[23px] text-center text-sm">
         Descubra como podemos transformar seus resultado
       </p>
 
