@@ -149,7 +149,7 @@ const SplashPage = () => {
 
       {/* Tap hint - appears after logo */}
       <motion.p
-        className="absolute bottom-12 text-sm font-medium"
+        className="absolute bottom-20 text-sm font-medium"
         style={{ color: "hsl(270, 20%, 60%)" }}
         initial={{ opacity: 0 }}
         animate={logoVisible ? { opacity: [0, 0.6, 0.3, 0.6] } : { opacity: 0 }}
