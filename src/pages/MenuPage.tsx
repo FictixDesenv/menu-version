@@ -36,7 +36,7 @@ const MenuPage = () => {
         className="w-full bg-card rounded-2xl px-5 py-3 mb-4 border border-border shadow-sm hover:shadow-md transition-shadow text-left"
       >
         {(() => { const Icon = features[0].icon; return (
-        <div className={`w-10 h-10 rounded-xl mb-3 ${features[0].color} flex items-center justify-center text-center`}>
+        <div className={`w-10 h-10 rounded-xl mb-3 ${features[0].color} flex items-center justify-center mx-auto`}>
           <Icon className="w-5 h-5" />
         </div>
         ); })()}
