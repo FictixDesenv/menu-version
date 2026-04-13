@@ -20,9 +20,12 @@ const featureData: Record<
   raiox: {
     icon: BarChart3,
     title: "Raio-X da Operação",
-    description:
-      "Dashboard completo com visão 360° da sua operação. Métricas em tempo real, análises preditivas e insights acionáveis.",
-    features: ["Métricas em tempo real", "Análises preditivas", "Insights acionáveis", "Relatórios customizáveis"],
+    description: "Visão unificada de toda a sua operação em um único painel, em tempo real.",
+    features: [
+      "Pedidos, estoque, fulfillment e entregas centralizados",
+      "Diagnóstico 360º da sua eficiência operacional e logística",
+      "Visão completa de cada etapa do ciclo de vida do pedido",
+    ],
   },
   checkout: {
     icon: ShoppingCart,
