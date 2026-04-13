@@ -1,33 +1,43 @@
 
 
-## Reduzir ~20% apenas na tela de detalhe da feature (TrinioOSDetail)
+## Ajustes nas tabs Mais Receita, Mais Margem e Mais Experiência
 
-Arquivo único afetado: `src/components/tabs/TrinioOSDetail.tsx`
+### O que muda
+- Nas 3 tabs, os cards mostrarão apenas o título (ícones e textos comentados no código, não apagados)
+- O subtítulo entre o título da seção e os cards será comentado
+- Ao clicar em um card, abre uma tela de detalhe idêntica à do Trinio OS (back button, sub-tabs, card com título, vídeo e bullet points)
 
-### Mudanças
+### Arquivos
 
-**Título "O que é o Trinio OS?" (back button)**
-- `text-lg` → `text-base`
-- `mb-4` → `mb-2`
+**1. Novo: `src/components/tabs/GenericDetail.tsx`**
+Componente reutilizável de detalhe, com a mesma estrutura visual do TrinioOSDetail:
+- Back button com título da seção
+- Sub-tabs de navegação entre features
+- Card com título, descrição, vídeo placeholder e checklist
 
-**Sub-tabs de navegação das features**
-- `mb-5` → `mb-3`
-- `py-[5px]` → `py-[4px]`
-- `text-[10px]` → `text-[8px]`
+Interface:
+```ts
+interface GenericDetailProps {
+  sectionTitle: string;
+  featureData: Record<string, { title: string; description: string; features: string[]; video?: string }>;
+  featureIds: string[];
+  initialFeatureId: string;
+  onBack: () => void;
+}
+```
 
-**Card de conteúdo (glass-card)**
-- Padding: `p-6` → `p-4`
-- Título do card: `text-2xl` → `text-xl`, `mb-4` → `mb-2`
-- Descrição: `text-base` → `text-sm`, `mb-5` → `mb-3`
-- Vídeo: `aspect-video` → `aspect-[16/8]`, `mb-5` → `mb-3`, `rounded-2xl` → `rounded-xl`
-- Checklist: `space-y-3` → `space-y-2`, `w-5 h-5` → `w-4 h-4`, texto `text-base` → `text-sm`, `gap-3` → `gap-2`
+**2. `src/components/tabs/MaisReceitaTab.tsx`**
+- Comentar subtítulo `<p>`
+- Nos cards: comentar ícone e descrição, manter `<h3>` título
+- Adicionar `useState` + clique nos cards → renderizar `GenericDetail`
+- Dados de detalhe para: Checkout Uplift, Dynamic Shipping Options, Sale Funnel Insights
 
-**Container geral**
-- `pb-[60px]` → `pb-[40px]`
+**3. `src/components/tabs/MaisMargemTab.tsx`**
+- Mesma lógica com 4 features: Menos custo por pedido, Menos cancelamentos, Aproveite benefícios fiscais, Potencialize seu time
 
-### Não afetados (conforme solicitado)
-- Header do MainPage
-- Botão CTA (DemoButton)
-- Tela principal com cards de ícones (TrinioOSTab)
-- Tabs Mais Receita / Margem / Experiência
+**4. `src/components/tabs/MaisExperienciaTab.tsx`**
+- Mesma lógica com 4 features: Entrega e retirada em loja, SAC mais rápido, Visão unificada, Cliente sempre informado
+
+### O que NÃO muda
+- Header, botão CTA, tab Trinio OS, TrinioOSDetail
 
