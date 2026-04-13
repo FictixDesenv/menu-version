@@ -1,10 +1,11 @@
 import { ArrowLeft, Check, Bot, BarChart3, ShoppingCart, Truck, Package, Plug } from "lucide-react";
 import { useState } from "react";
 
-const featureData: Record<string, { icon: any; title: string; description: string; features: string[] }> = {
+const featureData: Record<string, { icon: any; title: string; description: string; features: string[]; video?: string }> = {
   agentes: {
     icon: Bot,
     title: "Time de Agentes de IA",
+    video: "/videos/trinio-os-agentes.mp4",
     description: "Agentes inteligentes que automatizam tarefas repetitivas, monitoram sua operação 24/7 e tomam decisões baseadas em dados para otimizar processos.",
     features: ["Monitoramento contínuo", "Automação de tarefas", "Decisões baseadas em dados", "Alertas inteligentes"],
   },
@@ -95,8 +96,16 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
         <p className="text-sm text-muted-foreground leading-relaxed mb-5">{data.description}</p>
 
         {/* Video placeholder */}
-        <div className="w-full aspect-video rounded-2xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] flex items-center justify-center mb-5">
-          <span className="text-muted-foreground text-sm">Vídeo em breve</span>
+        <div className="w-full aspect-video rounded-2xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-5">
+          {data.video ? (
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+              <source src={data.video} type="video/mp4" />
+            </video>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-muted-foreground text-sm">Vídeo em breve</span>
+            </div>
+          )}
         </div>
 
         {/* Feature list */}
