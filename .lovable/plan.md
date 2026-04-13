@@ -1,19 +1,20 @@
 
 
-## Ajustes na página /app/trinio-os
+## Fix: Botão "Agendar uma Demo" quebrado na HomePage
 
-### 1. Tabs do header (`src/pages/MainPage.tsx`, linhas 64-68)
+O problema é que o wrapper do botão na HomePage tem `w-auto`, que não dá uma largura de referência para o `w-3/4` interno do DemoButton funcionar corretamente.
 
-- `px-4 py-2.5` → `px-3 py-1.5` (reduzir height)
-- `text-sm` → `text-xs` (fonte menor)
-- `rounded-full` → `rounded-sm` (border-radius small)
+### Correção (`src/pages/HomePage.tsx`, linha 61)
 
-### 2. Cards de funcionalidades (`src/components/tabs/TrinioOSTab.tsx`, linhas 38-51)
+Trocar `w-auto` por `w-full`:
 
-- Remover `<p>` de descrição (linha 48)
-- Remover `<ChevronRight>` (linha 49)
-- Centralizar conteúdo: `items-start text-left` → `items-center text-center justify-center`
-- Trocar `glass-card` por classes com `rounded-sm` e background/border manuais
-- Adicionar altura fixa `h-[120px]`
-- Ícone centralizado acima do título
+```
+// De:
+<div className="w-auto mt-6 max-w-sm pb-[72px]">
+
+// Para:
+<div className="w-full mt-6 max-w-sm pb-[72px]">
+```
+
+Isso garante que o container tenha largura total, e o `w-3/4 mx-auto` dentro do DemoButton calcule corretamente os 75%.
 
