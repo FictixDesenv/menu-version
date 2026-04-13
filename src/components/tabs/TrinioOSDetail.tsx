@@ -10,7 +10,7 @@ const featureData: Record<
     title: "Time de Agentes de IA",
     video: "/videos/trinio-os-agentes.mp4",
     description:
-      "Agentes inteligentes que automatizam tarefas repetitivas, monitoram sua operação 24/7 e tomam decisões baseadas em dados para otimizar processos.",
+      "Agentes especializados que monitoram sua operação 24/7 e sugerem ações concretas — você aprova, eles executam.",
     features: [
       "Identificam ineficiências operacionais antes de impactar o cliente",
       "Propõem e executam novas regras de negócio baseadas em dados reais",
