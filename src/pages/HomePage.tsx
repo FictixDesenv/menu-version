@@ -20,7 +20,7 @@ const HomePage = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <div className="h-screen flex flex-col items-center overflow-hidden px-8 pt-[60px]">
+    <div className="h-screen flex flex-col items-center overflow-hidden px-8 pt-[40px]">
       <IdleOverlay />
 
       {/* Icon */}
