@@ -26,29 +26,29 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "checkout-uplift": {
     title: "Checkout Uplift",
-    description: "Aumente a conversão do seu checkout com otimizações inteligentes e experiências personalizadas.",
+    description: "Checkout de 1-clique que elimina fricção e acelera a jornada de compra. ",
     features: [
-      "Otimizações de UX que aumentam a taxa de conversão",
-      "Experiências personalizadas por perfil de cliente",
-      "Testes A/B automáticos para maximizar resultados",
+      "Preenchimento automático de dados.",
+      "SLAs de entrega precisos que reduzem abandono.",
+      "Otimização  baseada em dados reais do funil de vendas.",
     ],
   },
   "dynamic-shipping": {
     title: "Dynamic Shipping Options",
-    description: "Ofereça opções de frete dinâmicas que se adaptam ao perfil do cliente e maximizam a receita.",
+    description: "Orquestração inteligente que encontra a melhor combinação de preço e prazo para cada pedido.",
     features: [
-      "Opções de frete adaptadas ao perfil do cliente",
-      "Regras dinâmicas para maximizar margem e conversão",
-      "Integração com múltiplas transportadoras",
+      "Cálculo dinâmico conectando TMSs e regras de negócio.",
+      "Regras de frete grátis e promoções configuráveis.",
+      "Entrega flexíveis: agendada, expressa, retirada em loja.",
     ],
   },
   "sale-funnel": {
     title: "Sale Funnel Insights",
-    description: "Visibilidade completa do funil de vendas com insights para otimizar cada etapa da jornada.",
+    description: "Dashboards e agentes de IA que revelam oportunidades escondidas no seu funil.",
     features: [
-      "Visão completa de cada etapa do funil de vendas",
-      "Identificação de gargalos e oportunidades de melhoria",
-      "Dashboards em tempo real com métricas acionáveis",
+      "Análise de conversão por canal, dispositivo, região e perfil de cliente.",
+      "Identificação automática de pontos de fricção e abandono.",
+      "Relatórios de performance ligados ao impacto em receita.",
     ],
   },
 };
