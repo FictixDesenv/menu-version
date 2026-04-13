@@ -1,16 +1,12 @@
 import { ArrowLeft, Check, Bot, BarChart3, ShoppingCart, Truck, Package, Plug } from "lucide-react";
 import { useState } from "react";
 
-const featureData: Record<
-  string,
-  { icon: any; title: string; description: string; features: string[]; video?: string }
-> = {
+const featureData: Record<string, { icon: any; title: string; description: string; features: string[]; video?: string }> = {
   agentes: {
     icon: Bot,
     title: "Time de Agentes de IA",
     video: "/videos/trinio-os-agentes.mp4",
-    description:
-      "Agentes especializados que monitoram sua operação 24/7 e sugerem ações concretas — você aprova, eles executam.",
+    description: "Agentes inteligentes que automatizam tarefas repetitivas, monitoram sua operação 24/7 e tomam decisões baseadas em dados para otimizar processos.",
     features: [
       "Identificam ineficiências operacionais antes de impactar o cliente",
       "Propõem e executam novas regras de negócio baseadas em dados reais",
@@ -20,53 +16,32 @@ const featureData: Record<
   raiox: {
     icon: BarChart3,
     title: "Raio-X da Operação",
-    description: "Visão unificada de toda a sua operação em um único painel, em tempo real.",
-    features: [
-      "Pedidos, estoque, fulfillment e entregas centralizados",
-      "Diagnóstico 360º da sua eficiência operacional e logística",
-      "Visão completa de cada etapa do ciclo de vida do pedido",
-    ],
+    description: "Dashboard completo com visão 360° da sua operação. Métricas em tempo real, análises preditivas e insights acionáveis.",
+    features: ["Métricas em tempo real", "Análises preditivas", "Insights acionáveis", "Relatórios customizáveis"],
   },
   checkout: {
     icon: ShoppingCart,
     title: "Checkout Inteligente",
-    description: "Checkout de 1-clique de alta conversão, potencializado por IA.",
-    features: [
-      "Checkout com foco na experiência impulsiona até 15%",
-      "Métodos de entrega e SLA respeitando regras de negócio",
-      "Dados ricos do funil alimentam otimizações contínuas",
-    ],
+    description: "Checkout otimizado que aumenta a taxa de conversão com cálculo dinâmico de frete, upsell inteligente e experiência fluida.",
+    features: ["Cálculo dinâmico de frete", "Upsell inteligente", "Experiência sem fricção", "A/B testing nativo"],
   },
   logistica: {
     icon: Truck,
     title: "Logística Customizada",
-    description: "Motor de regras que coloca o controle da operação  nas mãos do negócio.",
-    features: [
-      "Prioridades de fulfillment por custo, prazo, perfil do cliente e mais",
-      "Split automático de pedidos entre CDs e lojas",
-      "Configure  sem depender de TI",
-    ],
+    description: "Gestão logística flexível que se adapta ao seu negócio. Ship from store, entregas same-day e roteirização inteligente.",
+    features: ["Ship from store", "Entregas same-day", "Roteirização inteligente", "Múltiplos centros de distribuição"],
   },
   pickpack: {
     icon: Package,
     title: "App Pick and Pack",
-    description: "App mobile para operadores de loja e CD gerenciarem a operação com agilidade.",
-    features: [
-      "Picking, packing e expedição com leitura  de código de barras",
-      "Login social e tokenização automática",
-      "Seleção automática do melhor meio de pagamento",
-    ],
+    description: "Aplicativo mobile para picking e packing que acelera a separação de pedidos com leitura de código de barras e otimização de rotas.",
+    features: ["Leitura de código de barras", "Otimização de rotas", "Controle de qualidade", "Integração com ERP"],
   },
   integracoes: {
     icon: Plug,
     title: "Integrações e Visibilidade",
-    description:
-      "Conectores nativos para os principais sistemas do comércio brasileiro — plug and play, sem middleware.",
-    features: [
-      "Principais plataformas, ERPS e PDVs do mercado.",
-      "Integração rápida com mínimo esforço técnico.",
-      "Visibilidade e controle total de dados e operações.",
-    ],
+    description: "Conecte todos os seus sistemas em uma única plataforma. ERPs, marketplaces, transportadoras e muito mais.",
+    features: ["Integração com ERPs", "Conexão com marketplaces", "APIs abertas", "Webhooks em tempo real"],
   },
 };
 
@@ -93,12 +68,12 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       </button>
 
       {/* Sub-tab pills — no icons, full titles, rounded-sm */}
-      <div className="flex gap-2 mb-5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex flex-row gap-2 mb-5 w-full">
         {featureIds.map((id) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`px-3 py-[5px] rounded-sm text-[10px] font-medium whitespace-nowrap transition-all ${
+            className={`flex-1 text-center px-1 py-[5px] rounded-sm text-[10px] font-medium leading-tight transition-all ${
               activeTab === id
                 ? "bg-primary text-primary-foreground"
                 : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
