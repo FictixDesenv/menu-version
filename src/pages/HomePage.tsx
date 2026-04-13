@@ -53,13 +53,9 @@ const HomePage = () => {
         })}
       </div>
 
-      {/* CTA */}
-      <div className="w-full max-w-sm py-5">
+      {/* Footer */}
+      <div className="w-full max-w-sm mt-auto flex flex-col items-center gap-3 py-5 border-t border-white/10">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
-      </div>
-
-      {/* Footer logo */}
-      <div className="pb-6">
         <TrinioLogo size="sm" />
       </div>
 
