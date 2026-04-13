@@ -31,11 +31,16 @@ const MainPage = () => {
 
   const renderTab = () => {
     switch (activeTab) {
-      case "trinio-os": return <TrinioOSTab />;
-      case "receita": return <MaisReceitaTab />;
-      case "margem": return <MaisMargemTab />;
-      case "experiencia": return <MaisExperienciaTab />;
-      default: return <TrinioOSTab />;
+      case "trinio-os":
+        return <TrinioOSTab />;
+      case "receita":
+        return <MaisReceitaTab />;
+      case "margem":
+        return <MaisMargemTab />;
+      case "experiencia":
+        return <MaisExperienciaTab />;
+      default:
+        return <TrinioOSTab />;
     }
   };
 
@@ -47,7 +52,7 @@ const MainPage = () => {
       <div className="flex items-center justify-between px-6 pt-6 pb-4">
         <button
           onClick={() => navigate("/app")}
-          className="w-10 h-10 rounded-full bg-muted/40 flex items-center justify-center active:scale-90 transition-transform"
+          className="w-10 h-6 rounded-full bg-muted/40 flex items-center justify-center active:scale-90 transition-transform"
         >
           <ArrowLeft className="w-5 h-5 text-foreground" />
         </button>
@@ -73,9 +78,7 @@ const MainPage = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto pb-4">
-        {renderTab()}
-      </div>
+      <div className="flex-1 overflow-y-auto pb-4">{renderTab()}</div>
 
       {/* Footer CTA */}
       <div className="px-6 pt-2 pb-[90px]">
