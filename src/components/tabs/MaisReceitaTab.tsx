@@ -86,7 +86,7 @@ const MaisReceitaTab = () => {
             <button
               key={i}
               onClick={() => setSelectedFeature(card.id)}
-              className={`glass-card p-3 h-[80px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100 ${i === 2 ? "col-span-2" : ""}`}
+              className={`glass-card p-3 h-[90px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100 ${i === 2 ? "col-span-2" : ""}`}
             >
               {/* <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />
