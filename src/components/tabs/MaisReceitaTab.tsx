@@ -3,9 +3,24 @@ import { TrendingUp, Truck, BarChart3 } from "lucide-react";
 import GenericDetail from "./GenericDetail";
 
 const cards = [
-  { id: "checkout-uplift", icon: TrendingUp, title: "Checkout Uplift", description: "Aumente a conversão do seu checkout com otimizações inteligentes e experiências personalizadas." },
-  { id: "dynamic-shipping", icon: Truck, title: "Dynamic Shipping Options", description: "Ofereça opções de frete dinâmicas que se adaptam ao perfil do cliente e maximizam a receita." },
-  { id: "sale-funnel", icon: BarChart3, title: "Sale Funnel Insights", description: "Visibilidade completa do funil de vendas com insights para otimizar cada etapa da jornada." },
+  {
+    id: "checkout-uplift",
+    icon: TrendingUp,
+    title: "Checkout Uplift",
+    description: "Aumente a conversão do seu checkout com otimizações inteligentes e experiências personalizadas.",
+  },
+  {
+    id: "dynamic-shipping",
+    icon: Truck,
+    title: "Dynamic Shipping Options",
+    description: "Ofereça opções de frete dinâmicas que se adaptam ao perfil do cliente e maximizam a receita.",
+  },
+  {
+    id: "sale-funnel",
+    icon: BarChart3,
+    title: "Sale Funnel Insights",
+    description: "Visibilidade completa do funil de vendas com insights para otimizar cada etapa da jornada.",
+  },
 ];
 
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
@@ -71,7 +86,7 @@ const MaisReceitaTab = () => {
             <button
               key={i}
               onClick={() => setSelectedFeature(card.id)}
-              className={`glass-card p-3 h-[60px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100 ${i === 2 ? "col-span-2" : ""}`}
+              className={`glass-card p-3 h-[80px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100 ${i === 2 ? "col-span-2" : ""}`}
             >
               {/* <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />
