@@ -56,12 +56,12 @@ const MainPage = () => {
       </div>
 
       {/* Tab navigation */}
-      <div className="flex gap-2 px-6 pb-4 justify-center">
+      <div className="flex gap-2 pb-4 justify-center px-[36px]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-3 py-1.5 rounded-sm text-xs font-medium transition-all ${
+            className={`px-3 rounded-sm text-xs font-medium transition-all py-[6px] ${
               activeTab === tab.id
                 ? "bg-primary text-primary-foreground"
                 : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
@@ -78,7 +78,7 @@ const MainPage = () => {
       </div>
 
       {/* Footer CTA */}
-      <div className="px-6 pb-6 pt-2">
+      <div className="px-6 pt-2 pb-[90px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 

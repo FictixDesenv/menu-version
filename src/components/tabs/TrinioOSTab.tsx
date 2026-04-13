@@ -24,7 +24,7 @@ const TrinioOSTab = () => {
   }
 
   return (
-    <div className="flex flex-col h-full px-6">
+    <div className="flex flex-col h-full px-6 pb-[60px] pl-[36px] pr-[36px]">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground">O que é o Trinio OS?</h2>
         <p className="text-muted-foreground text-sm mt-1">
@@ -32,7 +32,7 @@ const TrinioOSTab = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-3 flex-1">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 flex-1 px-0 py-0">
         {features.map((feature) => (
           <button
             key={feature.id}
