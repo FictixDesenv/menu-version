@@ -43,7 +43,7 @@ const HomePage = () => {
               className="glass-card flex flex-col items-center justify-center p-3 h-[120px] active:scale-95 transition-transform duration-100"
             >
               <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center mb-2">
-                {'icon' in card ? (
+                {"icon" in card ? (
                   <card.icon className="w-5 h-5 text-foreground" />
                 ) : (
                   <img src={card.image} className="w-5 h-5 object-contain" alt={card.label} />
@@ -58,7 +58,7 @@ const HomePage = () => {
       </div>
 
       {/* CTA */}
-      <div className="mt-6 max-w-sm pb-[72px]">
+      <div className="w-auto mt-6 max-w-sm pb-[72px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
