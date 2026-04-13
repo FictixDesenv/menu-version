@@ -39,14 +39,12 @@ const TrinioOSTab = () => {
             <button
               key={feature.id}
               onClick={() => setSelectedFeature(feature.id)}
-              className="glass-card p-5 flex flex-col items-start text-left active:scale-95 transition-transform duration-100"
+              className="flex flex-col items-center justify-center text-center p-4 h-[120px] rounded-sm border border-[rgba(164,168,255,0.19)] bg-[rgba(35,28,99,0.48)] active:scale-95 transition-transform duration-100"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="text-sm font-semibold text-foreground mb-1">{feature.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-              <ChevronRight className="w-4 h-4 text-muted-foreground mt-auto self-end" />
+              <h3 className="text-sm font-semibold text-foreground">{feature.title}</h3>
             </button>
           );
         })}
