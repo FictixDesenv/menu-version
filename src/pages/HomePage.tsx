@@ -58,7 +58,7 @@ const HomePage = () => {
       </div>
 
       {/* CTA */}
-      <div className="w-3/4 mt-6 max-w-sm pb-[72px]">
+      <div className="mt-6 max-w-sm pb-[72px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 

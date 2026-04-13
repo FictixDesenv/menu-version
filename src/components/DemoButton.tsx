@@ -7,6 +7,7 @@ interface DemoButtonProps {
 
 const DemoButton = ({ onClick, variant = "solid" }: DemoButtonProps) => {
   return (
+    <div className="w-3/4 mx-auto">
     <Button
       onClick={onClick}
       className={`w-full rounded-md py-6 text-base font-semibold ${
@@ -17,6 +18,7 @@ const DemoButton = ({ onClick, variant = "solid" }: DemoButtonProps) => {
     >
       Agendar uma Demo
     </Button>
+    </div>
   );
 };
 
