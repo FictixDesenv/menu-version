@@ -1,27 +1,33 @@
 
 
-## Substituir pills por cards de texto em linha horizontal
+## Reduzir ~20% apenas na tela de detalhe da feature (TrinioOSDetail)
 
-### Mudança em `src/components/tabs/TrinioOSDetail.tsx` (linhas 70-85)
+Arquivo único afetado: `src/components/tabs/TrinioOSDetail.tsx`
 
-Substituir as pills atuais por cards de texto em **uma única linha (row)** que ocupam toda a largura disponível.
+### Mudanças
 
-**Layout:**
-- Container: `flex flex-row gap-2 mb-5 w-full`
-- Cada card: `flex-1 text-center` — distribui igualmente a largura entre os 6 itens
-- Apenas texto, sem ícones
-- Mantém `rounded-sm`, `text-[10px]`, `py-[5px]`
-- Card ativo: `bg-primary text-primary-foreground`
-- Card inativo: `bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)]`
-- Remove `whitespace-nowrap` e `overflow-x-auto` para permitir quebra de texto dentro do card
+**Título "O que é o Trinio OS?" (back button)**
+- `text-lg` → `text-base`
+- `mb-4` → `mb-2`
 
-```text
-┌────────┬────────┬──────────┬──────────┬────────┬───────────┐
-│Agentes │Raio-X  │Checkout  │Logística │Pick&   │Integrações│
-│  de IA │  da Op.│Intelig.  │Custom.   │Pack    │e Visibil. │
-└────────┴────────┴──────────┴──────────┴────────┴───────────┘
-```
+**Sub-tabs de navegação das features**
+- `mb-5` → `mb-3`
+- `py-[5px]` → `py-[4px]`
+- `text-[10px]` → `text-[8px]`
 
-### Arquivo afetado
-- `src/components/tabs/TrinioOSDetail.tsx`
+**Card de conteúdo (glass-card)**
+- Padding: `p-6` → `p-4`
+- Título do card: `text-2xl` → `text-xl`, `mb-4` → `mb-2`
+- Descrição: `text-base` → `text-sm`, `mb-5` → `mb-3`
+- Vídeo: `aspect-video` → `aspect-[16/8]`, `mb-5` → `mb-3`, `rounded-2xl` → `rounded-xl`
+- Checklist: `space-y-3` → `space-y-2`, `w-5 h-5` → `w-4 h-4`, texto `text-base` → `text-sm`, `gap-3` → `gap-2`
+
+**Container geral**
+- `pb-[60px]` → `pb-[40px]`
+
+### Não afetados (conforme solicitado)
+- Header do MainPage
+- Botão CTA (DemoButton)
+- Tela principal com cards de ícones (TrinioOSTab)
+- Tabs Mais Receita / Margem / Experiência
 
