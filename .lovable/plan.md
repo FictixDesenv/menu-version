@@ -1,23 +1,19 @@
 
 
-## Trocar ícone do card "Trinio OS" por imagem personalizada
+## Ajustes na página /app/trinio-os
 
-### Mudanças
+### 1. Tabs do header (`src/pages/MainPage.tsx`, linhas 64-68)
 
-1. **Copiar imagem** `user-uploads://T.png` → `src/assets/trinio_os_card_icon.png`
+- `px-4 py-2.5` → `px-3 py-1.5` (reduzir height)
+- `text-sm` → `text-xs` (fonte menor)
+- `rounded-full` → `rounded-sm` (border-radius small)
 
-2. **`src/pages/HomePage.tsx`**:
-   - Importar a imagem: `import trinioOsCardIcon from "@/assets/trinio_os_card_icon.png"`
-   - Alterar o card "trinio-os" para usar `image` em vez de `icon`:
-     ```
-     { id: "trinio-os", image: trinioOsCardIcon, label: "O que é o\nTrinio OS" }
-     ```
-   - Atualizar o render dos cards para suportar ambos (icon component ou image):
-     ```tsx
-     {card.icon ? (
-       <Icon className="w-5 h-5 text-foreground" />
-     ) : (
-       <img src={card.image} className="w-5 h-5 object-contain" />
-     )}
-     ```
+### 2. Cards de funcionalidades (`src/components/tabs/TrinioOSTab.tsx`, linhas 38-51)
+
+- Remover `<p>` de descrição (linha 48)
+- Remover `<ChevronRight>` (linha 49)
+- Centralizar conteúdo: `items-start text-left` → `items-center text-center justify-center`
+- Trocar `glass-card` por classes com `rounded-sm` e background/border manuais
+- Adicionar altura fixa `h-[120px]`
+- Ícone centralizado acima do título
 
