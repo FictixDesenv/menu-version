@@ -11,11 +11,11 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
       onClick={() => onOpenChange(false)}
     >
       <div
-        className="bg-card rounded-3xl p-5 mx-5 max-w-xs w-full flex flex-col items-center text-center relative shadow-2xl"
+        className="glass-card p-6 mx-5 max-w-xs w-full flex flex-col items-center text-center relative shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -26,9 +26,9 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
         </button>
 
         <h3 className="font-bold text-lg text-foreground mb-1 mt-2">Agendar uma Demo</h3>
-        <p className="text-muted-foreground text-sm mb-4">Escanei o QR Code</p>
+        <p className="text-muted-foreground text-sm mb-4">Escaneie o QR Code</p>
 
-        <div className="p-3 bg-card rounded-2xl border border-border mb-3">
+        <div className="p-3 bg-white rounded-2xl mb-3">
           <img src={qrCodeImage} alt="QR Code para agendar demo" className="w-[140px] h-[140px]" />
         </div>
 
