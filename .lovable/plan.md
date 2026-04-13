@@ -1,12 +1,33 @@
 
 
-## Substituir ícone do Trinio OS na HomePage
+## Ajuste de layout da HomePage
 
-### Mudança
+### Mudanças
 
-| Arquivo | O que muda |
-|---------|-----------|
-| `src/assets/trinio_os_icon.png` | Substituir pelo novo ícone uploadado (`icone_trinio.png`) |
+**`src/pages/HomePage.tsx`**:
+- Container principal: adicionar `pt-[60px]` (padding top 60px)
+- Botão "Agendar Demo": trocar `py-5` por `pb-[60px]` para criar espaço entre ele e o footer
+- Footer (logo): manter posição atual, fixar no bottom com `mt-auto`
 
-Nenhuma mudança de código necessária — o `HomePage.tsx` já importa `src/assets/trinio_os_icon.png`.
+**`src/components/TrinioLogo.tsx`**:
+- Reduzir 15% do tamanho atual (80×25 → 68×21)
+
+### Estrutura resultante
+
+```text
+┌─────────────────────┐
+│   padding-top: 60px │
+│      [Ícone]        │
+│     [Subtítulo]     │
+│                     │
+│   [Card] [Card]     │
+│   [Card] [Card]     │
+│                     │
+│  [Agendar Demo]     │
+│  padding-bottom:60px│
+│                     │
+│   [Logo Trinio]     │  ← mt-auto, fixo no bottom
+│     pb-6            │
+└─────────────────────┘
+```
 
