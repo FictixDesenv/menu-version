@@ -1,8 +1,9 @@
 import logoTrino from "@/assets/logo_trinio.png";
+import logoTrinioHeader from "@/assets/logo_trinio_header.png";
 
 interface TrinioLogoProps {
   size?: "sm" | "md" | "lg";
-  variant?: "color" | "footer";
+  variant?: "header" | "footer";
   onClick?: () => void;
 }
 
