@@ -6,13 +6,14 @@ import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
 import trinioOsIcon from "@/assets/trinio_os_icon.png";
+import trinioOsCardIcon from "@/assets/trinio_os_card_icon.png";
 
 const cards = [
-  { id: "trinio-os", icon: Layers, label: "O que é o\nTrinio OS" },
+  { id: "trinio-os", image: trinioOsCardIcon, label: "O que é o\nTrinio OS" },
   { id: "receita", icon: ShoppingCart, label: "Mais\nreceita" },
   { id: "margem", icon: DollarSign, label: "Mais\nmargem" },
   { id: "experiencia", icon: Sparkles, label: "Mais\nexperiência" },
-];
+] as const;
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -35,7 +36,6 @@ const HomePage = () => {
       {/* 2x2 Grid */}
       <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
         {cards.map((card) => {
-          const Icon = card.icon;
           return (
             <button
               key={card.id}
@@ -43,8 +43,11 @@ const HomePage = () => {
               className="glass-card flex flex-col items-center justify-center p-3 h-[120px] active:scale-95 transition-transform duration-100"
             >
               <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center mb-2">
-                <Icon className="w-5 h-5 text-foreground" />
-              </div>
+                {'icon' in card ? (
+                  <card.icon className="w-5 h-5 text-foreground" />
+                ) : (
+                  <img src={card.image} className="w-5 h-5 object-contain" alt={card.label} />
+                )}
               <span className="text-sm font-bold text-foreground text-center whitespace-pre-line leading-tight">
                 {card.label}
               </span>
