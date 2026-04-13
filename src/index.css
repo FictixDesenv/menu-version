@@ -6,44 +6,41 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 246 50% 7%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card: 246 56% 25%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 246 50% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 14 90% 53%;
+    --primary: 263 65% 61%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 263 68% 62%;
+    --secondary: 263 65% 61%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 270 30% 90%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 246 40% 15%;
+    --muted-foreground: 240 10% 65%;
 
-    --accent: 270 50% 95%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 246 40% 18%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 270 20% 88%;
-    --input: 270 20% 88%;
-    --ring: 263 68% 62%;
+    --border: 246 30% 30%;
+    --input: 246 30% 30%;
+    --ring: 263 65% 61%;
 
     --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom tokens */
+    --purple-active: 263 65% 61%;
+    --card-bg: 246 56% 25%;
+    --card-border: 240 50% 82%;
+    --nav-inactive-bg: 240 50% 82%;
   }
 }
 
@@ -53,8 +50,11 @@
   }
 
   body {
-    @apply bg-muted text-foreground font-sans;
+    @apply text-foreground font-sans;
     font-family: 'Albert Sans', sans-serif;
+    background: linear-gradient(180deg, #0b0a1a 0%, #19134b 50%, #0c0b1c 100%);
+    min-height: 100vh;
+    overflow: hidden;
   }
 }
 
@@ -81,4 +81,11 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.225), transparent);
   animation: shimmer 3s ease-in-out infinite;
+}
+
+.glass-card {
+  background: rgba(35, 28, 99, 0.48);
+  border: 1px solid rgba(164, 168, 255, 0.21);
+  border-radius: 35px;
+  backdrop-filter: blur(12px);
 }
