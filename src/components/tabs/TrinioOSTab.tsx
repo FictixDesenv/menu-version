@@ -27,7 +27,7 @@ const TrinioOSTab = () => {
     <div className="flex flex-col h-full px-6 pb-[60px] pl-[36px] pr-[36px]">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground">O que é o Trinio OS?</h2>
-        <p className="text-muted-foreground text-sm mt-1">
+        <p className="text-muted-foreground text-xs mt-1">
           Agentes especializados que monitoram sua operação 24/7 e sugerem ações concretas — você aprova, eles executam.
         </p>
       </div>
