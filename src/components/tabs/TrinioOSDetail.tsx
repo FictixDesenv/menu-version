@@ -82,7 +82,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`flex-1 text-center px-1 py-[4px] rounded-[2px] text-[5px] font-medium leading-tight transition-all ${
+            className={`flex-1 text-center px-1 py-[4px] rounded-[4px] text-[5px] font-medium leading-tight transition-all ${
               activeTab === id
                 ? "bg-foreground text-card"
                 : "bg-card border border-[rgba(164,168,255,0.19)] text-foreground"
