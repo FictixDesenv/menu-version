@@ -57,23 +57,23 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
   const data = featureData[activeTab];
 
   return (
-    <div className="flex flex-col h-full pl-[36px] pr-[36px] pb-[40px]">
+    <div className="flex flex-col h-full pl-[36px] pr-[36px] pb-[30px]">
       {/* Back button with section title */}
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-foreground hover:text-foreground/80 transition-colors mb-2 p-2 -ml-2"
+        className="flex items-center gap-1.5 text-foreground hover:text-foreground/80 transition-colors mb-1.5 p-1 -ml-1"
       >
-        <ArrowLeft className="w-5 h-5" />
-        <span className="text-base font-bold">O que é o Trinio OS?</span>
+        <ArrowLeft className="w-4 h-4" />
+        <span className="text-sm font-bold">O que é o Trinio OS?</span>
       </button>
 
       {/* Sub-tab pills */}
-      <div className="flex flex-row gap-2 mb-3 w-full">
+      <div className="flex flex-row gap-1.5 mb-2 w-full">
         {featureIds.map((id) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`flex-1 text-center px-1 py-[4px] rounded-sm text-[8px] font-medium leading-tight transition-all ${
+            className={`flex-1 text-center px-0.5 py-[3px] rounded-sm text-[7px] font-medium leading-tight transition-all ${
               activeTab === id
                 ? "bg-primary text-primary-foreground"
                 : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
@@ -85,32 +85,32 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       </div>
 
       {/* Content card */}
-      <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200">
-        <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
+      <div className="glass-card p-3 flex-1 flex flex-col transition-opacity duration-200">
+        <h3 className="text-base font-bold text-foreground mb-1.5">{data.title}</h3>
 
-        <p className="text-sm text-muted-foreground leading-relaxed mb-3">{data.description}</p>
+        <p className="text-xs text-muted-foreground leading-relaxed mb-2">{data.description}</p>
 
         {/* Video placeholder */}
-        <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3">
+        <div className="w-full aspect-[16/7] rounded-lg bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-2">
           {data.video ? (
             <video autoPlay loop muted playsInline className="w-full h-full object-cover">
               <source src={data.video} type="video/mp4" />
             </video>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <span className="text-muted-foreground text-sm">Vídeo em breve</span>
+              <span className="text-muted-foreground text-xs">Vídeo em breve</span>
             </div>
           )}
         </div>
 
         {/* Feature list */}
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           {data.features.map((feat, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <Check className="w-2.5 h-2.5 text-primary" />
+            <div key={i} className="flex items-center gap-2">
+              <div className="w-3.5 h-3.5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Check className="w-2 h-2 text-primary" />
               </div>
-              <span className="text-sm text-foreground">{feat}</span>
+              <span className="text-xs text-foreground">{feat}</span>
             </div>
           ))}
         </div>
