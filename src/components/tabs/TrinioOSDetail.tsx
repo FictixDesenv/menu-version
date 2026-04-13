@@ -114,9 +114,8 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
             </div>
           ))}
         </div>
-      </div>
     </div>
-    </div>
+  );
   );
 };
 
