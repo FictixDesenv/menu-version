@@ -74,7 +74,7 @@ const MaisExperienciaTab = () => {
         </p> */}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-2 gap-4">
         {cards.map((card, i) => {
           // const Icon = card.icon;
           return (
