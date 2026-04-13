@@ -119,7 +119,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
               <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                 <Check className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-[8px] text-foreground">{feat}</span>
+              <span className="text-[9px] text-foreground">{feat}</span>
             </div>
           ))}
         </div>
