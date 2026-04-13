@@ -64,7 +64,7 @@ const HomePage = () => {
 
       {/* Footer */}
       <div className="mt-auto pb-8">
-        <TrinioLogo size="sm" />
+        <TrinioLogo size="sm" variant="footer" />
       </div>
 
       <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
