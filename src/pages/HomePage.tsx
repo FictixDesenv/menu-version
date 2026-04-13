@@ -33,17 +33,17 @@ const HomePage = () => {
       </p>
 
       {/* 2x2 Grid */}
-      <div className="grid grid-cols-2 gap-4 w-full max-w-sm flex-1 min-h-0">
+      <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
         {cards.map((card) => {
           const Icon = card.icon;
           return (
             <button
               key={card.id}
               onClick={() => navigate(`/app/${card.id}`)}
-              className="glass-card flex flex-col items-center justify-center p-5 active:scale-95 transition-transform duration-100"
+              className="glass-card flex flex-col items-center justify-center p-3 h-[120px] active:scale-95 transition-transform duration-100"
             >
-              <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center mb-3">
-                <Icon className="w-6 h-6 text-foreground" />
+              <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center mb-2">
+                <Icon className="w-5 h-5 text-foreground" />
               </div>
               <span className="text-sm font-bold text-foreground text-center whitespace-pre-line leading-tight">
                 {card.label}
@@ -54,7 +54,7 @@ const HomePage = () => {
       </div>
 
       {/* CTA */}
-      <div className="w-full max-w-sm pb-[60px]">
+      <div className="w-full max-w-sm pb-[72px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
