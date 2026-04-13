@@ -40,7 +40,7 @@ const TrinioOSTab = () => {
             className="flex flex-col items-center justify-center text-center p-4 h-[100px] rounded-sm border border-[rgba(164,168,255,0.19)] bg-[rgba(35,28,99,0.48)] active:scale-95 transition-transform duration-100"
           >
             <img src={feature.icon} alt={feature.title} className="w-8 h-8 mb-3" />
-            <h3 className="text-sx font-semibold text-foreground">{feature.title}</h3>
+            <h3 className="text-sx font-semibold text-foreground text-xs">{feature.title}</h3>
           </button>
         ))}
       </div>
