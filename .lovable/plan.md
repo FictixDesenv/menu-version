@@ -1,33 +1,23 @@
 
 
-## Ajuste de layout da HomePage
+## Trocar ícone do card "Trinio OS" por imagem personalizada
 
 ### Mudanças
 
-**`src/pages/HomePage.tsx`**:
-- Container principal: adicionar `pt-[60px]` (padding top 60px)
-- Botão "Agendar Demo": trocar `py-5` por `pb-[60px]` para criar espaço entre ele e o footer
-- Footer (logo): manter posição atual, fixar no bottom com `mt-auto`
+1. **Copiar imagem** `user-uploads://T.png` → `src/assets/trinio_os_card_icon.png`
 
-**`src/components/TrinioLogo.tsx`**:
-- Reduzir 15% do tamanho atual (80×25 → 68×21)
-
-### Estrutura resultante
-
-```text
-┌─────────────────────┐
-│   padding-top: 60px │
-│      [Ícone]        │
-│     [Subtítulo]     │
-│                     │
-│   [Card] [Card]     │
-│   [Card] [Card]     │
-│                     │
-│  [Agendar Demo]     │
-│  padding-bottom:60px│
-│                     │
-│   [Logo Trinio]     │  ← mt-auto, fixo no bottom
-│     pb-6            │
-└─────────────────────┘
-```
+2. **`src/pages/HomePage.tsx`**:
+   - Importar a imagem: `import trinioOsCardIcon from "@/assets/trinio_os_card_icon.png"`
+   - Alterar o card "trinio-os" para usar `image` em vez de `icon`:
+     ```
+     { id: "trinio-os", image: trinioOsCardIcon, label: "O que é o\nTrinio OS" }
+     ```
+   - Atualizar o render dos cards para suportar ambos (icon component ou image):
+     ```tsx
+     {card.icon ? (
+       <Icon className="w-5 h-5 text-foreground" />
+     ) : (
+       <img src={card.image} className="w-5 h-5 object-contain" />
+     )}
+     ```
 
