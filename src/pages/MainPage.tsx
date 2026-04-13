@@ -49,7 +49,7 @@ const MainPage = () => {
       <IdleOverlay />
 
       {/* Header */}
-      <div className="flex items-center justify-between px-6 pt-6 pb-4">
+      <div className="flex items-center justify-between px-6 pb-4 pt-[36px]">
         <div className="w-10" /> {/* spacer */}
         <TrinioLogo size="sm" />
         <div className="w-10" /> {/* spacer */}
