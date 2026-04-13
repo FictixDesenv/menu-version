@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { Bot, BarChart3, ShoppingCart, Truck, Package, Plug, ChevronRight } from "lucide-react";
 import TrinioOSDetail from "./TrinioOSDetail";
+import iconAgentes from "@/assets/icon-agentes.png";
+import iconRaiox from "@/assets/icon-raiox.png";
+import iconCheckout from "@/assets/icon-checkout.png";
+import iconLogistica from "@/assets/icon-logistica.png";
+import iconPickpack from "@/assets/icon-pickpack.png";
+import iconIntegracoes from "@/assets/icon-integracoes.png";
 
 const features = [
-  { id: "agentes", icon: Bot, title: "Time de Agentes de IA", description: "Automatize tarefas com agentes inteligentes" },
-  { id: "raiox", icon: BarChart3, title: "Raio-X da Operação", description: "Visão completa da sua operação" },
-  { id: "checkout", icon: ShoppingCart, title: "Checkout Inteligente", description: "Aumente conversão no checkout" },
-  { id: "logistica", icon: Truck, title: "Logística Customizada", description: "Entregas sob medida para seu negócio" },
-  { id: "pickpack", icon: Package, title: "App Pick and Pack", description: "Picking e packing otimizados" },
-  { id: "integracoes", icon: Plug, title: "Integrações e Visibilidade", description: "Conecte tudo em um só lugar" },
+  { id: "agentes", icon: iconAgentes, title: "Time de Agentes de IA" },
+  { id: "raiox", icon: iconRaiox, title: "Raio-X da Operação" },
+  { id: "checkout", icon: iconCheckout, title: "Checkout Inteligente" },
+  { id: "logistica", icon: iconLogistica, title: "Logística Customizada" },
+  { id: "pickpack", icon: iconPickpack, title: "App Pick and Pack" },
+  { id: "integracoes", icon: iconIntegracoes, title: "Integrações e Visibilidade" },
 ];
 
 const TrinioOSTab = () => {
@@ -33,21 +38,16 @@ const TrinioOSTab = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 flex-1">
-        {features.map((feature) => {
-          const Icon = feature.icon;
-          return (
-            <button
-              key={feature.id}
-              onClick={() => setSelectedFeature(feature.id)}
-              className="flex flex-col items-center justify-center text-center p-4 h-[120px] rounded-sm border border-[rgba(164,168,255,0.19)] bg-[rgba(35,28,99,0.48)] active:scale-95 transition-transform duration-100"
-            >
-              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
-                <Icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">{feature.title}</h3>
-            </button>
-          );
-        })}
+        {features.map((feature) => (
+          <button
+            key={feature.id}
+            onClick={() => setSelectedFeature(feature.id)}
+            className="flex flex-col items-center justify-center text-center p-4 h-[120px] rounded-sm border border-[rgba(164,168,255,0.19)] bg-[rgba(35,28,99,0.48)] active:scale-95 transition-transform duration-100"
+          >
+            <img src={feature.icon} alt={feature.title} className="w-10 h-10 rounded-xl mb-3" />
+            <h3 className="text-sm font-semibold text-foreground">{feature.title}</h3>
+          </button>
+        ))}
       </div>
     </div>
   );
