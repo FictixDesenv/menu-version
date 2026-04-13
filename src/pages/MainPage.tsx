@@ -81,7 +81,7 @@ const MainPage = () => {
       <div className="flex-1 overflow-y-auto pb-4">{renderTab()}</div>
 
       {/* Footer CTA */}
-      <div className="px-6 pt-2 pb-[90px]">
+      <div className="px-6 pt-2 pb-[150px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
