@@ -7,7 +7,7 @@ const TrinioLogo = ({ size = "md", onClick }: { size?: "sm" | "md" | "lg"; onCli
     <img
       src={logoTrino}
       alt="Trinio"
-      style={{ height: heights[size] }}
+      style={{ width: 160, height: 50 }}
       className={`object-contain ${onClick ? "cursor-pointer" : ""}`}
       onClick={onClick}
     />
