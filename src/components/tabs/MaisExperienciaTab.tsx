@@ -3,10 +3,30 @@ import { Store, Headphones, Eye, Bell } from "lucide-react";
 import GenericDetail from "./GenericDetail";
 
 const cards = [
-  { id: "entrega-loja", icon: Store, title: "Entrega e retirada em loja", description: "Ofereça pick-up in store e ship from store com experiência perfeita para o cliente." },
-  { id: "sac-rapido", icon: Headphones, title: "SAC mais rápido", description: "Atendimento ao cliente acelerado com contexto completo do pedido e automações inteligentes." },
-  { id: "visao-unificada", icon: Eye, title: "Visão unificada", description: "Visão 360° do cliente com histórico de compras, preferências e interações em todos os canais." },
-  { id: "cliente-informado", icon: Bell, title: "Cliente sempre informado", description: "Notificações proativas sobre status do pedido, entrega e oportunidades personalizadas." },
+  {
+    id: "entrega-loja",
+    icon: Store,
+    title: "Entrega e retirada em loja",
+    description: "Ofereça pick-up in store e ship from store com experiência perfeita para o cliente.",
+  },
+  {
+    id: "sac-rapido",
+    icon: Headphones,
+    title: "SAC mais rápido",
+    description: "Atendimento ao cliente acelerado com contexto completo do pedido e automações inteligentes.",
+  },
+  {
+    id: "visao-unificada",
+    icon: Eye,
+    title: "Visão unificada",
+    description: "Visão 360° do cliente com histórico de compras, preferências e interações em todos os canais.",
+  },
+  {
+    id: "cliente-informado",
+    icon: Bell,
+    title: "Cliente sempre informado",
+    description: "Notificações proativas sobre status do pedido, entrega e oportunidades personalizadas.",
+  },
 ];
 
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
@@ -81,7 +101,7 @@ const MaisExperienciaTab = () => {
             <button
               key={i}
               onClick={() => setSelectedFeature(card.id)}
-              className="glass-card p-3 h-[60px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100"
+              className="glass-card p-3 h-[90px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100"
             >
               {/* <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />

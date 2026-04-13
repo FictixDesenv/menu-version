@@ -3,10 +3,30 @@ import { DollarSign, XCircle, Receipt, Users } from "lucide-react";
 import GenericDetail from "./GenericDetail";
 
 const cards = [
-  { id: "menos-custo", icon: DollarSign, title: "Menos custo por pedido", description: "Reduza custos operacionais com automação e otimização de processos logísticos." },
-  { id: "menos-cancelamentos", icon: XCircle, title: "Menos cancelamentos", description: "Diminua a taxa de cancelamento com comunicação proativa e gestão inteligente de pedidos." },
-  { id: "beneficios-fiscais", icon: Receipt, title: "Aproveite benefícios fiscais", description: "Maximize benefícios fiscais com configurações inteligentes e compliance automatizado." },
-  { id: "potencialize-time", icon: Users, title: "Potencialize seu time", description: "Empodere sua equipe com ferramentas que multiplicam a produtividade e eliminam tarefas manuais." },
+  {
+    id: "menos-custo",
+    icon: DollarSign,
+    title: "Menos custo por pedido",
+    description: "Reduza custos operacionais com automação e otimização de processos logísticos.",
+  },
+  {
+    id: "menos-cancelamentos",
+    icon: XCircle,
+    title: "Menos cancelamentos",
+    description: "Diminua a taxa de cancelamento com comunicação proativa e gestão inteligente de pedidos.",
+  },
+  {
+    id: "beneficios-fiscais",
+    icon: Receipt,
+    title: "Aproveite benefícios fiscais",
+    description: "Maximize benefícios fiscais com configurações inteligentes e compliance automatizado.",
+  },
+  {
+    id: "potencialize-time",
+    icon: Users,
+    title: "Potencialize seu time",
+    description: "Empodere sua equipe com ferramentas que multiplicam a produtividade e eliminam tarefas manuais.",
+  },
 ];
 
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
@@ -81,7 +101,7 @@ const MaisMargemTab = () => {
             <button
               key={i}
               onClick={() => setSelectedFeature(card.id)}
-              className="glass-card p-3 h-[60px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100"
+              className="glass-card p-3 h-[90px] flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100"
             >
               {/* <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />
