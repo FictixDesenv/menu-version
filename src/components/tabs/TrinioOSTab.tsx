@@ -37,7 +37,7 @@ const TrinioOSTab = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 flex-1">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 flex-1">
         {features.map((feature) => (
           <button
             key={feature.id}
