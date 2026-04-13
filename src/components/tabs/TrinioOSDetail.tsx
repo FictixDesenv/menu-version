@@ -68,12 +68,12 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       </button>
 
       {/* Sub-tab pills — no icons, full titles, rounded-sm */}
-      <div className="flex gap-2 mb-5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex flex-row gap-2 mb-5 w-full">
         {featureIds.map((id) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`px-3 py-[5px] rounded-sm text-[10px] font-medium whitespace-nowrap transition-all ${
+            className={`flex-1 text-center px-1 py-[5px] rounded-sm text-[10px] font-medium leading-tight transition-all ${
               activeTab === id
                 ? "bg-primary text-primary-foreground"
                 : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
