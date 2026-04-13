@@ -48,6 +48,7 @@ const HomePage = () => {
                 ) : (
                   <img src={card.image} className="w-5 h-5 object-contain" alt={card.label} />
                 )}
+              </div>
               <span className="text-sm font-bold text-foreground text-center whitespace-pre-line leading-tight">
                 {card.label}
               </span>
