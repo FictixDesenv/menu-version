@@ -97,7 +97,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200">
         <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
 
-        <p className="text-muted-foreground leading-relaxed mb-3 text-[8px]">{data.description}</p>
+        <p className="text-muted-foreground leading-relaxed mb-3 text-[10px]">{data.description}</p>
 
         {/* Video placeholder */}
         <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3">
@@ -119,7 +119,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
               <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                 <Check className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-[6px] text-foreground">{feat}</span>
+              <span className="text-[8px] text-foreground">{feat}</span>
             </div>
           ))}
         </div>
