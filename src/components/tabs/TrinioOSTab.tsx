@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bot, BarChart3, ShoppingCart, Truck, Package, Plug, ChevronRight } from "lucide-react";
+import { Bot, BarChart3, ShoppingCart, Truck, Package, Plug } from "lucide-react";
 import TrinioOSDetail from "./TrinioOSDetail";
 
 const features = [
