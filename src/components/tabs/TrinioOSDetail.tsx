@@ -7,7 +7,11 @@ const featureData: Record<string, { icon: any; title: string; description: strin
     title: "Time de Agentes de IA",
     video: "/videos/trinio-os-agentes.mp4",
     description: "Agentes inteligentes que automatizam tarefas repetitivas, monitoram sua operação 24/7 e tomam decisões baseadas em dados para otimizar processos.",
-    features: ["Monitoramento contínuo", "Automação de tarefas", "Decisões baseadas em dados", "Alertas inteligentes"],
+    features: [
+      "Identificam ineficiências operacionais antes de impactar o cliente",
+      "Propõem e executam novas regras de negócio baseadas em dados reais",
+      "Respondem ao SAC com contexto completo do pedido",
+    ],
   },
   raiox: {
     icon: BarChart3,
@@ -51,49 +55,40 @@ interface TrinioOSDetailProps {
 const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
   const [activeTab, setActiveTab] = useState(featureId);
   const data = featureData[activeTab];
-  const Icon = data.icon;
 
   return (
-    <div className="flex flex-col h-full px-6">
+    <div className="flex flex-col h-full pl-[36px] pr-[36px] pb-[60px]">
+      {/* Back button with section title */}
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4 p-2 -ml-2"
+        className="flex items-center gap-2 text-foreground hover:text-foreground/80 transition-colors mb-4 p-2 -ml-2"
       >
         <ArrowLeft className="w-5 h-5" />
-        <span className="text-sm font-medium">Voltar</span>
+        <span className="text-lg font-bold">O que é o Trinio OS?</span>
       </button>
 
-      {/* Sub-tab pills */}
+      {/* Sub-tab pills — no icons, full titles, rounded-sm */}
       <div className="flex gap-2 mb-5 overflow-x-auto pb-2 scrollbar-none">
-        {featureIds.map((id) => {
-          const TabIcon = featureData[id].icon;
-          return (
-            <button
-              key={id}
-              onClick={() => setActiveTab(id)}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
-                activeTab === id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
-              }`}
-            >
-              <TabIcon className="w-3.5 h-3.5" />
-              {featureData[id].title.split(" ").slice(0, 2).join(" ")}
-            </button>
-          );
-        })}
+        {featureIds.map((id) => (
+          <button
+            key={id}
+            onClick={() => setActiveTab(id)}
+            className={`px-3 py-[5px] rounded-sm text-[10px] font-medium whitespace-nowrap transition-all ${
+              activeTab === id
+                ? "bg-primary text-primary-foreground"
+                : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
+            }`}
+          >
+            {featureData[id].title}
+          </button>
+        ))}
       </div>
 
       {/* Content card */}
       <div className="glass-card p-6 flex-1 flex flex-col transition-opacity duration-200">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center">
-            <Icon className="w-6 h-6 text-primary" />
-          </div>
-          <h3 className="text-lg font-bold text-foreground">{data.title}</h3>
-        </div>
+        <h3 className="text-2xl font-bold text-foreground mb-4">{data.title}</h3>
 
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5">{data.description}</p>
+        <p className="text-base text-muted-foreground leading-relaxed mb-5">{data.description}</p>
 
         {/* Video placeholder */}
         <div className="w-full aspect-video rounded-2xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-5">
@@ -115,7 +110,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
               <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                 <Check className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-sm text-foreground">{feat}</span>
+              <span className="text-base text-foreground">{feat}</span>
             </div>
           ))}
         </div>
