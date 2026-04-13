@@ -9,7 +9,7 @@ const DemoButton = ({ onClick, variant = "solid" }: DemoButtonProps) => {
   return (
     <Button
       onClick={onClick}
-      className={`w-full rounded-full py-6 text-base font-semibold ${
+      className={`w-full rounded-md py-6 text-base font-semibold ${
         variant === "outline"
           ? "bg-transparent border-2 border-primary text-primary hover:bg-primary/10"
           : "bg-primary text-primary-foreground hover:bg-primary/90"
