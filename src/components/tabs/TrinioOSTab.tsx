@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bot, BarChart3, ShoppingCart, Truck, Package, Plug } from "lucide-react";
+import { Bot, BarChart3, ShoppingCart, Truck, Package, Plug, ChevronRight } from "lucide-react";
 import TrinioOSDetail from "./TrinioOSDetail";
 
 const features = [
@@ -28,23 +28,25 @@ const TrinioOSTab = () => {
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-foreground">O que é o Trinio OS?</h2>
         <p className="text-muted-foreground text-sm mt-1">
-          Agentes especializados que monitoram sua operação 24/7 e sugerem ações concretas — você aprova, eles executam.
+          Uma plataforma completa para escalar sua operação de e-commerce
         </p>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="grid grid-cols-2 gap-4 flex-1">
         {features.map((feature) => {
           const Icon = feature.icon;
           return (
             <button
               key={feature.id}
               onClick={() => setSelectedFeature(feature.id)}
-              className="flex flex-row items-center gap-4 px-5 py-4 rounded-xl bg-white/5 border border-white/10 active:scale-[0.98] transition-transform duration-100"
+              className="glass-card p-5 flex flex-col items-start text-left active:scale-95 transition-transform duration-100"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center mb-3">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="text-sm font-semibold text-foreground">{feature.title}</h3>
+              <h3 className="text-sm font-semibold text-foreground mb-1">{feature.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+              <ChevronRight className="w-4 h-4 text-muted-foreground mt-auto self-end" />
             </button>
           );
         })}
