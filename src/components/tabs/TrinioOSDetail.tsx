@@ -97,7 +97,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200">
         <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
 
-        <p className="text-muted-foreground leading-relaxed mb-3 text-[6px]">{data.description}</p>
+        <p className="text-muted-foreground leading-relaxed mb-3 text-[4px]">{data.description}</p>
 
         {/* Video placeholder */}
         <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3">
