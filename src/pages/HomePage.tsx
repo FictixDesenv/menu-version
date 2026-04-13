@@ -59,7 +59,7 @@ const HomePage = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-auto pb-6">
+      <div className="mt-auto pb-8">
         <TrinioLogo size="sm" />
       </div>
 
