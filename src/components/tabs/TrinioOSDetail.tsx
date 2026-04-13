@@ -20,37 +20,53 @@ const featureData: Record<
   raiox: {
     icon: BarChart3,
     title: "Raio-X da Operação",
-    description:
-      "Dashboard completo com visão 360° da sua operação. Métricas em tempo real, análises preditivas e insights acionáveis.",
-    features: ["Métricas em tempo real", "Análises preditivas", "Insights acionáveis", "Relatórios customizáveis"],
+    description: "Visão unificada de toda a sua operação em um único painel, em tempo real.",
+    features: [
+      "Pedidos, estoque, fulfillment e entregas centralizados",
+      "Diagnóstico 360º da sua eficiência operacional e logística",
+      "Visão completa de cada etapa do ciclo de vida do pedido",
+    ],
   },
   checkout: {
     icon: ShoppingCart,
     title: "Checkout Inteligente",
-    description:
-      "Checkout otimizado que aumenta a taxa de conversão com cálculo dinâmico de frete, upsell inteligente e experiência fluida.",
-    features: ["Cálculo dinâmico de frete", "Upsell inteligente", "Experiência sem fricção", "A/B testing nativo"],
+    description: "Checkout de 1-clique de alta conversão, potencializado por IA.",
+    features: [
+      "Checkout com foco na experiência impulsiona até 15%",
+      "Métodos de entrega e SLA respeitando regras de negócio",
+      "Dados ricos do funil alimentam otimizações contínuas",
+    ],
   },
   logistica: {
     icon: Truck,
     title: "Logística Customizada",
-    description:
-      "Gestão logística flexível que se adapta ao seu negócio. Ship from store, entregas same-day e roteirização inteligente.",
-    features: ["Ship from store", "Entregas same-day", "Roteirização inteligente", "Múltiplos centros de distribuição"],
+    description: "Motor de regras que coloca o controle da operação  nas mãos do negócio.",
+    features: [
+      "Prioridades de fulfillment por custo, prazo, perfil do cliente e mais",
+      "Split automático de pedidos entre CDs e lojas",
+      "Configure  sem depender de TI",
+    ],
   },
   pickpack: {
     icon: Package,
     title: "App Pick and Pack",
-    description:
-      "Aplicativo mobile para picking e packing que acelera a separação de pedidos com leitura de código de barras e otimização de rotas.",
-    features: ["Leitura de código de barras", "Otimização de rotas", "Controle de qualidade", "Integração com ERP"],
+    description: "App mobile para operadores de loja e CD gerenciarem a operação com agilidade.",
+    features: [
+      "Picking, packing e expedição com leitura  de código de barras",
+      "Login social e tokenização automática",
+      "Seleção automática do melhor meio de pagamento",
+    ],
   },
   integracoes: {
     icon: Plug,
     title: "Integrações e Visibilidade",
     description:
-      "Conecte todos os seus sistemas em uma única plataforma. ERPs, marketplaces, transportadoras e muito mais.",
-    features: ["Integração com ERPs", "Conexão com marketplaces", "APIs abertas", "Webhooks em tempo real"],
+      "Conectores nativos para os principais sistemas do comércio brasileiro — plug and play, sem middleware.",
+    features: [
+      "Principais plataformas, ERPS e PDVs do mercado.",
+      "Integração rápida com mínimo esforço técnico.",
+      "Visibilidade e controle total de dados e operações.",
+    ],
   },
 };
 
