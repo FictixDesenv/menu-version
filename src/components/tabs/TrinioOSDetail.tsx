@@ -30,9 +30,12 @@ const featureData: Record<
   checkout: {
     icon: ShoppingCart,
     title: "Checkout Inteligente",
-    description:
-      "Checkout otimizado que aumenta a taxa de conversão com cálculo dinâmico de frete, upsell inteligente e experiência fluida.",
-    features: ["Cálculo dinâmico de frete", "Upsell inteligente", "Experiência sem fricção", "A/B testing nativo"],
+    description: "Checkout de 1-clique de alta conversão, potencializado por IA.",
+    features: [
+      "Checkout com foco na experiência impulsiona até 15%",
+      "Métodos de entrega e SLA respeitando regras de negócio",
+      "Dados ricos do funil alimentam otimizações contínuas",
+    ],
   },
   logistica: {
     icon: Truck,
