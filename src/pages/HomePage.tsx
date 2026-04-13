@@ -19,7 +19,7 @@ const HomePage = () => {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
-    <div className="h-screen flex flex-col items-center overflow-hidden px-6">
+    <div className="h-screen flex flex-col items-center overflow-hidden px-6 pt-[60px]">
       <IdleOverlay />
 
       {/* Icon */}
@@ -54,12 +54,12 @@ const HomePage = () => {
       </div>
 
       {/* CTA */}
-      <div className="w-full max-w-sm py-5">
+      <div className="w-full max-w-sm pb-[60px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
       {/* Footer */}
-      <div className="pb-6">
+      <div className="mt-auto pb-6">
         <TrinioLogo size="sm" />
       </div>
 
