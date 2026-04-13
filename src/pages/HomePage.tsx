@@ -54,12 +54,12 @@ const HomePage = () => {
       </div>
 
       {/* CTA */}
-      <div className="w-full max-w-sm py-5">
+      <div className="w-full max-w-sm pb-[60px]">
         <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
       </div>
 
       {/* Footer */}
-      <div className="pb-6">
+      <div className="mt-auto pb-6">
         <TrinioLogo size="sm" />
       </div>
 
