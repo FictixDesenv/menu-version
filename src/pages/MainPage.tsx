@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
@@ -16,8 +18,16 @@ const tabs = [
 ];
 
 const MainPage = () => {
-  const [activeTab, setActiveTab] = useState("trinio-os");
+  const { section } = useParams<{ section: string }>();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(section || "trinio-os");
   const [demoOpen, setDemoOpen] = useState(false);
+
+  useEffect(() => {
+    if (section && tabs.some((t) => t.id === section)) {
+      setActiveTab(section);
+    }
+  }, [section]);
 
   const renderTab = () => {
     switch (activeTab) {
@@ -34,8 +44,15 @@ const MainPage = () => {
       <IdleOverlay />
 
       {/* Header */}
-      <div className="flex justify-center pt-8 pb-4">
+      <div className="flex items-center justify-between px-6 pt-6 pb-4">
+        <button
+          onClick={() => navigate("/app")}
+          className="w-10 h-10 rounded-full bg-muted/40 flex items-center justify-center active:scale-90 transition-transform"
+        >
+          <ArrowLeft className="w-5 h-5 text-foreground" />
+        </button>
         <TrinioLogo size="sm" />
+        <div className="w-10" /> {/* spacer */}
       </div>
 
       {/* Tab navigation */}
