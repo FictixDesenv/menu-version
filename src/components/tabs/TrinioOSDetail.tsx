@@ -94,7 +94,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
       </div>
 
       {/* Content card */}
-      <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200">
+      <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200 pb-[8px]">
         <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
 
         <p className="text-muted-foreground leading-relaxed mb-3 text-[10px]">{data.description}</p>
