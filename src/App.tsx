@@ -19,12 +19,13 @@ const App = () => (
       <PasswordGate>
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<SplashPage />} />
-          <Route path="/app" element={<HomePage />} />
-          <Route path="/app/:section" element={<MainPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/" element={<SplashPage />} />
+            <Route path="/app" element={<HomePage />} />
+            <Route path="/app/:section" element={<MainPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </PasswordGate>
     </TooltipProvider>
   </QueryClientProvider>
 );
