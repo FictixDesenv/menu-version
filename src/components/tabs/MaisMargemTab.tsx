@@ -32,38 +32,38 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "menos-custo": {
     title: "Menos custo por pedido",
-    description: "Reduza custos operacionais com automação e otimização de processos logísticos.",
+    description: "Cada pedido é alocado automaticamente para o ponto de fulfillment ideal.",
     features: [
-      "Automação de processos que reduz custo operacional",
-      "Otimização de rotas e fulfillment para menor custo",
-      "Relatórios detalhados de custo por pedido",
+      "Roteamento considerando estoque, custo logístico e SLA prometido.",
+      "Split inteligente entre CDs e lojas quando vantajoso.",
+      "Balanceamento de carga para evitar gargalos operacionais.",
     ],
   },
   "menos-cancelamentos": {
     title: "Menos cancelamentos",
-    description: "Diminua a taxa de cancelamento com comunicação proativa e gestão inteligente de pedidos.",
+    description: "Reduza cancelamentos por atraso ou ruptura em até 20%",
     features: [
-      "Comunicação proativa sobre status do pedido",
-      "Gestão inteligente que antecipa problemas",
-      "Alertas automáticos para pedidos em risco",
+      "Resolução automática de incidentes com re-alocação e comunicação proativa.",
+      "Visibilidade total do pedido para prevenir cancelamentos.",
+      "Análise de causa raiz por IA para evitar recorrência.",
     ],
   },
   "beneficios-fiscais": {
     title: "Aproveite benefícios fiscais",
-    description: "Maximize benefícios fiscais com configurações inteligentes e compliance automatizado.",
+    description: "Regras configuráveis que maximizam benefícios tributários automaticamente.",
     features: [
-      "Configurações fiscais otimizadas automaticamente",
-      "Compliance automatizado com legislação vigente",
-      "Aproveitamento máximo de incentivos fiscais",
+      "Direcione pedidos para regiões com benefícios fiscais.",
+      "Respeite regras para não comprometer prazos ou custos.",
+      "Ajuste baseado em dados de performance e impacto financeiro.",
     ],
   },
   "potencialize-time": {
     title: "Potencialize seu time",
-    description: "Empodere sua equipe com ferramentas que multiplicam a produtividade e eliminam tarefas manuais.",
+    description: "Aumente a produtividade do seu time com agentes de IA orquestrados pelo Trinio OS",
     features: [
-      "Ferramentas que multiplicam a produtividade",
-      "Eliminação de tarefas manuais repetitivas",
-      "Dashboards de performance da equipe",
+      "Nossos agentes de IA automatizam tarefas repetitivas.",
+      "Seu time aprova, a IA executa — com controle total.",
+      "Antecipe problemas e oportunidades com ações em tempo real.",
     ],
   },
 };
