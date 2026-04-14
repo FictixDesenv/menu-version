@@ -20,6 +20,7 @@ const featureData: Record<
   raiox: {
     icon: BarChart3,
     title: "Raio-X da Operação",
+    video: "/videos/trinio-os-raiox.mp4",
     description: "Visão unificada de toda a sua operação em um único painel, em tempo real.",
     features: [
       "Pedidos, estoque, fulfillment e entregas centralizados",
@@ -51,6 +52,7 @@ const featureData: Record<
   pickpack: {
     icon: Package,
     title: "App Pick and Pack",
+    video: "/videos/trinio-os-pickpack.mp4",
     description: "App mobile para operadores de loja e CD gerenciarem a operação com agilidade.",
     features: [
       "Picking, packing e expedição com leitura  de código de barras",
