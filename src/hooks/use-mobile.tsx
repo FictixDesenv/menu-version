@@ -18,7 +18,7 @@ export function useIsMobile() {
   return !!isMobile;
 }
 
-const ZOOM_TARGET_WIDTH = 768;
+const ZOOM_TARGET_WIDTH = 432;
 
 export function useTotemScale() {
   const [scale, setScale] = React.useState(1);
