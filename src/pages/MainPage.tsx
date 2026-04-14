@@ -1,47 +1,38 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
-import TrinioOSTab from "@/components/tabs/TrinioOSTab";
-import MaisReceitaTab from "@/components/tabs/MaisReceitaTab";
-import MaisMargemTab from "@/components/tabs/MaisMargemTab";
-import MaisExperienciaTab from "@/components/tabs/MaisExperienciaTab";
-
-const tabs = [
-  { id: "trinio-os", label: "Trinio OS" },
-  { id: "receita", label: "Mais receita" },
-  { id: "margem", label: "Mais margem" },
-  { id: "experiencia", label: "Mais experiência" },
-];
+import FeatureContent from "@/components/tabs/FeatureContent";
+import usePreloadVideos from "@/hooks/use-preload-videos";
+import { allTabs } from "@/data/tabData";
 
 const MainPage = () => {
   const { section } = useParams<{ section: string }>();
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(section || "trinio-os");
+  const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
+  const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
   const [demoOpen, setDemoOpen] = useState(false);
 
+  const activeTab = useMemo(() => allTabs.find((t) => t.id === activeTabId) || allTabs[0], [activeTabId]);
+
+  // All videos for preloading
+  const allVideos = useMemo(() => allTabs.flatMap((t) => t.videos), []);
+  usePreloadVideos(allVideos);
+
+  // When tab changes, select first feature
   useEffect(() => {
-    if (section && tabs.some((t) => t.id === section)) {
-      setActiveTab(section);
+    setActiveFeatureId(activeTab.featureIds[0]);
+  }, [activeTab]);
+
+  // Sync with URL param
+  useEffect(() => {
+    if (section && allTabs.some((t) => t.id === section)) {
+      setActiveTabId(section);
     }
   }, [section]);
 
-  const renderTab = () => {
-    switch (activeTab) {
-      case "trinio-os":
-        return <TrinioOSTab />;
-      case "receita":
-        return <MaisReceitaTab />;
-      case "margem":
-        return <MaisMargemTab />;
-      case "experiencia":
-        return <MaisExperienciaTab />;
-      default:
-        return <TrinioOSTab />;
-    }
-  };
+  const currentFeatureId = activeFeatureId || activeTab.featureIds[0];
+  const currentFeature = activeTab.featureData[currentFeatureId];
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -58,25 +49,47 @@ const MainPage = () => {
         </button>
       </div>
 
-      {/* Tab navigation */}
-      <div className="flex gap-2 pb-4 justify-center px-[36px]">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={` px-4 rounded-[6px] text-[6px] font-medium transition-all py-[5px] ${
-              activeTab === tab.id
-                ? "bg-primary text-primary-foreground"
-                : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      {/* Unified navigation block */}
+      <div className="px-[36px] pb-4">
+        {/* Line 1: Main tabs */}
+        <div className="flex gap-2 justify-center mb-2">
+          {allTabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTabId(tab.id)}
+              className={`px-4 rounded-[6px] text-[6px] font-medium transition-all py-[5px] ${
+                activeTabId === tab.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Line 2: Sub-feature pills */}
+        <div className="flex flex-row gap-2 w-full">
+          {activeTab.featureIds.map((id) => (
+            <button
+              key={id}
+              onClick={() => setActiveFeatureId(id)}
+              className={`flex-1 text-center px-1 py-[4px] rounded-[4px] text-[5px] font-medium leading-tight transition-all ${
+                currentFeatureId === id
+                  ? "bg-foreground text-card"
+                  : "bg-card border border-[rgba(164,168,255,0.19)] text-foreground"
+              }`}
+            >
+              {activeTab.featureData[id].shortTitle || activeTab.featureData[id].title}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto pb-4">{renderTab()}</div>
+      <div className="flex-1 overflow-y-auto px-[36px] pb-4">
+        {currentFeature && <FeatureContent data={currentFeature} />}
+      </div>
 
       {/* Bottom spacing */}
       <div className="pb-6" />
