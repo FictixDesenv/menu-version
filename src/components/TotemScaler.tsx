@@ -8,9 +8,10 @@ const TotemScaler: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div style={{
-      zoom: isScaled ? scale : undefined,
       width: isScaled ? "432px" : "100%",
-      height: "100vh",
+      height: isScaled ? `${100 / scale}vh` : "100vh",
+      transform: isScaled ? `scale(${scale})` : undefined,
+      transformOrigin: "top left",
       overflow: "hidden"
     }}>
       {children}
