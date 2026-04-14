@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
