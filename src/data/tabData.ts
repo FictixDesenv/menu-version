@@ -204,7 +204,7 @@ const maisMargemTab: TabConfig = {
 const maisExperienciaTab: TabConfig = {
   id: "experiencia",
   label: "Mais experiência",
-  featureIds: ["entrega-loja", "sac-rapido", "visao-unificada", "cliente-informado"],
+  featureIds: ["entrega-loja", "sac-rapido", "visao-unificada"],
   videos: [
     "/videos/mais-experiencia-entrega-loja.mp4",
     "/videos/mais-experiencia-sac-rapido.mp4",
@@ -243,16 +243,6 @@ const maisExperienciaTab: TabConfig = {
         "VTEX, marketplaces, lojas e parceiros em um único painel.",
         "Estoque sincronizado em tempo real entre CDs, lojas e parceiros.",
         "Visibilidade do pedido do checkout à entrega.",
-      ],
-    },
-    "cliente-informado": {
-      title: "Cliente sempre informado",
-      shortTitle: "Informado",
-      description: "Notificações automáticas em cada etapa da entrega,  sem o cliente precisar perguntar.",
-      features: [
-        "Atualizações em tempo real por e-mail, SMS ou WhatsApp",
-        "Página de rastreio personalizada com a sua marca.",
-        "Menos tickets no SAC com comunicação proativa.",
       ],
     },
   },
