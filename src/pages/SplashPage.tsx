@@ -16,7 +16,7 @@ const SplashPage = () => {
       {!exiting ? (
         <motion.div
           key="splash"
-          className="relative flex items-center justify-center h-screen w-full overflow-hidden cursor-pointer select-none"
+          className="relative flex items-center justify-center h-[100dvh] w-screen overflow-hidden cursor-pointer select-none"
           onClick={handleTap}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
