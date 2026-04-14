@@ -1,40 +1,22 @@
 
 
-# Bloquear indexação + Proteger com senha
+## Problema
 
-## 1. Bloquear indexação
+Três issues no TrinioOSTab e MainPage:
 
-**`public/robots.txt`** — trocar todo conteúdo por:
-```
-User-agent: *
-Disallow: /
-```
+1. **Botao "Agendar uma Demo"**: usa `rounded-full` (pill shape) quando deveria usar `rounded-[6px]` para manter consistência com o design system
+2. **Grid dos cards**: os cards usam `rounded-sm` (2px) mas deveriam usar a classe `glass-card` que tem `border-radius: 10px`. Além disso, o `gap-x-4 gap-y-3` está inconsistente — deveria ser `gap-4` uniforme como nas outras tabs
+3. **Cards esticando verticalmente**: o grid tem `flex-1` que faz os cards expandirem para preencher toda a tela. Precisa remover `flex-1` para que os cards mantenham altura fixa
 
-**`index.html`** — adicionar no `<head>`:
-```html
-<meta name="robots" content="noindex, nofollow">
-```
+## Alterações
 
-## 2. Tela de senha
+### 1. `src/pages/MainPage.tsx` — Botão demo
+- Mudar `rounded-full` para `rounded-[6px]` no botão "Agendar uma Demo"
+- Alinhar padding do header com `px-[36px]` para consistência
 
-Criar componente `src/components/PasswordGate.tsx`:
-- Tela escura no estilo glass do projeto
-- Campo de senha + botão "Entrar"
-- Senha correta: `vtexday2026` (sem espaço, como digitado com correção)
-- Ao acertar, salva flag no `sessionStorage` e libera o app
-- Ao errar, mostra mensagem de erro
-
-**`src/App.tsx`** — envolver todas as rotas com o `PasswordGate`. Se não autenticado, mostra apenas a tela de senha.
-
-### Detalhe técnico
-- A senha fica hardcoded no client — não é segurança forte, mas impede acesso casual
-- `sessionStorage` mantém a sessão apenas na aba atual (fecha a aba = precisa digitar de novo)
-
-> **Nota**: A senha será `vtexday2026` (junto) ou `vetexday 2026` (com espaço, como você escreveu)? Confirme e ajusto.
-
-## Arquivos alterados
-- `public/robots.txt`
-- `index.html`
-- Novo: `src/components/PasswordGate.tsx`
-- `src/App.tsx`
+### 2. `src/components/tabs/TrinioOSTab.tsx` — Grid e cards
+- Remover `flex-1` do grid container (evita que os cards estiquem para preencher a tela)
+- Mudar `gap-x-4 gap-y-3` para `gap-4` (espaçamento uniforme)
+- Nos cards: trocar as classes inline (`rounded-sm border border-[...] bg-[...]`) pela classe `glass-card` que já tem o border-radius, border e background corretos
+- Manter `h-[100px]` nos cards para altura fixa
 
