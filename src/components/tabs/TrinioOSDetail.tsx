@@ -54,7 +54,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
         <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
         <p className="text-muted-foreground leading-relaxed mb-3 text-[10px]">{data.description}</p>
 
-        <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3 relative">
+        <div className="w-full aspect-video rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3 relative">
           {data.video ? (
             <>
               {isVideoLoading && <Skeleton className="absolute inset-0 rounded-xl bg-muted/30" />}
@@ -66,6 +66,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
                 playsInline
                 preload="auto"
                 onCanPlay={() => setIsVideoLoading(false)}
+                style={{ willChange: 'transform' }}
                 className="w-full h-full object-cover"
               />
             </>
