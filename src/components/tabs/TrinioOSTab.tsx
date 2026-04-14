@@ -43,12 +43,12 @@ const TrinioOSTab = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-3 flex-1 px-0 py-0">
+      <div className="grid grid-cols-2 gap-4 px-0 py-0">
         {features.map((feature) => (
           <button
             key={feature.id}
             onClick={() => setSelectedFeature(feature.id)}
-            className="flex flex-col items-center justify-center text-center p-4 h-[100px] rounded-sm border border-[rgba(164,168,255,0.19)] bg-[rgba(35,28,99,0.48)] active:scale-95 transition-transform duration-100"
+            className="glass-card flex flex-col items-center justify-center text-center p-4 h-[100px] active:scale-95 transition-transform duration-100"
           >
             <img src={feature.icon} alt={feature.title} className="w-6 h-6 mb-3" />
             <h3 className="text-sx font-semibold text-foreground text-xs">{feature.title}</h3>
