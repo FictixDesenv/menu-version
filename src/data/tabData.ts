@@ -204,7 +204,7 @@ const maisMargemTab: TabConfig = {
 const maisExperienciaTab: TabConfig = {
   id: "experiencia",
   label: "Mais experiência",
-  featureIds: ["entrega-loja", "sac-rapido", "visao-unificada", "cliente-informado"],
+  featureIds: ["entrega-loja", "sac-rapido", "visao-unificada"],
   videos: [
     "/videos/mais-experiencia-entrega-loja.mp4",
     "/videos/mais-experiencia-sac-rapido.mp4",
