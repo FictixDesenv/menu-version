@@ -245,16 +245,6 @@ const maisExperienciaTab: TabConfig = {
         "Visibilidade do pedido do checkout à entrega.",
       ],
     },
-    "cliente-informado": {
-      title: "Cliente sempre informado",
-      shortTitle: "Informado",
-      description: "Notificações automáticas em cada etapa da entrega,  sem o cliente precisar perguntar.",
-      features: [
-        "Atualizações em tempo real por e-mail, SMS ou WhatsApp",
-        "Página de rastreio personalizada com a sua marca.",
-        "Menos tickets no SAC com comunicação proativa.",
-      ],
-    },
   },
 };
 
