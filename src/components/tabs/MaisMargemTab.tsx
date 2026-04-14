@@ -61,6 +61,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "potencialize-time": {
     title: "Potencialize seu time",
+    video: "/videos/mais-margem-potencialize-time.mp4",
     description: "Aumente a produtividade do seu time com agentes de IA orquestrados pelo Trinio OS",
     features: [
       "Nossos agentes de IA automatizam tarefas repetitivas.",
