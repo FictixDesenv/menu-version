@@ -44,6 +44,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "sale-funnel": {
     title: "Sale Funnel Insights",
+    video: "/videos/mais-receita-sale-funnel.mp4",
     description: "Dashboards e agentes de IA que revelam oportunidades escondidas no seu funil.",
     features: [
       "Análise de conversão por canal, dispositivo, região e perfil de cliente.",
