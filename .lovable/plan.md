@@ -1,31 +1,43 @@
 
 
-## Diagnóstico
+## Problema
 
-O app foi desenhado em resolução mobile (~390px). No projeto original, provavelmente existia um wrapper CSS `transform: scale(...)` que ampliava o conteúdo para preencher telas grandes (1920×1080 em TV 55"). 
+O `TotemScaler` usa `transform: scale()`, mas isso **não altera o viewport CSS**. Componentes filhos que usam `h-screen` (100vh), `min-h-screen`, `w-screen` etc. continuam referenciando o viewport real (1920×1080), não o container escalado (768×432). Resultado: o conteúdo transborda e fica desconfigurado.
 
-O hook `useTotemScale` já existe em `src/hooks/use-mobile.tsx` e calcula a escala correta (`window.innerWidth / 768` → ~2.5x em 1920px), **mas não está sendo usado em nenhum lugar**. É por isso que na tela grande o conteúdo aparece minúsculo e você precisa de 250% de zoom manual.
+Antes, com zoom 250% do browser, o viewport efetivo era 768×432 e tudo funcionava porque o browser zoom altera as unidades de viewport.
 
 ## Solução
 
-Criar um componente wrapper `TotemScaler` que aplica `transform: scale(...)` + `transform-origin: top left` ao conteúdo inteiro, e usá-lo no `App.tsx` envolvendo todas as rotas.
+Trocar `transform: scale()` por **CSS `zoom`**, que altera o viewport efetivo igual ao zoom do browser. Assim `vh`, `vw`, `h-screen` etc. respondem corretamente.
 
 ### Mudanças
 
-1. **Criar `src/components/TotemScaler.tsx`**
-   - Usa `useTotemScale()` para obter o fator de escala
-   - Renderiza um `<div>` com `width: 768px`, `height: 100vh`, `transform: scale(factor)`, `transform-origin: top left`
-   - Esconde overflow no container pai para evitar scroll
+1. **`src/components/TotemScaler.tsx`** — substituir transform por zoom:
+```tsx
+const TotemScaler: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const scale = useTotemScale();
+  return (
+    <div style={{ zoom: scale, width: "768px", height: "100vh", overflow: "hidden" }}>
+      {children}
+    </div>
+  );
+};
+```
 
-2. **Editar `src/App.tsx`**
-   - Envolver o `<BrowserRouter>` com `<TotemScaler>`
-   - Assim todas as rotas (Splash, Home, MainPage) são escaladas automaticamente
+2. **`src/hooks/use-mobile.tsx`** — alterar threshold para 1920px para não afetar o preview da Lovable:
+```ts
+const calculate = () => {
+  const w = window.innerWidth;
+  if (w >= 1920) {
+    setScale(w / ZOOM_TARGET_WIDTH);
+  } else {
+    setScale(1);
+  }
+};
+```
 
-3. **Editar `src/index.css`**
-   - Adicionar `overflow: hidden` no `html, body` e `#root` para garantir que não haja scroll com a escala
-
-### Comportamento esperado
-- Em tela ≥1024px: escala proporcional (`largura / 768`)
-- Em tela <1024px (mobile real): escala = 1, sem alteração
-- O layout continua desenhado para 768px de largura, mas é ampliado via CSS transform
+### Resultado
+- **Lovable preview** (~1577px): escala = 1, desenvolvimento normal
+- **TV 55" (1920px)**: zoom = 2.5x, viewport efetivo = 768×432, igual ao zoom manual de 250%
+- `h-screen`, `vh`, `vw` funcionam corretamente dentro do conteúdo escalado
 
