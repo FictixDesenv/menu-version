@@ -1,20 +1,16 @@
 
 
-## Bypass da senha em localhost
+## Trocar vídeo da feature "Agentes" para comparação
 
-Alterar `src/components/PasswordGate.tsx` para detectar se o app está rodando em `localhost` (ou `127.0.0.1`) e pular a autenticação automaticamente.
+O vídeo atual da feature "Agentes de IA" é `public/videos/trinio-os-agentes.mp4`. O plano é:
 
-### Mudança
+1. **Copiar o vídeo enviado** para `public/videos/trinio-os-agentes-v2.mp4`
+2. **Analisar os dois vídeos** com `ffprobe` — comparar resolução, codec, bitrate, profile e pixel format
+3. **Atualizar `src/data/trinioOsFeatures.ts`** — trocar o path do vídeo de agentes para o novo arquivo:
+   ```ts
+   video: "/videos/trinio-os-agentes-v2.mp4",
+   ```
+4. **Apresentar a comparação técnica** dos dois arquivos para entender se a diferença de qualidade está no encode
 
-**`src/components/PasswordGate.tsx`** — no estado inicial de `authenticated`:
-
-```tsx
-const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
-
-const [authenticated, setAuthenticated] = useState(
-  () => isLocalhost || sessionStorage.getItem("trinio-auth") === "1"
-);
-```
-
-Se `hostname` for `localhost` ou `127.0.0.1`, o gate é ignorado e o app abre direto. Em qualquer outro domínio (preview Lovable, domínio publicado, TV), a senha continua sendo exigida.
+Nenhuma alteração no TotemScaler ou layout geral.
 
