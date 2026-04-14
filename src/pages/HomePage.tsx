@@ -5,7 +5,7 @@ import TrinioLogo from "@/components/TrinioLogo";
 import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
-import trinioOsIcon from "@/assets/trinio_os_icon.png";
+import trinioOsIcon from "@/assets/trinio_os_icon.svg";
 import trinioOsCardIcon from "@/assets/trinio_os_card_icon.svg";
 
 const cards = [
