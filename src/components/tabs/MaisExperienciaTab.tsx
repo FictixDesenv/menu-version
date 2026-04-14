@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Store, Headphones, Eye, Bell } from "lucide-react";
 import GenericDetail from "./GenericDetail";
+import usePreloadVideos from "@/hooks/use-preload-videos";
+
+const maisExperienciaVideos = [
+  "/videos/mais-experiencia-entrega-loja.mp4",
+  "/videos/mais-experiencia-sac-rapido.mp4",
+  "/videos/mais-experiencia-visao-unificada.mp4",
+];
 
 const cards = [
   {
@@ -76,6 +83,7 @@ const detailIds = ["entrega-loja", "sac-rapido", "visao-unificada", "cliente-inf
 
 const MaisExperienciaTab = () => {
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  usePreloadVideos(maisExperienciaVideos);
 
   if (selectedFeature) {
     return (
