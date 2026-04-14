@@ -18,16 +18,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <PasswordGate>
-        <TotemScaler>
-          <BrowserRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<SplashPage />} />
-            <Route path="/app" element={<HomePage />} />
-            <Route path="/app/:section" element={<MainPage />} />
+            <Route path="/app" element={<TotemScaler><HomePage /></TotemScaler>} />
+            <Route path="/app/:section" element={<TotemScaler><MainPage /></TotemScaler>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          </BrowserRouter>
-        </TotemScaler>
+        </BrowserRouter>
       </PasswordGate>
     </TooltipProvider>
   </QueryClientProvider>
