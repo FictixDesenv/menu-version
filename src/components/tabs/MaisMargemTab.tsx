@@ -51,6 +51,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "beneficios-fiscais": {
     title: "Aproveite benefícios fiscais",
+    video: "/videos/mais-margem-beneficios-fiscais.mp4",
     description: "Regras configuráveis que maximizam benefícios tributários automaticamente.",
     features: [
       "Direcione pedidos para regiões com benefícios fiscais.",
