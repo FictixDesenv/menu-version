@@ -122,7 +122,7 @@ const TrinioOSDetail = ({ featureId, onBack }: TrinioOSDetailProps) => {
         {/* Video placeholder */}
         <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3">
           {data.video ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            <video key={activeTab} autoPlay loop muted playsInline className="w-full h-full object-cover">
               <source src={data.video} type="video/mp4" />
             </video>
           ) : (
