@@ -11,7 +11,7 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/15 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/15 backdrop-blur-sm"
       onClick={() => onOpenChange(false)}
     >
       <div
@@ -32,9 +32,7 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
           <img src={qrCodeImage} alt="QR Code para agendar demo" className="w-[140px] h-[140px]" />
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          Aponte a câmera do seu celular para o código
-        </p>
+        <p className="text-xs text-muted-foreground">Aponte a câmera do seu celular para o código</p>
       </div>
     </div>
   );
