@@ -14,7 +14,7 @@ const TrinioHeader = ({ showBack = true }: { showBack?: boolean }) => {
       ) : (
         <div className="w-10" />
       )}
-      <TrinioLogo size="sm" onClick={() => navigate("/menu")} />
+      <TrinioLogo size="sm" onClick={() => navigate("/")} />
       <div className="w-10" />
     </header>
   );
