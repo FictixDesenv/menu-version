@@ -26,6 +26,7 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "checkout-uplift": {
     title: "Checkout Uplift",
+    video: "/videos/mais-receita-checkout-uplift.mp4",
     description: "Checkout de 1-clique que elimina fricção e acelera a jornada de compra. ",
     features: [
       "Preenchimento automático de dados.",
