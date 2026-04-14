@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoModal from "@/components/DemoModal";
@@ -13,19 +13,17 @@ const MainPage = () => {
   const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
   const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
   const [demoOpen, setDemoOpen] = useState(false);
+  const touchStartX = useRef(0);
 
   const activeTab = useMemo(() => allTabs.find((t) => t.id === activeTabId) || allTabs[0], [activeTabId]);
 
-  // All videos for preloading
   const allVideos = useMemo(() => allTabs.flatMap((t) => t.videos), []);
   usePreloadVideos(allVideos);
 
-  // When tab changes, select first feature
   useEffect(() => {
     setActiveFeatureId(activeTab.featureIds[0]);
   }, [activeTab]);
 
-  // Sync with URL param
   useEffect(() => {
     if (section && allTabs.some((t) => t.id === section)) {
       setActiveTabId(section);
@@ -34,6 +32,22 @@ const MainPage = () => {
 
   const currentFeatureId = activeFeatureId || activeTab.featureIds[0];
   const currentFeature = activeTab.featureData[currentFeatureId];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(deltaX) < 50) return;
+    const ids = activeTab.featureIds;
+    const idx = ids.indexOf(currentFeatureId);
+    if (deltaX > 0 && idx > 0) {
+      setActiveFeatureId(ids[idx - 1]);
+    } else if (deltaX < 0 && idx < ids.length - 1) {
+      setActiveFeatureId(ids[idx + 1]);
+    }
+  };
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -44,16 +58,15 @@ const MainPage = () => {
         <TrinioLogo size="sm" onClick={() => navigate("/app")} />
         <button
           onClick={() => setDemoOpen(true)}
-          className="px-4 py-2 rounded-[6px] border border-primary text-primary text-xs font-semibold hover:bg-primary/10 transition-colors"
+          className="px-3 py-1.5 rounded-[6px] border border-primary text-primary text-[10px] font-semibold hover:bg-primary/10 transition-colors"
         >
           Agendar uma Demo
         </button>
       </div>
 
       {/* Unified navigation block */}
-      <div className="px-[36px] pb-8">
+      <div className="px-[36px] pb-3">
         <div className="glass-card p-3">
-          {/* Line 1: Main tabs */}
           <div className="flex gap-2 justify-center mb-2">
             {allTabs.map((tab) => (
               <button
@@ -70,7 +83,6 @@ const MainPage = () => {
             ))}
           </div>
 
-          {/* Line 2: Sub-feature pills */}
           <div className="flex flex-row gap-2 w-full">
             {activeTab.featureIds.map((id) => (
               <button
@@ -90,11 +102,14 @@ const MainPage = () => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto px-[36px] pb-4">
+      <div
+        className="flex-1 overflow-y-auto px-[36px] pb-4"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {currentFeature && <FeatureContent data={currentFeature} />}
       </div>
 
-      {/* Bottom spacing */}
       <div className="pb-6" />
 
       <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
