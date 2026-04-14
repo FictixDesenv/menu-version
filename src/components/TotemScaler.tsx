@@ -4,8 +4,15 @@ import { useTotemScale } from "@/hooks/use-mobile";
 const TotemScaler: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const scale = useTotemScale();
 
+  const isScaled = scale > 1;
+
   return (
-    <div style={{ zoom: scale, width: "768px", height: "100vh", overflow: "hidden" }}>
+    <div style={{
+      zoom: isScaled ? scale : undefined,
+      width: isScaled ? "768px" : "100%",
+      height: "100vh",
+      overflow: "hidden"
+    }}>
       {children}
     </div>
   );
