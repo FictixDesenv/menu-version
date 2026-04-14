@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import TrinioLogo from "@/components/TrinioLogo";
-import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
 import TrinioOSTab from "@/components/tabs/TrinioOSTab";
