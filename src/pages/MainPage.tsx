@@ -12,6 +12,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
   const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
   const [demoOpen, setDemoOpen] = useState(false);
   const touchStartX = useRef(0);
 
@@ -43,8 +44,10 @@ const MainPage = () => {
     const ids = activeTab.featureIds;
     const idx = ids.indexOf(currentFeatureId);
     if (deltaX > 0 && idx > 0) {
+      setSlideDirection("left");
       setActiveFeatureId(ids[idx - 1]);
     } else if (deltaX < 0 && idx < ids.length - 1) {
+      setSlideDirection("right");
       setActiveFeatureId(ids[idx + 1]);
     }
   };
@@ -87,7 +90,13 @@ const MainPage = () => {
             {activeTab.featureIds.map((id) => (
               <button
                 key={id}
-                onClick={() => setActiveFeatureId(id)}
+                onClick={() => {
+                  const ids = activeTab.featureIds;
+                  const oldIdx = ids.indexOf(currentFeatureId);
+                  const newIdx = ids.indexOf(id);
+                  setSlideDirection(newIdx >= oldIdx ? "right" : "left");
+                  setActiveFeatureId(id);
+                }}
                 className={`flex-1 text-center px-1 py-[4px] rounded-[4px] text-[6px] font-medium leading-tight transition-all ${
                   currentFeatureId === id
                     ? "bg-foreground text-card"
@@ -103,11 +112,11 @@ const MainPage = () => {
 
       {/* Content */}
       <div
-        className="flex-1 overflow-y-auto px-[36px] pb-4"
+        className="flex-1 overflow-hidden px-[36px] pb-4"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {currentFeature && <FeatureContent data={currentFeature} />}
+        {currentFeature && <FeatureContent key={currentFeatureId} data={currentFeature} slideDirection={slideDirection} />}
       </div>
 
       <div className="pb-6" />

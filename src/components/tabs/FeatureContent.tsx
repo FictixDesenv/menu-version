@@ -5,9 +5,10 @@ import type { FeatureInfo } from "@/data/tabData";
 
 interface FeatureContentProps {
   data: FeatureInfo;
+  slideDirection?: "left" | "right";
 }
 
-const FeatureContent = ({ data }: FeatureContentProps) => {
+const FeatureContent = ({ data, slideDirection = "right" }: FeatureContentProps) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -22,7 +23,7 @@ const FeatureContent = ({ data }: FeatureContentProps) => {
   }, [data.video]);
 
   return (
-    <div className="glass-card p-4 flex-1 flex flex-col transition-opacity duration-200 pb-[8px]">
+    <div className={`glass-card p-4 flex-1 flex flex-col pb-[8px] ${slideDirection === "right" ? "animate-slide-in-from-right" : "animate-slide-in-from-left"}`}>
       <h3 className="text-xl font-bold text-foreground mb-2">{data.title}</h3>
 
       <p className="text-muted-foreground leading-relaxed mb-3 text-[10px]">{data.description}</p>
