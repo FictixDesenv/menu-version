@@ -11,7 +11,7 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/15 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 backdrop-blur-sm"
       onClick={() => onOpenChange(false)}
     >
       <div
