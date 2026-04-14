@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
@@ -9,6 +9,7 @@ import { allTabs } from "@/data/tabData";
 
 const MainPage = () => {
   const { section } = useParams<{ section: string }>();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
   const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
@@ -22,8 +23,13 @@ const MainPage = () => {
   usePreloadVideos(allVideos);
 
   useEffect(() => {
-    setActiveFeatureId(activeTab.featureIds[0]);
-  }, [activeTab]);
+    const featureParam = searchParams.get("feature");
+    if (featureParam && activeTab.featureIds.includes(featureParam)) {
+      setActiveFeatureId(featureParam);
+    } else {
+      setActiveFeatureId(activeTab.featureIds[0]);
+    }
+  }, [activeTab, searchParams]);
 
   useEffect(() => {
     if (section && allTabs.some((t) => t.id === section)) {
