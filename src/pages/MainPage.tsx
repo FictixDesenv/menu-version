@@ -58,7 +58,7 @@ const MainPage = () => {
         <TrinioLogo size="sm" onClick={() => navigate("/app")} />
         <button
           onClick={() => setDemoOpen(true)}
-          className="px-3 py-1.5 rounded-[6px] border border-primary text-primary text-[10px] font-semibold hover:bg-primary/10 transition-colors"
+          className="px-2 py-1 rounded-[6px] border border-primary text-primary text-[10px] font-semibold hover:bg-primary/10 transition-colors"
         >
           Agendar uma Demo
         </button>
