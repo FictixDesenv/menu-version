@@ -32,38 +32,40 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "entrega-loja": {
     title: "Entrega e retirada em loja",
-    description: "Ofereça pick-up in store e ship from store com experiência perfeita para o cliente.",
+    description:
+      "Ship from store e pick-up in store: cada pedido é alocado automaticamente para o ponto de fulfillment ideal..",
     features: [
-      "Pick-up in store com experiência integrada",
-      "Ship from store otimizando estoque e prazo",
-      "Gestão unificada de pedidos loja e online",
+      "App Pick and Pack  separação, embalagem e expedição.",
+      "Checkout em tempo real com SLA e priorização por disponibilidade de lojas.",
+      "Fluxo de retirada com notificação, conferência e rastreio.",
     ],
   },
   "sac-rapido": {
     title: "SAC mais rápido",
-    description: "Atendimento ao cliente acelerado com contexto completo do pedido e automações inteligentes.",
+    description:
+      "Visibilidade total da operação e IA que age preventivamente — seu time aprova e executa com um clique.",
     features: [
-      "Contexto completo do pedido para o atendente",
-      "Automações inteligentes para respostas rápidas",
-      "Redução significativa do tempo de resolução",
+      "Painel unificado com histórico: status,tracking,incidentes e comunicações.",
+      "Classificação inteligente por SLA, perfil do cliente e canal.",
+      "Agente de IA que sugere respostas, ações e status.",
     ],
   },
   "visao-unificada": {
     title: "Visão unificada",
-    description: "Visão 360° do cliente com histórico de compras, preferências e interações em todos os canais.",
+    description: "Todos os canais em uma única interface.",
     features: [
-      "Histórico completo de compras e interações",
-      "Preferências do cliente centralizadas",
-      "Visão omnichannel de todos os pontos de contato",
+      "VTEX, marketplaces, lojas e parceiros em um único painel.",
+      "Estoque sincronizado em tempo real entre CDs, lojas e parceiros.",
+      "Visibilidade do pedido do checkout à entrega.",
     ],
   },
   "cliente-informado": {
     title: "Cliente sempre informado",
-    description: "Notificações proativas sobre status do pedido, entrega e oportunidades personalizadas.",
+    description: "Notificações automáticas em cada etapa da entrega,  sem o cliente precisar perguntar.",
     features: [
-      "Notificações proativas sobre status do pedido",
-      "Atualizações em tempo real sobre entrega",
-      "Comunicações personalizadas por canal preferido",
+      "Atualizações em tempo real por e-mail, SMS ou WhatsApp",
+      "Página de rastreio personalizada com a sua marca.",
+      "Menos tickets no SAC com comunicação proativa.",
     ],
   },
 };
