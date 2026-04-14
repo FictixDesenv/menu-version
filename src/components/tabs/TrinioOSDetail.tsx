@@ -1,5 +1,6 @@
 import { ArrowLeft, Check, Bot, BarChart3, ShoppingCart, Truck, Package, Plug } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const featureData: Record<
   string,

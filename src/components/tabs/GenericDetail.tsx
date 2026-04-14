@@ -1,5 +1,6 @@
 import { ArrowLeft, Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface FeatureInfo {
   title: string;
