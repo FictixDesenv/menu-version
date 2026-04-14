@@ -72,7 +72,7 @@ const MainPage = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex-1 px-1 rounded-[6px] text-[8px] font-medium transition-all py-[0px] ${
+                className={`flex-0 px-1 rounded-[6px] text-[8px] font-medium transition-all py-[0px] ${
                   activeTabId === tab.id
                     ? "bg-primary text-primary-foreground"
                     : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
