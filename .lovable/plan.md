@@ -2,35 +2,35 @@
 
 ## Problema
 
-O `TotemScaler` sempre define `width: 768px`, mesmo quando o viewport é menor (390px no preview mobile). Com `overflow: hidden`, o conteúdo que excede 390px é cortado.
+O `ZOOM_TARGET_WIDTH` está definido como 768px, mas o app foi desenhado para ~390px (largura do preview mobile). Na TV portrait (1080px), o zoom calculado é 1080/768 = 1.4x — insuficiente. O correto seria 1080/432 = 2.5x, que é exatamente o zoom manual que funciona.
+
+Com browser zoom 250% em 1080px: viewport efetivo = 1080/2.5 = **432px**.
 
 ## Solução
 
-Aplicar `width: 768px` apenas quando o zoom está ativo (telas ≥ 768px). Em telas menores, usar `width: 100%`.
+Alterar `ZOOM_TARGET_WIDTH` de 768 para **432** (o viewport efetivo que o zoom 250% produzia).
 
-### Mudança
+### Mudanças
 
-**`src/components/TotemScaler.tsx`**:
-
-```tsx
-const TotemScaler: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const scale = useTotemScale();
-  const isScaled = scale > 1;
-
-  return (
-    <div style={{
-      zoom: isScaled ? scale : undefined,
-      width: isScaled ? "768px" : "100%",
-      height: "100vh",
-      overflow: "hidden"
-    }}>
-      {children}
-    </div>
-  );
-};
+**1. `src/hooks/use-mobile.tsx`** — corrigir target width:
+```ts
+const ZOOM_TARGET_WIDTH = 432;
 ```
 
+**2. `src/components/TotemScaler.tsx`** — ajustar largura base:
+```tsx
+<div style={{
+  zoom: isScaled ? scale : undefined,
+  width: isScaled ? "432px" : "100%",
+  height: "100vh",
+  overflow: "hidden"
+}}>
+```
+
+### Threshold
+Manter `w >= 768` — no preview Lovable (390px), scale = 1 (sem zoom). Na TV (1080px), scale = 1080/432 = **2.5x** — exatamente o zoom manual de 250%.
+
 ### Resultado
-- **Preview mobile (390px)**: sem zoom, width 100%, conteúdo visível normalmente
-- **TV 55" (1080px)**: zoom ativo, width 768px escalado para preencher a tela
+- **Preview (390px)**: sem zoom, layout nativo — OK como está
+- **TV 55" portrait (1080px)**: zoom 2.5x automático, sem precisar de zoom manual do browser
 
