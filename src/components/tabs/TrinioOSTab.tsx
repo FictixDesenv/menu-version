@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import iconAgentes from "@/assets/icon-agentes.png";
 import iconRaiox from "@/assets/icon-raiox.png";
 import iconCheckout from "@/assets/icon-checkout.png";
@@ -6,6 +6,16 @@ import iconLogistica from "@/assets/icon-logistica.png";
 import iconPickpack from "@/assets/icon-pickpack.png";
 import iconIntegracoes from "@/assets/icon-integracoes.png";
 import TrinioOSDetail from "./TrinioOSDetail";
+import usePreloadVideos from "@/hooks/use-preload-videos";
+
+const trinioOSVideos = [
+  "/videos/trinio-os-agentes.mp4",
+  "/videos/trinio-os-raiox.mp4",
+  "/videos/trinio-os-checkout.mp4",
+  "/videos/trinio-os-logistica.mp4",
+  "/videos/trinio-os-pickpack.mp4",
+  "/videos/trinio-os-integracoes.mp4",
+];
 
 const features = [
   { id: "agentes", icon: iconAgentes, title: "Time de Agentes de IA" },
@@ -18,6 +28,7 @@ const features = [
 
 const TrinioOSTab = () => {
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  usePreloadVideos(trinioOSVideos);
 
   if (selectedFeature) {
     return <TrinioOSDetail featureId={selectedFeature} onBack={() => setSelectedFeature(null)} />;

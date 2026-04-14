@@ -1,5 +1,6 @@
 import { ArrowLeft, Check } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface FeatureInfo {
   title: string;
@@ -18,7 +19,19 @@ interface GenericDetailProps {
 
 const GenericDetail = ({ sectionTitle, featureData, featureIds, initialFeatureId, onBack }: GenericDetailProps) => {
   const [activeTab, setActiveTab] = useState(initialFeatureId);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const data = featureData[activeTab];
+
+  useEffect(() => {
+    setIsVideoLoading(true);
+    if (videoRef.current && data.video) {
+      videoRef.current.src = data.video;
+      videoRef.current.load();
+    }
+    const timer = setTimeout(() => setIsVideoLoading(false), 5000);
+    return () => clearTimeout(timer);
+  }, [activeTab, data.video]);
 
   return (
     <div className="flex flex-col h-full pl-[36px] pr-[36px] pb-[40px]">
@@ -55,11 +68,21 @@ const GenericDetail = ({ sectionTitle, featureData, featureIds, initialFeatureId
         <p className="text-muted-foreground leading-relaxed mb-3 text-xs">{data.description}</p>
 
         {/* Video placeholder */}
-        <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3">
+        <div className="w-full aspect-[16/8] rounded-xl bg-[rgba(164,168,255,0.08)] border border-[rgba(164,168,255,0.12)] overflow-hidden mb-3 relative">
           {data.video ? (
-            <video key={activeTab} autoPlay loop muted playsInline className="w-full h-full object-cover">
-              <source src={data.video} type="video/mp4" />
-            </video>
+            <>
+              {isVideoLoading && <Skeleton className="absolute inset-0 rounded-xl bg-muted/30" />}
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                onCanPlay={() => setIsVideoLoading(false)}
+                className="w-full h-full object-cover"
+              />
+            </>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <span className="text-muted-foreground text-sm">Vídeo em breve</span>

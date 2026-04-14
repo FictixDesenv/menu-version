@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { DollarSign, XCircle, Receipt, Users } from "lucide-react";
 import GenericDetail from "./GenericDetail";
+import usePreloadVideos from "@/hooks/use-preload-videos";
+
+const maisMargemVideos = [
+  "/videos/mais-margem-menos-custo.mp4",
+  "/videos/mais-margem-menos-cancelamentos.mp4",
+  "/videos/mais-margem-beneficios-fiscais.mp4",
+  "/videos/mais-margem-potencialize-time.mp4",
+];
 
 const cards = [
   {
@@ -76,6 +84,7 @@ const detailIds = ["menos-custo", "menos-cancelamentos", "beneficios-fiscais", "
 
 const MaisMargemTab = () => {
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  usePreloadVideos(maisMargemVideos);
 
   if (selectedFeature) {
     return (

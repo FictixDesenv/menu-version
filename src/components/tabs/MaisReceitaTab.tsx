@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { TrendingUp, Truck, BarChart3 } from "lucide-react";
 import GenericDetail from "./GenericDetail";
+import usePreloadVideos from "@/hooks/use-preload-videos";
+
+const maisReceitaVideos = [
+  "/videos/mais-receita-checkout-uplift.mp4",
+  "/videos/mais-receita-dynamic-shipping.mp4",
+  "/videos/mais-receita-sale-funnel.mp4",
+];
 
 const cards = [
   {
@@ -60,6 +67,7 @@ const detailIds = ["checkout-uplift", "dynamic-shipping", "sale-funnel"];
 
 const MaisReceitaTab = () => {
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
+  usePreloadVideos(maisReceitaVideos);
 
   if (selectedFeature) {
     return (
