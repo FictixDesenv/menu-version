@@ -1,20 +1,30 @@
 
 
-## Bypass da senha em localhost
+## Melhorar qualidade dos vídeos nas features (sem alterar TotemScaler)
 
-Alterar `src/components/PasswordGate.tsx` para detectar se o app está rodando em `localhost` (ou `127.0.0.1`) e pular a autenticação automaticamente.
+### Problema
+O `zoom` CSS faz o browser renderizar os vídeos em ~360×180px e depois ampliar 2.5x, causando blur. Além disso, `aspect-[16/8]` recorta vídeos 16:9 desnecessariamente.
 
-### Mudança
+### Abordagem
+Não mexer no TotemScaler. Apenas nos componentes de vídeo:
 
-**`src/components/PasswordGate.tsx`** — no estado inicial de `authenticated`:
+1. **Corrigir aspect ratio** — trocar `aspect-[16/8]` por `aspect-video` (16:9) nos 3 arquivos
+2. **Forçar composição GPU no vídeo** — adicionar `will-change: transform` no `<video>`, que cria uma camada de composição separada e faz o browser decodificar o vídeo em resolução nativa da tela em vez da resolução CSS pré-zoom
 
-```tsx
-const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+### Arquivos alterados
 
-const [authenticated, setAuthenticated] = useState(
-  () => isLocalhost || sessionStorage.getItem("trinio-auth") === "1"
-);
-```
+**`src/components/tabs/FeatureContent.tsx`**
+- `aspect-[16/8]` → `aspect-video`
+- Adicionar `style={{ willChange: 'transform' }}` no `<video>`
 
-Se `hostname` for `localhost` ou `127.0.0.1`, o gate é ignorado e o app abre direto. Em qualquer outro domínio (preview Lovable, domínio publicado, TV), a senha continua sendo exigida.
+**`src/components/tabs/GenericDetail.tsx`**
+- Mesmas duas alterações
+
+**`src/components/tabs/TrinioOSDetail.tsx`**
+- Mesmas duas alterações
+
+### Resultado
+- Vídeos decodificados em resolução mais alta pelo browser
+- Aspect ratio correto sem recorte excessivo
+- Layout geral da aplicação 100% preservado (TotemScaler intocado)
 
