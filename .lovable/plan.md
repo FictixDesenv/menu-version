@@ -1,52 +1,37 @@
 
 
-## O que muda
+## Ajustes no menu unificado
 
-Atualmente existem **dois níveis de navegação separados**:
-1. Tabs principais no MainPage (Trinio OS, Mais receita, Mais margem, Mais experiência)
-2. Sub-tabs de features dentro de cada detail view (ex: "Time de Agentes de IA", "Raio-X da Operação"...)
+Conforme as duas referências visuais (imagens anteriores), as duas linhas de navegação devem estar dentro de **um único container glass-card**, criando um bloco visual coeso com fundo e borda unificados. Na referência nota-se:
 
-A proposta é **unificar em um único bloco de navegação** com duas linhas (como na referência visual):
-- **Linha 1**: Tabs principais (Trinio OS, Mais receita, etc.)
-- **Linha 2**: Sub-features da tab ativa (aparece sempre, não só no detail)
-
-Quando o usuário clica numa sub-feature, o conteúdo do detail aparece diretamente abaixo — sem a tela intermediária de cards grid.
-
-O header mantém logo à esquerda e botão demo à direita (já está assim).
-
-## Alterações
-
-### 1. `src/pages/MainPage.tsx` — Navegação unificada
-- Mover o state de `selectedFeature` para o MainPage (hoje vive dentro de cada tab)
-- Definir as sub-features de cada tab principal como dados no MainPage
-- Renderizar **linha 2** de sub-tabs abaixo das tabs principais, baseada na tab ativa
-- Quando uma sub-feature é selecionada, renderizar o detail view diretamente no content area
-- Quando nenhuma sub-feature é selecionada, mostrar a primeira sub-feature por padrão (como na referência — a tela de detail é o estado padrão)
-- Remover a tela de grid de cards — a navegação por sub-tabs substitui essa função
-
-### 2. `src/components/tabs/TrinioOSTab.tsx`, `MaisReceitaTab.tsx`, `MaisMargemTab.tsx`, `MaisExperienciaTab.tsx`
-- Essas tabs deixam de gerenciar seu próprio estado de `selectedFeature`
-- Podem ser simplificadas ou eliminadas, já que o MainPage passa a controlar tudo
-- Os **dados** (featureData, detailData, etc.) serão extraídos e usados pelo MainPage
-
-### 3. `src/components/tabs/GenericDetail.tsx` e `TrinioOSDetail.tsx`
-- Remover o back button e os sub-tab pills internos (agora ficam no MainPage)
-- Receber apenas o featureId ativo e renderizar o conteúdo (título, descrição, vídeo, features list)
-- Criar um componente `FeatureContent` simplificado que mostra apenas o conteúdo sem navegação
-
-### 4. Estilo da navegação (referência visual)
-- Linha 1 (tabs): pills com fundo roxo quando ativo, glass quando inativo — mesmo estilo atual
-- Linha 2 (sub-features): pills menores, fundo branco/foreground quando ativo, texto simples quando inativo — conforme referência
-- As duas linhas ficam dentro de um container com borda glass-card (como mostra a referência)
+- O container glass-card envolve **ambas as linhas** (tabs principais + sub-features)
+- As tabs da linha 1 ocupam largura igual (flex-1), com espaçamento uniforme
+- A sub-feature ativa tem fundo branco com texto escuro; as inativas têm fundo glass com texto claro
+- A tab principal ativa tem fundo roxo (primary); as inativas têm fundo glass com borda
 
 ```text
-┌─────────────────────────────────────────────┐
-│ [Trinio OS]  [Mais receita]  [Mais margem]  │  ← linha 1
-│ [Agentes IA] [Raio-X] [Checkout] [Log] ...  │  ← linha 2
+┌─ glass-card p-3 ────────────────────────────┐
+│  [Trinio OS] [Mais receita] [Mais margem]   │  ← linha 1, flex-1 cada
+│  [Mais experiência]                         │
+│                                             │
+│  [Feature 1] [Feature 2] [Feature 3] ...    │  ← linha 2, flex-1 cada
 └─────────────────────────────────────────────┘
 ```
 
-## Estrutura de dados centralizada
+## Alterações em `src/pages/MainPage.tsx`
 
-O MainPage terá um mapa de tabs → sub-features com os dados de cada feature, consolidando o que hoje está espalhado em 4 arquivos de tab + 2 arquivos de detail.
+### 1. Container glass-card unificado
+- Envolver linhas 55-86 (ambas as linhas de navegação) num `div` com classe `glass-card p-3`
+- Remover padding/margin externo das linhas individuais que agora está no container
+
+### 2. Aumentar gap header → menus
+- Mudar header `pb-4` (linha 42) para `pb-8`
+
+### 3. Aumentar gap menus → conteúdo
+- Mudar o wrapper de navegação `pb-4` (linha 53) para `pb-8`
+
+### 4. Tabs linha 1 — ajustar para flex-1
+- Adicionar `flex-1` às tabs principais para que ocupem largura igual, como na referência
+
+Apenas `src/pages/MainPage.tsx` será editado.
 
