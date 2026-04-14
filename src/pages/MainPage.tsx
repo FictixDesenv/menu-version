@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TrinioLogo from "@/components/TrinioLogo";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
@@ -9,6 +9,7 @@ import { allTabs } from "@/data/tabData";
 
 const MainPage = () => {
   const { section } = useParams<{ section: string }>();
+  const navigate = useNavigate();
   const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
   const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
   const [demoOpen, setDemoOpen] = useState(false);
@@ -40,7 +41,7 @@ const MainPage = () => {
 
       {/* Header */}
       <div className="flex items-center justify-between px-[36px] pb-8 pt-[36px]">
-        <TrinioLogo size="sm" />
+        <TrinioLogo size="sm" onClick={() => navigate("/")} />
         <button
           onClick={() => setDemoOpen(true)}
           className="px-4 py-2 rounded-[6px] border border-primary text-primary text-xs font-semibold hover:bg-primary/10 transition-colors"
