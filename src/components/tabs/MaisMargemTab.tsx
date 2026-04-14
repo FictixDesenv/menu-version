@@ -41,6 +41,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "menos-cancelamentos": {
     title: "Menos cancelamentos",
+    video: "/videos/mais-margem-menos-cancelamentos.mp4",
     description: "Reduza cancelamentos por atraso ou ruptura em até 20%",
     features: [
       "Resolução automática de incidentes com re-alocação e comunicação proativa.",
