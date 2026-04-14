@@ -9,6 +9,7 @@ import { allTabs } from "@/data/tabData";
 
 const MainPage = () => {
   const { section } = useParams<{ section: string }>();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [activeTabId, setActiveTabId] = useState(section || "trinio-os");
   const [activeFeatureId, setActiveFeatureId] = useState<string | null>(null);
