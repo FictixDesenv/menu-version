@@ -6,7 +6,7 @@ import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
 import trinioOsIcon from "@/assets/trinio_os_icon.png";
-import trinioOsCardIcon from "@/assets/trinio_os_card_icon.png";
+import trinioOsCardIcon from "@/assets/trinio_os_card_icon.svg";
 
 const cards = [
   { id: "trinio-os", image: trinioOsCardIcon, label: "O que é o\nTrinio OS" },
