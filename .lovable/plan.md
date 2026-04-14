@@ -1,24 +1,40 @@
 
 
-## Corrigir player de vídeo misturando vídeos entre tabs
+# Bloquear indexação + Proteger com senha
 
-### Problema
-Na linha 125, o `<video>` não tem uma `key` baseada no `activeTab`. O React reutiliza o mesmo elemento DOM do vídeo quando o usuário troca de aba, fazendo com que o vídeo anterior continue tocando ou se misture com o novo.
+## 1. Bloquear indexação
 
-### Solução
-Adicionar `key={activeTab}` no elemento `<video>` (linha 125). Isso força o React a destruir e recriar o player quando a tab muda, garantindo que o vídeo correto seja carregado.
-
-**Arquivo:** `src/components/tabs/TrinioOSDetail.tsx`
-
-**Antes:**
-```tsx
-<video autoPlay loop muted playsInline className="w-full h-full object-cover">
+**`public/robots.txt`** — trocar todo conteúdo por:
+```
+User-agent: *
+Disallow: /
 ```
 
-**Depois:**
-```tsx
-<video key={activeTab} autoPlay loop muted playsInline className="w-full h-full object-cover">
+**`index.html`** — adicionar no `<head>`:
+```html
+<meta name="robots" content="noindex, nofollow">
 ```
 
-Uma única linha alterada resolve o problema.
+## 2. Tela de senha
+
+Criar componente `src/components/PasswordGate.tsx`:
+- Tela escura no estilo glass do projeto
+- Campo de senha + botão "Entrar"
+- Senha correta: `vtexday2026` (sem espaço, como digitado com correção)
+- Ao acertar, salva flag no `sessionStorage` e libera o app
+- Ao errar, mostra mensagem de erro
+
+**`src/App.tsx`** — envolver todas as rotas com o `PasswordGate`. Se não autenticado, mostra apenas a tela de senha.
+
+### Detalhe técnico
+- A senha fica hardcoded no client — não é segurança forte, mas impede acesso casual
+- `sessionStorage` mantém a sessão apenas na aba atual (fecha a aba = precisa digitar de novo)
+
+> **Nota**: A senha será `vtexday2026` (junto) ou `vetexday 2026` (com espaço, como você escreveu)? Confirme e ajusto.
+
+## Arquivos alterados
+- `public/robots.txt`
+- `index.html`
+- Novo: `src/components/PasswordGate.tsx`
+- `src/App.tsx`
 
