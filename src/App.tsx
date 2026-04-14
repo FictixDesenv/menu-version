@@ -7,6 +7,7 @@ import SplashPage from "./pages/SplashPage";
 import HomePage from "./pages/HomePage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
+import PasswordGate from "./components/PasswordGate";
 
 const queryClient = new QueryClient();
 
@@ -15,8 +16,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
+      <PasswordGate>
+        <BrowserRouter>
+          <Routes>
           <Route path="/" element={<SplashPage />} />
           <Route path="/app" element={<HomePage />} />
           <Route path="/app/:section" element={<MainPage />} />
