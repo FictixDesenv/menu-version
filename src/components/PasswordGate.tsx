@@ -1,10 +1,11 @@
 import { useState, type ReactNode } from "react";
 
 const CORRECT_PASSWORD = "vtexday2026";
+const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
 const PasswordGate = ({ children }: { children: ReactNode }) => {
   const [authenticated, setAuthenticated] = useState(
-    () => sessionStorage.getItem("trinio-auth") === "1"
+    () => isLocalhost || sessionStorage.getItem("trinio-auth") === "1"
   );
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
