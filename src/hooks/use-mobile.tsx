@@ -26,10 +26,8 @@ export function useTotemScale() {
   React.useEffect(() => {
     const calculate = () => {
       const w = window.innerWidth;
-      if (w >= 1920) {
-        setScale(w / ZOOM_TARGET_WIDTH); // ~2.5x on 1920px
-      } else if (w >= 1024) {
-        setScale(w / ZOOM_TARGET_WIDTH); // proportional on desktop
+      if (w >= 768) {
+        setScale(w / ZOOM_TARGET_WIDTH);
       } else {
         setScale(1);
       }
