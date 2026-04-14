@@ -67,7 +67,7 @@ const MainPage = () => {
       {/* Unified navigation block */}
       <div className="px-[36px] pb-3">
         <div className="glass-card p-3">
-          <div className="flex gap-2 justify-center mb-2">
+          <div className="flex gap-1 justify-center mb-2">
             {allTabs.map((tab) => (
               <button
                 key={tab.id}
