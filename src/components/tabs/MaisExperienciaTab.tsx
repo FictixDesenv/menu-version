@@ -42,6 +42,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "sac-rapido": {
     title: "SAC mais rápido",
+    video: "/videos/mais-experiencia-sac-rapido.mp4",
     description:
       "Visibilidade total da operação e IA que age preventivamente — seu time aprova e executa com um clique.",
     features: [
