@@ -32,7 +32,6 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "menos-custo": {
     title: "Menos custo por pedido",
-    video: "/videos/mais-margem-menos-custo.mp4",
     description: "Cada pedido é alocado automaticamente para o ponto de fulfillment ideal.",
     features: [
       "Roteamento considerando estoque, custo logístico e SLA prometido.",
