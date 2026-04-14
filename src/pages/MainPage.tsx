@@ -82,7 +82,7 @@ const MainPage = () => {
                     : "bg-card border border-[rgba(164,168,255,0.19)] text-foreground"
                 }`}
               >
-                {activeTab.featureData[id].shortTitle || activeTab.featureData[id].title}
+                {activeTab.featureData[id].title}
               </button>
             ))}
           </div>
