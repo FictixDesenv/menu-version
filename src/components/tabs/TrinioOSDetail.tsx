@@ -30,6 +30,7 @@ const featureData: Record<
   checkout: {
     icon: ShoppingCart,
     title: "Checkout Inteligente",
+    video: "/videos/trinio-os-checkout.mp4",
     description: "Checkout de 1-clique de alta conversão, potencializado por IA.",
     features: [
       "Checkout com foco na experiência impulsiona até 15%",
