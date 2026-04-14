@@ -80,6 +80,7 @@ const GenericDetail = ({ sectionTitle, featureData, featureIds, initialFeatureId
                 playsInline
                 preload="auto"
                 onCanPlay={() => setIsVideoLoading(false)}
+                style={{ willChange: 'transform' }}
                 className="w-full h-full object-cover"
               />
             </>
