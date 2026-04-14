@@ -81,7 +81,7 @@ const IdleOverlay = ({ idleMs = 60000, countdownSec = 30 }: IdleOverlayProps) =>
             </button>
 
             {/* Timer circle */}
-            <div className="w-16 h-16 rounded-full bg-[#FF5733] flex items-center justify-center mb-5">
+            <div className="w-16 h-16 rounded-full bg-transparent border-2 border-[#8F59DF] flex items-center justify-center mb-5">
               <span className="text-2xl font-bold text-white">{seconds}</span>
             </div>
 
