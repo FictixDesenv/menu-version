@@ -39,7 +39,7 @@ const MainPage = () => {
       <IdleOverlay />
 
       {/* Header */}
-      <div className="flex items-center justify-between px-[36px] pb-4 pt-[36px]">
+      <div className="flex items-center justify-between px-[36px] pb-8 pt-[36px]">
         <TrinioLogo size="sm" />
         <button
           onClick={() => setDemoOpen(true)}
@@ -50,39 +50,41 @@ const MainPage = () => {
       </div>
 
       {/* Unified navigation block */}
-      <div className="px-[36px] pb-4">
-        {/* Line 1: Main tabs */}
-        <div className="flex gap-2 justify-center mb-2">
-          {allTabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTabId(tab.id)}
-              className={`px-4 rounded-[6px] text-[6px] font-medium transition-all py-[5px] ${
-                activeTabId === tab.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+      <div className="px-[36px] pb-8">
+        <div className="glass-card p-3">
+          {/* Line 1: Main tabs */}
+          <div className="flex gap-2 justify-center mb-2">
+            {allTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTabId(tab.id)}
+                className={`flex-1 px-4 rounded-[6px] text-[6px] font-medium transition-all py-[5px] ${
+                  activeTabId === tab.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-[rgba(164,168,255,0.12)] border border-[rgba(164,168,255,0.19)] text-muted-foreground"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
-        {/* Line 2: Sub-feature pills */}
-        <div className="flex flex-row gap-2 w-full">
-          {activeTab.featureIds.map((id) => (
-            <button
-              key={id}
-              onClick={() => setActiveFeatureId(id)}
-              className={`flex-1 text-center px-1 py-[4px] rounded-[4px] text-[5px] font-medium leading-tight transition-all ${
-                currentFeatureId === id
-                  ? "bg-foreground text-card"
-                  : "bg-card border border-[rgba(164,168,255,0.19)] text-foreground"
-              }`}
-            >
-              {activeTab.featureData[id].shortTitle || activeTab.featureData[id].title}
-            </button>
-          ))}
+          {/* Line 2: Sub-feature pills */}
+          <div className="flex flex-row gap-2 w-full">
+            {activeTab.featureIds.map((id) => (
+              <button
+                key={id}
+                onClick={() => setActiveFeatureId(id)}
+                className={`flex-1 text-center px-1 py-[4px] rounded-[4px] text-[5px] font-medium leading-tight transition-all ${
+                  currentFeatureId === id
+                    ? "bg-foreground text-card"
+                    : "bg-card border border-[rgba(164,168,255,0.19)] text-foreground"
+                }`}
+              >
+                {activeTab.featureData[id].shortTitle || activeTab.featureData[id].title}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
