@@ -32,6 +32,7 @@ const cards = [
 const detailData: Record<string, { title: string; description: string; features: string[]; video?: string }> = {
   "entrega-loja": {
     title: "Entrega e retirada em loja",
+    video: "/videos/mais-experiencia-entrega-loja.mp4",
     description:
       "Ship from store e pick-up in store: cada pedido é alocado automaticamente para o ponto de fulfillment ideal..",
     features: [
