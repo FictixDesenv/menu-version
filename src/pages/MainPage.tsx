@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import TrinioLogo from "@/components/TrinioLogo";
-import DemoButton from "@/components/DemoButton";
 import DemoModal from "@/components/DemoModal";
 import IdleOverlay from "@/components/IdleOverlay";
 import TrinioOSTab from "@/components/tabs/TrinioOSTab";
@@ -50,9 +49,13 @@ const MainPage = () => {
 
       {/* Header */}
       <div className="flex items-center justify-between px-6 pb-4 pt-[36px]">
-        <div className="w-10" /> {/* spacer */}
         <TrinioLogo size="sm" />
-        <div className="w-10" /> {/* spacer */}
+        <button
+          onClick={() => setDemoOpen(true)}
+          className="px-4 py-2 rounded-full border border-primary text-primary text-xs font-semibold hover:bg-primary/10 transition-colors"
+        >
+          Agendar uma Demo
+        </button>
       </div>
 
       {/* Tab navigation */}
@@ -75,10 +78,8 @@ const MainPage = () => {
       {/* Content */}
       <div className="flex-1 overflow-y-auto pb-4">{renderTab()}</div>
 
-      {/* Footer CTA */}
-      <div className="px-6 pt-2 pb-[150px]">
-        <DemoButton onClick={() => setDemoOpen(true)} variant="outline" />
-      </div>
+      {/* Bottom spacing */}
+      <div className="pb-6" />
 
       <DemoModal open={demoOpen} onOpenChange={setDemoOpen} />
     </div>
