@@ -23,8 +23,13 @@ const MainPage = () => {
   usePreloadVideos(allVideos);
 
   useEffect(() => {
-    setActiveFeatureId(activeTab.featureIds[0]);
-  }, [activeTab]);
+    const featureParam = searchParams.get("feature");
+    if (featureParam && activeTab.featureIds.includes(featureParam)) {
+      setActiveFeatureId(featureParam);
+    } else {
+      setActiveFeatureId(activeTab.featureIds[0]);
+    }
+  }, [activeTab, searchParams]);
 
   useEffect(() => {
     if (section && allTabs.some((t) => t.id === section)) {
