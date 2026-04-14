@@ -21,7 +21,7 @@ export const trinioOsFeatures: TrinioOsFeature[] = [
     icon: iconAgentes,
     title: "Time de Agentes de IA",
     homeLabel: "Time de\nAgentes de IA",
-    video: "/videos/trinio-os-agentes.mp4",
+    video: "/videos/trinio-os-agentes-v2.mp4",
     description:
       "Agentes especializados que monitoram sua operação 24/7 e sugerem ações concretas — você aprova, eles executam.",
     features: [
