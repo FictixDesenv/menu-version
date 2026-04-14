@@ -1,34 +1,11 @@
-import { useState, useMemo } from "react";
-import iconAgentes from "@/assets/icon-agentes.png";
-import iconRaiox from "@/assets/icon-raiox.png";
-import iconCheckout from "@/assets/icon-checkout.png";
-import iconLogistica from "@/assets/icon-logistica.png";
-import iconPickpack from "@/assets/icon-pickpack.png";
-import iconIntegracoes from "@/assets/icon-integracoes.png";
+import { useState } from "react";
 import TrinioOSDetail from "./TrinioOSDetail";
 import usePreloadVideos from "@/hooks/use-preload-videos";
-
-const trinioOSVideos = [
-  "/videos/trinio-os-agentes.mp4",
-  "/videos/trinio-os-raiox.mp4",
-  "/videos/trinio-os-checkout.mp4",
-  "/videos/trinio-os-logistica.mp4",
-  "/videos/trinio-os-pickpack.mp4",
-  "/videos/trinio-os-integracoes.mp4",
-];
-
-const features = [
-  { id: "agentes", icon: iconAgentes, title: "Time de Agentes de IA" },
-  { id: "raiox", icon: iconRaiox, title: "Raio-X da Operação" },
-  { id: "checkout", icon: iconCheckout, title: "Checkout Inteligente" },
-  { id: "logistica", icon: iconLogistica, title: "Logística Customizada" },
-  { id: "pickpack", icon: iconPickpack, title: "App Pick and Pack" },
-  { id: "integracoes", icon: iconIntegracoes, title: "Integrações e Visibilidade" },
-];
+import { trinioOsFeatures, trinioOsVideos } from "@/data/trinioOsFeatures";
 
 const TrinioOSTab = () => {
   const [selectedFeature, setSelectedFeature] = useState<string | null>(null);
-  usePreloadVideos(trinioOSVideos);
+  usePreloadVideos(trinioOsVideos);
 
   if (selectedFeature) {
     return <TrinioOSDetail featureId={selectedFeature} onBack={() => setSelectedFeature(null)} />;
@@ -44,7 +21,7 @@ const TrinioOSTab = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 px-0 py-0">
-        {features.map((feature) => (
+        {trinioOsFeatures.map((feature) => (
           <button
             key={feature.id}
             onClick={() => setSelectedFeature(feature.id)}
