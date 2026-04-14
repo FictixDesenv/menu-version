@@ -35,6 +35,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "dynamic-shipping": {
     title: "Dynamic Shipping Options",
+    video: "/videos/mais-receita-dynamic-shipping.mp4",
     description: "Orquestração inteligente que encontra a melhor combinação de preço e prazo para cada pedido.",
     features: [
       "Cálculo dinâmico conectando TMSs e regras de negócio.",
