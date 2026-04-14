@@ -1,18 +1,22 @@
 
 
-## Mudanças no Modal de QR Code
+## Mudanças na MainPage
 
-### Alterações em `src/components/DemoModal.tsx`
+### 1. Logo 10% maior
+Em `TrinioLogo.tsx`, aumentar os valores do size `sm` de 68×21 para ~75×23.
 
-1. **Background (overlay)**: Trocar `bg-black/60` por `bg-black/60 backdrop-blur-md` para aplicar efeito glass/embaçado
-2. **Modal card**: Trocar `glass-card` por fundo sólido `bg-[#393579]` mantendo border-radius e padding
-3. **Posição**: Adicionar `mb-5` (ou `translate-y-[-20px]`) ao card para subir ~20px
+### 2. Botão "Agendar uma Demo" 10% menor
+Em `MainPage.tsx` linha 47, reduzir o texto/padding do botão (de `text-xs px-4 py-2` para `text-[10px] px-3 py-1.5`).
 
-```tsx
-// Overlay: adicionar backdrop-blur
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md">
+### 3. Reduzir gap entre tabs e card de conteúdo
+Em `MainPage.tsx` linha 54, trocar `pb-8` por `pb-3` no container do navigation block.
 
-// Card: fundo sólido #393579, subir 20px
-<div className="p-6 mx-5 max-w-xs w-full flex flex-col items-center text-center relative shadow-2xl rounded-[10px] bg-[#393579] -translate-y-[20px]">
-```
+### 4. Swipe entre features da mesma tab
+Em `MainPage.tsx`, adicionar touch swipe handlers no container de conteúdo:
+- Detectar `touchstart`/`touchend` com diferença X > 50px
+- Swipe direita → feature anterior, swipe esquerda → próxima feature
+- Navegar apenas dentro de `activeTab.featureIds`
+- Sem indicador de posição
+
+Implementação com `onTouchStart`/`onTouchEnd` no div de conteúdo (linha 93), armazenando `touchStartX` via `useRef`. No `onTouchEnd`, calcular delta e chamar `setActiveFeatureId` com o próximo/anterior ID da lista.
 
