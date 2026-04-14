@@ -49,12 +49,16 @@
     @apply border-border;
   }
 
+  html, body, #root {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
   body {
     @apply text-foreground font-sans;
     font-family: "Albert Sans", sans-serif;
     background: linear-gradient(180deg, #0b0a1a 0%, #19134b 50%, #0c0b1c 100%);
-    min-height: 100vh;
-    overflow: hidden;
   }
 }
 

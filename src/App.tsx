@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
 import PasswordGate from "./components/PasswordGate";
+import TotemScaler from "./components/TotemScaler";
 
 const queryClient = new QueryClient();
 
@@ -17,14 +18,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <PasswordGate>
-        <BrowserRouter>
+        <TotemScaler>
+          <BrowserRouter>
           <Routes>
             <Route path="/" element={<SplashPage />} />
             <Route path="/app" element={<HomePage />} />
             <Route path="/app/:section" element={<MainPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+          </BrowserRouter>
+        </TotemScaler>
       </PasswordGate>
     </TooltipProvider>
   </QueryClientProvider>
