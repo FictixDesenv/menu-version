@@ -42,6 +42,7 @@ const featureData: Record<
   logistica: {
     icon: Truck,
     title: "Logística Customizada",
+    video: "/videos/trinio-os-logistica.mp4",
     description: "Motor de regras que coloca o controle da operação  nas mãos do negócio.",
     features: [
       "Prioridades de fulfillment por custo, prazo, perfil do cliente e mais",
