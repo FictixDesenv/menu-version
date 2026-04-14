@@ -48,11 +48,11 @@ const MainPage = () => {
       <IdleOverlay />
 
       {/* Header */}
-      <div className="flex items-center justify-between px-6 pb-4 pt-[36px]">
+      <div className="flex items-center justify-between px-[36px] pb-4 pt-[36px]">
         <TrinioLogo size="sm" />
         <button
           onClick={() => setDemoOpen(true)}
-          className="px-4 py-2 rounded-full border border-primary text-primary text-xs font-semibold hover:bg-primary/10 transition-colors"
+          className="px-4 py-2 rounded-[6px] border border-primary text-primary text-xs font-semibold hover:bg-primary/10 transition-colors"
         >
           Agendar uma Demo
         </button>
