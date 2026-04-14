@@ -63,6 +63,7 @@ const featureData: Record<
   integracoes: {
     icon: Plug,
     title: "Integrações e Visibilidade",
+    video: "/videos/trinio-os-integracoes.mp4",
     description:
       "Conectores nativos para os principais sistemas do comércio brasileiro — plug and play, sem middleware.",
     features: [
