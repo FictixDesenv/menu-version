@@ -11,11 +11,11 @@ const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md"
       onClick={() => onOpenChange(false)}
     >
       <div
-        className="p-6 mx-5 max-w-xs w-full flex flex-col items-center text-center relative shadow-2xl rounded-[10px] bg-[#393579] -translate-y-[20px]"
+        className="p-6 mx-5 max-w-xs w-full flex flex-col items-center text-center relative shadow-2xl rounded-[10px] bg-[#1D1753] -translate-y-[20px]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
