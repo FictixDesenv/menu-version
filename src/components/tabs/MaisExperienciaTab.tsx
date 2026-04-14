@@ -53,6 +53,7 @@ const detailData: Record<string, { title: string; description: string; features:
   },
   "visao-unificada": {
     title: "Visão unificada",
+    video: "/videos/mais-experiencia-visao-unificada.mp4",
     description: "Todos os canais em uma única interface.",
     features: [
       "VTEX, marketplaces, lojas e parceiros em um único painel.",
