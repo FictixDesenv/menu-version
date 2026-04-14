@@ -1,18 +1,24 @@
 
 
-## Corrigir espaçamento entre cards
+## Corrigir player de vídeo misturando vídeos entre tabs
 
 ### Problema
-A classe `flex-1` no container do grid faz ele expandir para ocupar toda a altura disponível, esticando o espaço entre os cards.
+Na linha 125, o `<video>` não tem uma `key` baseada no `activeTab`. O React reutiliza o mesmo elemento DOM do vídeo quando o usuário troca de aba, fazendo com que o vídeo anterior continue tocando ou se misture com o novo.
 
 ### Solução
-Remover `flex-1` da `<div>` do grid nos 3 arquivos:
+Adicionar `key={activeTab}` no elemento `<video>` (linha 125). Isso força o React a destruir e recriar o player quando a tab muda, garantindo que o vídeo correto seja carregado.
 
-**Arquivos:**
-- `src/components/tabs/MaisReceitaTab.tsx` — linha 82: `grid grid-cols-2 gap-4 flex-1` → `grid grid-cols-2 gap-4`
-- `src/components/tabs/MaisMargemTab.tsx` — mesma alteração
-- `src/components/tabs/MaisExperienciaTab.tsx` — mesma alteração
+**Arquivo:** `src/components/tabs/TrinioOSDetail.tsx`
 
-### Resultado
-Os cards ficam agrupados no topo com apenas 16px (`gap-4`) de espaço entre eles.
+**Antes:**
+```tsx
+<video autoPlay loop muted playsInline className="w-full h-full object-cover">
+```
+
+**Depois:**
+```tsx
+<video key={activeTab} autoPlay loop muted playsInline className="w-full h-full object-cover">
+```
+
+Uma única linha alterada resolve o problema.
 
