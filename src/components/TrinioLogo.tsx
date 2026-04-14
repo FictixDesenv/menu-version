@@ -8,8 +8,8 @@ interface TrinioLogoProps {
 }
 
 const TrinioLogo = ({ size = "md", variant = "header", onClick }: TrinioLogoProps) => {
-  const heights = { sm: 21, md: 32, lg: 42 };
-  const widths = { sm: 68, md: 100, lg: 135 };
+  const heights = { sm: 23, md: 32, lg: 42 };
+  const widths = { sm: 75, md: 100, lg: 135 };
 
   const isFooter = variant === "footer";
 
