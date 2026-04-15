@@ -10,16 +10,26 @@ interface FeatureContentProps {
 
 const FeatureContent = ({ data, slideDirection = "right" }: FeatureContentProps) => {
   const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsVideoLoading(true);
-    if (videoRef.current && data.video) {
-      videoRef.current.src = data.video;
-      videoRef.current.load();
-    }
-    const timer = setTimeout(() => setIsVideoLoading(false), 5000);
-    return () => clearTimeout(timer);
+    setIsVideoVisible(false);
+
+    const startTimer = setTimeout(() => {
+      if (videoRef.current && data.video) {
+        videoRef.current.src = data.video;
+        videoRef.current.load();
+      }
+    }, 100);
+
+    const fallbackTimer = setTimeout(() => setIsVideoLoading(false), 5600);
+
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(fallbackTimer);
+    };
   }, [data.video]);
 
   return (
@@ -39,9 +49,14 @@ const FeatureContent = ({ data, slideDirection = "right" }: FeatureContentProps)
               loop
               muted
               playsInline
-              preload="auto"
-              onCanPlay={() => setIsVideoLoading(false)}
-              className="w-full h-full object-cover"
+              preload="none"
+              onCanPlay={() => {
+                setIsVideoLoading(false);
+                setIsVideoVisible(true);
+              }}
+              className={`w-full h-full object-cover transition-opacity duration-500 ease-in ${
+                isVideoVisible ? "opacity-100" : "opacity-0"
+              }`}
             />
           </>
         ) : (
