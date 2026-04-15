@@ -74,7 +74,7 @@ export const trinioOsFeatures: TrinioOsFeature[] = [
     icon: iconPickpack,
     title: "App Pick and Pack",
     homeLabel: "App Pick\nand Pack",
-    video: "/videos/trinio-os-pickpack.mp4",
+    video: "/videos/trinio-os-pickpack-v2.mp4",
     description: "App mobile para operadores de loja e CD gerenciarem a operação com agilidade.",
     features: [
       "Picking, packing e expedição com leitura de código de barras",
