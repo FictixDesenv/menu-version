@@ -23,7 +23,7 @@ const trinioOSTab: TabConfig = {
     "/videos/trinio-os-raiox.mp4",
     "/videos/trinio-os-checkout.mp4",
     "/videos/trinio-os-logistica.mp4",
-    "/videos/trinio-os-pickpack.mp4",
+    "/videos/trinio-os-pickpack-v2.mp4",
     "/videos/trinio-os-integracoes.mp4",
   ],
   featureData: {
