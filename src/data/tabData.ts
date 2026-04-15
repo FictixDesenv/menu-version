@@ -86,7 +86,7 @@ const trinioOSTab: TabConfig = {
     integracoes: {
       title: "Integrações e Visibilidade",
       shortTitle: "Integrações",
-      video: "/videos/trinio-os-integracoes.mp4",
+      video: "/videos/trinio-os-integracoes-v2.mp4",
       description:
         "Conectores nativos para os principais sistemas do comércio brasileiro — plug and play, sem middleware.",
       features: [
