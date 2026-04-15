@@ -75,7 +75,7 @@ const trinioOSTab: TabConfig = {
     pickpack: {
       title: "App Pick and Pack",
       shortTitle: "Pick & Pack",
-      video: "/videos/trinio-os-pickpack.mp4",
+      video: "/videos/trinio-os-pickpack-v2.mp4",
       description: "App mobile para operadores de loja e CD gerenciarem a operação com agilidade.",
       features: [
         "Picking, packing e expedição com leitura  de código de barras",
@@ -86,7 +86,7 @@ const trinioOSTab: TabConfig = {
     integracoes: {
       title: "Integrações e Visibilidade",
       shortTitle: "Integrações",
-      video: "/videos/trinio-os-integracoes-v2.mp4",
+      video: "/videos/trinio-os-integracoes.mp4",
       description:
         "Conectores nativos para os principais sistemas do comércio brasileiro — plug and play, sem middleware.",
       features: [
