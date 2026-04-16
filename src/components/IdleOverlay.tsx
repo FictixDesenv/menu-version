@@ -8,7 +8,7 @@ interface IdleOverlayProps {
   countdownSec?: number;
 }
 
-const IdleOverlay = ({ idleMs = 60000, countdownSec = 30 }: IdleOverlayProps) => {
+const IdleOverlay = ({ idleMs = 60000, countdownSec = 10 }: IdleOverlayProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [visible, setVisible] = useState(false);

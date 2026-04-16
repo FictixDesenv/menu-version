@@ -17,7 +17,7 @@ const HomePage = () => {
 
       {/* Header */}
       <div className="flex items-center justify-between px-[36px] pb-4 pt-[36px]">
-        <TrinioLogo size="sm" />
+        <TrinioLogo size="sm"   onClick={() => navigate("/")} />
         <button
           onClick={() => setDemoOpen(true)}
           className="px-2 py-1 rounded-[6px] border border-primary text-primary text-[8px] font-semibold hover:bg-primary/10 transition-colors"
